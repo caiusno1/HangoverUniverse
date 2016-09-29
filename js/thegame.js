@@ -51,7 +51,7 @@ thegame.prototype = {
     update: function () {
 
         //Bei Mouseclick/Touchklick das Player-Movement Dash mit Partikel Effekt
-        if (this.game.input.mouse.button == 0 || this.game.input.pointer1.isDown)
+        if (this.game.input.activePointer.leftButton.isDown)
         {
                 this.particleDirtLine();
                 this.dash();
