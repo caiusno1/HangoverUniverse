@@ -16,7 +16,7 @@ preload.prototype = {
         //backgrounds tiles etc vorladen
         this.game.load.image("bgTitleScreen","assets/background/background_titlescreen.png");
 
-        this.game.load.image("bgStage", "assets/background/bg_stage.png");
+        this.game.load.image("bgStage", "Bilder/Spawn_test.png");
 
         this.game.load.spritesheet("replay", "assets/background/button_replay.png",230,130);
         this.game.load.spritesheet("play", "assets/background/button_play.png",200,200);
@@ -58,7 +58,7 @@ preload.prototype = {
         //GameTitle / GameOver Background Sound
         this.game.load.audio('sound_bgloop', ['assets/sounds/loop_menu.mp3','assets/sounds/loop_menu.ogg']);
         this.game.load.audio('sound_bgloop2', ['assets/sounds/loop_level1.mp3','assets/sounds/loop_level1.ogg']);
-        
+
         //ButtonClick Sound
         this.game.load.audio('sound_buttonclick', ["assets/sounds//buttonsound.mp3","assets/sounds/buttonsound.ogg"]);
 
