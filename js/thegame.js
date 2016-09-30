@@ -47,21 +47,21 @@ thegame.prototype = {
     },
 
 
-    //Update Function - durchgehend kontinuirlich aufgerufen vom Spiel
+    //Update Function - durchgehend kontinuierlich aufgerufen vom Spiel
     update: function () {
 
         if(this.game.input.keyboard.isDown(Phaser.KeyCode.W))
         {
             player.y=player.y-5;
         }
-        else if (this.game.input.keyboard.isDown(Phaser.KeyCode.S)) {
+        if (this.game.input.keyboard.isDown(Phaser.KeyCode.S)) {
             player.y=player.y+5;
         }
-        else if (this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
-            player.y=player.y-5;
+        if (this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
+            player.x=player.x-5;
         }
-        else if (this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
-            player.y=player.y+5;
+        if (this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
+            player.x=player.x+5;
         }
 
         //Bei Mouseclick/Touchklick das Player-Movement Dash mit Partikel Effekt
