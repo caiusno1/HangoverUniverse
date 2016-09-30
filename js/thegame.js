@@ -17,7 +17,7 @@ thegame.prototype = {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         //BackgroundTile hinzufuegen
-        bgTileSprite = this.game.add.tileSprite(0, 0, 1000, 800, 'bgStage');
+        bgTileSprite = this.game.add.tileSprite(0, 0, 1920, 1080, 'bgStage');
 
         //Sprite hinzufuegen und auf Spieler setzen
         player = this.game.add.sprite(this.game.world.centerX,this.game.world.height-200,'playerRocket');
