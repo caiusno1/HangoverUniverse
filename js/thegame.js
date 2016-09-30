@@ -50,8 +50,22 @@ thegame.prototype = {
     //Update Function - durchgehend kontinuirlich aufgerufen vom Spiel
     update: function () {
 
+        if(this.game.input.keyboard.isDown(Phaser.KeyCode.W))
+        {
+            player.y=player.y-5;
+        }
+        else if (this.game.input.keyboard.isDown(Phaser.KeyCode.S)) {
+            player.y=player.y+5;
+        }
+        else if (this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
+            player.y=player.y-5;
+        }
+        else if (this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
+            player.y=player.y+5;
+        }
+
         //Bei Mouseclick/Touchklick das Player-Movement Dash mit Partikel Effekt
-        if (this.game.input.activePointer.leftButton.isDown)
+        /*if (this.game.input.activePointer.leftButton.isDown)
         {
                 this.particleDirtLine();
                 this.dash();
@@ -60,7 +74,7 @@ thegame.prototype = {
         //Sonst durchgehend Player rotieren
         else
             this.rotatePlayer();
-
+      */
     },
 
 
