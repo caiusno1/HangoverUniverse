@@ -25,7 +25,7 @@ preload.prototype = {
         this.game.load.spritesheet("pause","assets/background/button_pause.png",50,50);
         this.game.load.image("unpause","assets/background/view_unpause.png");
 
-        this.game.load.image("tutorial","assets/background/tutorial.png");
+        //this.game.load.image("tutorial","assets/background/tutorial.png");
         this.game.load.spritesheet("tutshow","assets/background/button_tutorial.png",230,130);
 
         this.game.load.image("life","assets/background/lifeIcon.png");
