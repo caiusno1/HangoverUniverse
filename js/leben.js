@@ -1,4 +1,5 @@
-Phaser.Component.Leben = function () {};
+Phaser.Component.Leben = function () {
+};
 
 Phaser.Component.Leben.prototype = {
 
