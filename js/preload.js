@@ -22,7 +22,7 @@ preload.prototype = {
         this.game.load.image("bgStage", "Bilder/Spawn_test_neu.png");
         this.game.load.image("bgTutGang","Bilder/Tut_Gang.png");
         this.game.load.image("bgVorrat","Bilder/Tut_Vorräte.png");
-        this.game.load.image("bgLebenserhaltung","Bilder/Tut_Lebenserhaltung.png");
+        this.game.load.image("bgLebenserhaltung","Bilder/Tut_Lebenserhaltung_neu.png");
 
         this.game.load.spritesheet("replay", "assets/background/button_replay.png",230,130);
         this.game.load.spritesheet("play", "assets/background/button_play.png",200,200);

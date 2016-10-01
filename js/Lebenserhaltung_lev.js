@@ -76,6 +76,10 @@ Lebenserhaltung_lev.prototype = {
         //this.eventList =  this.cache.getJSON('Lebenserhaltung_lev');
         this.registerevent(changeRoomToGang3,800,750,200,200,"test");
         //this.debugEvents();
+
+        //Timo
+        //this.registerevent(showBook,800,750,200,200,"test");
+
         //hud
         this.hud();
         this.game.Hunger.start();
