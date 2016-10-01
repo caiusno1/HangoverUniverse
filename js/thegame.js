@@ -1,7 +1,7 @@
 /**
  * Created by Schlag on 01.07.2016
  */
-var thegame = function(game){
+var thegame = function(game) {
     rotateDirection = 1;
     isShielded = false;
     isBoosted = false;
@@ -14,7 +14,7 @@ var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"bla
 
 thegame.prototype = {
 
-    create : function(){
+    create : function() {
         //Bounds-Rechteck
         bounds = new Phaser.Rectangle(350, 250, 1300, 650);
 

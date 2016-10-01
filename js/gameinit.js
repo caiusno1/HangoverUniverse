@@ -2,7 +2,7 @@ var gameinit = function(game){
 };
 
 gameinit.prototype = {
-    create: function(){
+    create: function() {
 
       this.game.Leben = new Leben();
       this.game.Leben.setLeben(100);

@@ -37,7 +37,6 @@ Hunger.prototype = {
         if (this.alive)
         {
             this.hunger -= amount;
-
             if (this.hunger <= 0)
             {
                 this.kill();
