@@ -20,6 +20,7 @@ gameover.prototype = {
         //var scoreText = this.game.add.text(this.game.world.centerX-90, 90, '0', { font: "36px Roboto", fill: "white", align: "center",stroke:"black",strokeThickness:3});
         //scoreText.setText('Score: ' + pointCounter);
 
+        var style = { font: "80px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 5};
         var gameTitleText = this.game.add.text(this.world.centerX,this.world.centerY-100, 'Du bist gestorben',style);
         gameTitleText.anchor.set(0.5);
         gameTitleText.alpha = 1;
