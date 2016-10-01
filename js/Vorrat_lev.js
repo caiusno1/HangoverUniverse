@@ -63,6 +63,15 @@ Vorrat_lev.prototype = {
         player.body.width = 50;
         player.body.height = 50;
 
+        //FEUER!!!!
+        var emitter = this.game.add.emitter(800, 400, 400);
+        emitter.makeParticles(['fire1', 'fire2' ,'fire3']);
+        emitter.gravity = -300;
+        emitter.maxRotation = 90;
+        emitter.setAlpha(0.8, 0, 3000);
+        emitter.setScale(1, 0.5, 1, 1);
+        emitter.start(false, 600, 100);
+
         //Particle Dirtline
         emitter1 = this.game.add.emitter(this.game.world.centerX, this.game.world.centerY, 400);
         emitter1.makeParticles( [ 'turbine1', 'turbine2'] );

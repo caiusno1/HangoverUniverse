@@ -57,13 +57,6 @@ thegame.prototype = {
             player.x=this.game.spawnposition.x;
             player.y=this.game.spawnposition.y;
         }
-            var emitter = this.game.add.emitter(this.game.world.centerX, this.game.world.centerY, 400);
-            emitter.makeParticles(['fire1', 'fire2' ,'fire3']);
-            emitter.gravity = -300;
-            emitter.maxRotation = 90;
-            emitter.setAlpha(0.8, 0, 3000);
-            emitter.setScale(1, 0.5, 1, 1);
-            emitter.start(false, 600, 100);
 
         //Bounds-Rechteck(test)
         var graphics = this.game.add.graphics(bounds.x, bounds.y);
