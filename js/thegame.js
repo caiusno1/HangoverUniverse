@@ -47,6 +47,9 @@ thegame.prototype = {
         this.registerevent(this.testEventHandler,1600,200,200,200,"test");
         alert(eventList);
         this.debugEvents();
+
+        //hud
+        this.hud();
     },
 
 
@@ -87,6 +90,11 @@ thegame.prototype = {
         else
             this.rotatePlayer();
       */
+    },
+
+    hud: function() {
+      //Lifebar Image
+      var lifebar = this.game.add.sprite(10,10,"lifebar",this);
     },
 
 

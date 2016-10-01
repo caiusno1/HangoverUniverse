@@ -12,7 +12,8 @@ gametitle.prototype = {
         //Background Image
         this.game.add.sprite(0,0,"bgTitleScreen",this);
 
-        //GameTitleText
+        /*
+        //GameTitleText, mittlerweile in Grafik eingebunden
         var style = { font: "80px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 5};
         var gameTitleText = this.game.add.text(this.world.centerX, 60, 'Hangover Universe',style);
         gameTitleText.anchor.set(0.5);
@@ -20,6 +21,7 @@ gametitle.prototype = {
 
         //Alpha Wert verändern
         this.game.add.tween(gameTitleText).to( { alpha: 1 }, 1000, "Linear", true);
+        */
 
         //PlayButton
         var playButton = this.game.add.button(this.world.centerX,this.world.centerY,"play",this.playTheGame,this,1,0,2);
