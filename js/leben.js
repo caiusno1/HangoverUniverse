@@ -1,5 +1,6 @@
-Leben = function () {
+Leben = function (game) {
   this.alive = true;
+  this.game = game;
 };
 
 Leben.prototype = {
@@ -39,7 +40,8 @@ Leben.prototype = {
             this.leben -= amount;
             if (this.leben <= 0)
             {
-                this.kill();
+                this.game.state.start("GameOver");
+
             }
         }
 
