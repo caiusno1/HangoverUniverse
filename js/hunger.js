@@ -40,7 +40,11 @@ Hunger.prototype = {
         if (this.alive)
         {
             this.hunger -= amount;
-            if (this.hunger <= 0)
+            if (this.hunger <= 20 && this.hunger>0)
+            {
+                this.game.Leben.damage(1);
+            }
+            else if (this.hunger <= 0)
             {
                 this.game.state.start("GameOver");
             }
@@ -98,14 +102,13 @@ Hunger.prototype = {
 
         return this;
 
-    }/*,
+    },
 
     updateCounter: function(){
       this.damage(1);
     },
     start: function(){
-      var self = this;
-      this.TimeEvent =this.game.time.events.loop(Phaser.Timer.SECOND,  this.updateCounter, this);
-    }*/
+      this.game.time.events.loop(Phaser.Timer.SECOND*5,  this.updateCounter, this);
+    }
 
 };

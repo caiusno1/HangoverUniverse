@@ -5,8 +5,9 @@ var Gang_lev = function(game){
     rotateDirection = 1;
     isShielded = false;
     isBoosted = false;
-    var lifebar, hungerbar;
-    var lebenText, hungerText;
+    //ComHUD
+    var lifebar, hungerbar, oxygenbar;
+    var lebenText, hungerText, oxygenText;
 };
 
 Gang_lev.prototype = {
@@ -23,7 +24,7 @@ Gang_lev.prototype = {
         //BackgroundTile hinzufuegen
         bgTileSprite = this.game.add.tileSprite(0, 0, 1920, 1080, 'bgTutGang');
         //Sprite hinzufuegen und auf Spieler setzen
-        player = this.game.add.sprite(this.game.world.centerX-500,this.game.world.height-600,'playerRocket');
+        player = this.game.add.sprite(200,500,'playerRocket');
 
         //Auto Animation hinzufuegen
         player.animations.add('down', [0], 10);
@@ -72,9 +73,10 @@ Gang_lev.prototype = {
 
         //this.debugEvents();
 
-        //hud
+        //ComHUD
         this.hud();
         this.updateHud();
+        this.game.Hunger.start();
     },
 
 
@@ -137,39 +139,37 @@ Gang_lev.prototype = {
         }
 
         this.askevent();
-
-
-        //Bei Mouseclick/Touchklick das Player-Movement Dash mit Partikel Effekt
-        /*if (this.game.input.activePointer.leftButton.isDown)
-        {
-                this.particleDirtLine();
-                this.dash();
-        }
-
-        //Sonst durchgehend Player rotieren
-        else
-            this.rotatePlayer();
-      */
+        //ComHUD
+        this.updateHud();
     },
 
+    //ComHUD
     hud: function() {
       //Lifebar Image
-      lifebar = this.game.add.sprite(this.game.world.width-600,this.game.world.height-60,"lifebar",this);
-      hungerbar = this.game.add.sprite(this.game.world.width-300,this.game.world.height-60,"hungerbar",this);
+      lifebar = this.game.add.sprite(this.game.world.width-900,this.game.world.height-60,"lifebar",this);
+      hungerbar = this.game.add.sprite(this.game.world.width-600,this.game.world.height-60,"hungerbar",this);
+      oxygenbar = this.game.add.sprite(this.game.world.width-300,this.game.world.height-60,"oxygenbar",this);
 
+      heartImg = this.game.add.sprite(this.game.world.width-960,this.game.world.height-60,"heartImg",this);
+      hungerImg = this.game.add.sprite(this.game.world.width-660,this.game.world.height-60,"hungerImg",this);
+      oxygenImg = this.game.add.sprite(this.game.world.width-360,this.game.world.height-60,"oxygenImg",this);
 
-      lebenText = this.game.add.text(this.world.width-510, this.game.world.height-47, this.game.Leben.getLeben(),style);
-      hungerText = this.game.add.text(this.world.width-210, this.game.world.height-47, this.game.Hunger.getHunger(),style);
+      lebenText = this.game.add.text(this.world.width-810, this.game.world.height-47, this.game.Leben.getLeben(),style);
+      hungerText = this.game.add.text(this.world.width-510, this.game.world.height-47, this.game.Hunger.getHunger(),style);
+      oxygenText = this.game.add.text(this.world.width-210, this.game.world.height-47, this.game.Oxygen.getOxygen(),style);
     },
 
     updateHud: function () {
       lifebar.width=this.game.Leben.getLeben()*2;
       hungerbar.width=this.game.Hunger.getHunger()*2;
+      oxygenbar.width=this.game.Oxygen.getOxygen()*2;
 
       lebenText.destroy();
-      lebenText = this.game.add.text(this.world.width-510, this.game.world.height-47, this.game.Leben.getLeben(),style);
+      lebenText = this.game.add.text(this.world.width-810, this.game.world.height-47, this.game.Leben.getLeben(),style);
       hungerText.destroy();
-      hungerText = this.game.add.text(this.world.width-210, this.game.world.height-47, this.game.Hunger.getHunger(),style);
+      hungerText = this.game.add.text(this.world.width-510, this.game.world.height-47, this.game.Hunger.getHunger(),style);
+      oxygenText.destroy();
+      oxygenText = this.game.add.text(this.world.width-210, this.game.world.height-47, this.game.Oxygen.getOxygen(),style);
     },
 
     //Player-Rotation
@@ -241,15 +241,17 @@ Gang_lev.prototype = {
 };
 function changeRoomBackDoor(self,sender)
 {
-  self.game.state.start("TheGame");
   self.game.spawnposition={x:1600,y:400};
+  self.game.state.start("TheGame");
 
 }
 function changeRaumVorrat(self,sender)
 {
+  self.game.spawnposition={x:1775,y:1650};
   self.game.state.start("Vorrat_lev");
 }
 function changeRaumLebenserhaltung(self,sender)
 {
+  self.game.spawnposition={x:1775,y:1040};
   self.game.state.start("Lebenserhaltung_lev");
 }

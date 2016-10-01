@@ -8,8 +8,9 @@ gameinit.prototype = {
       this.game.Leben.setLeben(100);
       this.game.Hunger = new Hunger(this.game);
       this.game.Hunger.setHunger(100);
-      //this.game.Hunger.start();
-      //this.game.Hunger.updateCounter();
+      this.game.Oxygen = new Oxygen(this.game);
+      this.game.Oxygen.setOxygen(100);
+      this.game.Hunger.start();
       this.game.state.start("TheGame");
 
 

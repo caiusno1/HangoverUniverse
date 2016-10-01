@@ -1,3 +1,5 @@
-[
-  {"x":"1600","y":"200","width":"200","height":"200","sender":"Test","callbackfn":"changeRoom"}
-]
+{
+  "events":[
+    {"x":"1600","y":"200","width":"200","height":"500","sender":"Test","callbackfn":"changeRoom"}
+  ]
+}

@@ -22,7 +22,7 @@ preload.prototype = {
         this.game.load.image("bgStage", "Bilder/Spawn_test_neu.png");
         this.game.load.image("bgTutGang","Bilder/Tut_Gang.png");
         this.game.load.image("bgVorrat","Bilder/Tut_Vorräte.png");
-        this.game.load.image("bgLebenserhaltung","Bilder/Tut_Lebenserhaltung.png");
+        this.game.load.image("bgLebenserhaltung","Bilder/Tut_Lebenserhaltung_neu.png");
 
         this.game.load.spritesheet("replay", "assets/background/button_replay.png",230,130);
         this.game.load.spritesheet("play", "assets/background/button_play.png",200,200);
@@ -67,8 +67,10 @@ preload.prototype = {
         //HUD
         this.game.load.image("lifebar", "assets/hud/lifebar.png");
         this.game.load.image("hungerbar", "assets/hud/hungerbar.png");
+        this.game.load.image("oxygenbar", "assets/hud/oxygenbar.png");
         this.game.load.image("heartImg", "assets/hud/heartImg.png");
         this.game.load.image("hungerImg", "assets/hud/hungerImg.png");
+        this.game.load.image("oxygenImg", "assets/hud/oxygenImg.png");
 
         //Audio
         //GameTitle / GameOver Background Sound
