@@ -6,11 +6,7 @@ var thegame = function(game){
     isShielded = false;
     isBoosted = false;
     var lifebar, hungerbar;
-    var life = 100;
-    var maxLife = 100;
-    var alive = true;
     var bounds;
-    var Hunger, Leben;
 };
 
 thegame.prototype = {
@@ -88,7 +84,7 @@ thegame.prototype = {
         {
             if(player.x>=(bounds.x+30))
               player.x=player.x-5;
-            this.damage(1);
+            this.game.Leben.damage(1);
         }
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.D))
         {
@@ -121,10 +117,9 @@ thegame.prototype = {
     hud: function() {
       //Lifebar Image
       lifebar = this.game.add.sprite(this.game.world.width-600,this.game.world.height-60,"lifebar",this);
-      Leben = new Leben();
 
       var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
-      var lebenText = this.game.add.text(this.world.width-500, this.game.world.height-30, this.getLife(),style);
+      var lebenText = this.game.add.text(this.world.width-500, this.game.world.height-30, this.game.Leben.getLeben(),style);
       lebenText.anchor.set(0.5);
       lebenText.alpha = 0.1;
 
@@ -132,67 +127,13 @@ thegame.prototype = {
       this.game.add.tween(lebenText).to( { alpha: 1 }, 1000, "Linear", true);
 
       hungerbar = this.game.add.sprite(this.game.world.width-300,this.game.world.height-60,"hungerbar",this);
-      Hunger = new Hunger();
     },
 
-    damage: function (amount) {
 
-        if (this.alive)
-        {
-            this.life -= amount;
-
-            if (this.life <= 0)
-            {
-                this.kill();
-            }
-        }
-
-        lifebar.width = this.life;
-        console.log(this.life);
-        return this;
-
-    },
-
-    setLife: function (amount) {
-
-        this.life = amount;
-
-        if (this.life > this.maxLife)
-        {
-            this.life = this.maxLife;
-        }
-
-        lifebar.width = life;
-        return this;
-
-    },
 
     updateHud: function () {
-      lifebar.width=Leben.getLeben()*2;
-      hungerbar.width=Hunger.getHunger()*2;
-    },
-
-    getLife: function () {
-
-        return this.life;
-
-    },
-
-    heal: function (amount) {
-
-        if (this.alive)
-        {
-            this.life += amount;
-
-            if (this.life > this.maxLife)
-            {
-                this.life = this.maxLife;
-            }
-        }
-
-        lifebar.width = life;
-        return this;
-
+      lifebar.width=this.game.Leben.getLeben()*2;
+      hungerbar.width=this.game.Hunger.getHunger()*2;
     },
 
     //Player-Rotation
