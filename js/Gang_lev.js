@@ -59,9 +59,12 @@ Gang_lev.prototype = {
 
         //Worldbounds
         player.body.collideWorldBounds = true;
-        this.eventList =  this.cache.getJSON('Gang_lev');
+        //this.eventList =  this.cache.getJSON('Gang_lev');
         this.registerevent(changeRoomBackDoor,400,400,100,200,"back");
-        this.debugEvents();
+        this.registerevent(changeRaumVorrat,600,400,200,100,"vorrat");
+        this.registerevent(changeRaumLebenserhaltung,1100,400,200,100,"Lebenserhaltung");
+
+        //this.debugEvents();
 
         //hud
         this.hud();
@@ -233,4 +236,10 @@ Gang_lev.prototype = {
 function changeRoomBackDoor(self,sender)
 {
   self.game.state.start("TheGame");
+}
+function changeRaumVorrat(self,sender)
+{
+}
+function changeRaumLebenserhaltung(self,sender)
+{
 }
