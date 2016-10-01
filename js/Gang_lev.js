@@ -5,6 +5,8 @@ var Gang_lev = function(game){
     rotateDirection = 1;
     isShielded = false;
     isBoosted = false;
+    var lifebar, hungerbar;
+    var lebenText, hungerText;
 };
 
 Gang_lev.prototype = {
@@ -63,6 +65,7 @@ Gang_lev.prototype = {
 
         //hud
         this.hud();
+        this.updateHud();
     },
 
 
@@ -142,9 +145,23 @@ Gang_lev.prototype = {
 
     hud: function() {
       //Lifebar Image
-      var lifebar = this.game.add.sprite(10,10,"lifebar",this);
+      lifebar = this.game.add.sprite(this.game.world.width-600,this.game.world.height-60,"lifebar",this);
+      hungerbar = this.game.add.sprite(this.game.world.width-300,this.game.world.height-60,"hungerbar",this);
+
+
+      lebenText = this.game.add.text(this.world.width-510, this.game.world.height-47, this.game.Leben.getLeben(),style);
+      hungerText = this.game.add.text(this.world.width-210, this.game.world.height-47, this.game.Hunger.getHunger(),style);
     },
 
+    updateHud: function () {
+      lifebar.width=this.game.Leben.getLeben()*2;
+      hungerbar.width=this.game.Hunger.getHunger()*2;
+
+      lebenText.destroy();
+      lebenText = this.game.add.text(this.world.width-510, this.game.world.height-47, this.game.Leben.getLeben(),style);
+      hungerText.destroy();
+      hungerText = this.game.add.text(this.world.width-210, this.game.world.height-47, this.game.Hunger.getHunger(),style);
+    },
 
     //Player-Rotation
     rotatePlayer : function()

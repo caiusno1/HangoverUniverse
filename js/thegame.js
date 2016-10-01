@@ -8,7 +8,9 @@ var thegame = function(game){
     eventList=[];
     var lifebar, hungerbar;
     var bounds;
+    var lebenText, hungerText;
 };
+var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
 
 thegame.prototype = {
 
@@ -145,23 +147,21 @@ thegame.prototype = {
     hud: function() {
       //Lifebar Image
       lifebar = this.game.add.sprite(this.game.world.width-600,this.game.world.height-60,"lifebar",this);
-
-      var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
-      var lebenText = this.game.add.text(this.world.width-500, this.game.world.height-30, this.game.Leben.getLeben(),style);
-      lebenText.anchor.set(0.5);
-      lebenText.alpha = 0.1;
-
-      //Alpha Wert verändern
-      this.game.add.tween(lebenText).to( { alpha: 1 }, 1000, "Linear", true);
-
       hungerbar = this.game.add.sprite(this.game.world.width-300,this.game.world.height-60,"hungerbar",this);
+
+
+      lebenText = this.game.add.text(this.world.width-510, this.game.world.height-47, this.game.Leben.getLeben(),style);
+      hungerText = this.game.add.text(this.world.width-210, this.game.world.height-47, this.game.Hunger.getHunger(),style);
     },
-
-
 
     updateHud: function () {
       lifebar.width=this.game.Leben.getLeben()*2;
       hungerbar.width=this.game.Hunger.getHunger()*2;
+
+      lebenText.destroy();
+      lebenText = this.game.add.text(this.world.width-510, this.game.world.height-47, this.game.Leben.getLeben(),style);
+      hungerText.destroy();
+      hungerText = this.game.add.text(this.world.width-210, this.game.world.height-47, this.game.Hunger.getHunger(),style);
     },
 
     //Player-Rotation
