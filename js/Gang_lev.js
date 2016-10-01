@@ -1,28 +1,25 @@
 /**
  * Created by Schlag on 01.07.2016
  */
-var thegame = function(game){
+var Gang_lev = function(game){
     rotateDirection = 1;
     isShielded = false;
     isBoosted = false;
-    eventList=[];
 };
 
-thegame.prototype = {
+Gang_lev.prototype = {
 
 
     create : function(){
-
         this.eventList=[];
         //Steuerung und Physik reinladen
         cursors = this.game.input.keyboard.createCursorKeys();
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         //BackgroundTile hinzufuegen
-        bgTileSprite = this.game.add.tileSprite(0, 0, 1920, 1080, 'bgStage');
-
+        bgTileSprite = this.game.add.tileSprite(0, 0, 1920, 1080, 'bgTutGang');
         //Sprite hinzufuegen und auf Spieler setzen
-        player = this.game.add.sprite(this.game.world.centerX,this.game.world.height-200,'playerRocket');
+        player = this.game.add.sprite(this.game.world.centerX-500,this.game.world.height-600,'playerRocket');
 
         //Auto Animation hinzufuegen
         player.animations.add('default', [0, 1, 2, 3], 10, true);
@@ -45,8 +42,8 @@ thegame.prototype = {
 
         //Worldbounds
         player.body.collideWorldBounds = true;
-        this.eventList =  this.cache.getJSON('spawn_lev');
-        //this.registerevent(this.changeRoom,1600,200,200,200,"test");
+        this.eventList =  this.cache.getJSON('Gang_lev');
+        this.registerevent(changeRoomBackDoor,400,400,100,200,"back");
         this.debugEvents();
 
         //hud
@@ -166,7 +163,7 @@ thegame.prototype = {
 
 
 };
-function changeRoom(self,sender)
+function changeRoomBackDoor(self,sender)
 {
-  self.game.state.start("Gang_lev");
+  self.game.state.start("TheGame");
 }

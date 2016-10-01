@@ -14,6 +14,7 @@ var playerParticleAmount = 1;
 //"Dash" Speed
 var playerDashSpeed = -300;
 
-var eventList=[];
+var eventList_Spawn=[];
+var eventList_Gang=[];
 
 var debugcounter=0;

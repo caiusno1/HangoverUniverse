@@ -10,7 +10,8 @@ preload.prototype = {
 
         //Loadingbar
         var loadingBar = this.add.sprite(this.world.centerX,this.world.centerY,"loading");
-        this.load.json("eventls","js/events.json");
+        this.load.json("spawn_lev","js/spawn_lev.json");
+        this.load.json("Gang_lev","js/Gang_lev.json");
         loadingBar.anchor.setTo(0.5,0.5);
         this.load.setPreloadSprite(loadingBar);
 
@@ -18,6 +19,7 @@ preload.prototype = {
         this.game.load.image("bgTitleScreen","assets/background/background_titlescreen.png");
 
         this.game.load.image("bgStage", "Bilder/Spawn_test.png");
+        this.game.load.image("bgTutGang","Bilder/Tut_Gang.png");
 
         this.game.load.spritesheet("replay", "assets/background/button_replay.png",230,130);
         this.game.load.spritesheet("play", "assets/background/button_play.png",200,200);
