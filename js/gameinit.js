@@ -11,6 +11,7 @@ gameinit.prototype = {
       this.game.Oxygen = new Oxygen(this.game);
       this.game.Oxygen.setOxygen(100);
       this.game.Hunger.start();
+      this.game.Hud = new Hud(this.game);
       this.game.state.start("TheGame");
 
 
