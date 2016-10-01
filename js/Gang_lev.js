@@ -76,6 +76,7 @@ Gang_lev.prototype = {
         //ComHUD
         this.game.Hud.start();
         this.game.Hunger.start();
+        this.game.Oxygen.usk(this.cache.getJSON('Gang_lev').sauerstoff);
     },
 
 
