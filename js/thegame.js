@@ -73,6 +73,11 @@ thegame.prototype = {
         {
           if(player.y>=(bounds.y+30))
             player.y = player.y-5;
+          if(this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
+            
+          } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
+
+          }
         }
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.S))
         {
