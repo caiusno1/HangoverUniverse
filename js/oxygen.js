@@ -102,7 +102,10 @@ Oxygen.prototype = {
       this.damage(1);
     },
     start: function(){
-      this.game.time.events.loop(Phaser.Timer.SECOND,  this.updateCounter, this);
+      timerEvents=this.game.time.events.loop(Phaser.Timer.SECOND,  this.updateCounter, this);
+    },
+    stop:function(){
+      this.game.time.events.remove(timerEvents);
     }
 
 };
