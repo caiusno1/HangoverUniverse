@@ -98,6 +98,15 @@ Oxygen.prototype = {
         return this;
 
     },
+    usk: function(bool){
+      if(bool){
+
+      }
+      else {
+        this.start();
+      }
+    },
+
     updateCounter: function(){
       this.damage(1);
     },
