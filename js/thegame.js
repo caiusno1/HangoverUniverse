@@ -28,10 +28,17 @@ thegame.prototype = {
         player = this.game.add.sprite(this.game.world.centerX,this.game.world.height-200,'playerRocket');
 
         //Auto Animation hinzufuegen
-        player.animations.add('default', [0, 1, 2, 3], 10, true);
+        player.animations.add('down', [0], 10);
+        player.animations.add('bottomRight', [1], 10);
+        player.animations.add('topRight', [2], 10);
+        player.animations.add('right', [3], 10);
+        player.animations.add('up', [4], 10);
+        player.animations.add('bottomLeft', [5], 10);
+        player.animations.add('left', [6], 10);
+        player.animations.add('topLeft', [7], 10);
 
         //Auto Animation hinzufuegen
-        player.animations.play('default');
+        player.animations.play('up');
 
         //Player mit Physics
         this.game.physics.arcade.enable(player, Phaser.Physics.ARCADE);
@@ -69,25 +76,48 @@ thegame.prototype = {
           if(player.y>=(bounds.y+30))
             player.y = player.y-5;
           if(this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
-
+            player.animations.play('topLeft');
           } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
-
+            player.animations.play('topRight');
+          } else {
+            player.animations.play('up');
           }
         }
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.S))
         {
             if(player.y<=(bounds.y+bounds.height-30))
               player.y=player.y+5;
+            if(this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
+              player.animations.play('bottomLeft');
+            } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
+              player.animations.play('bottomRight');
+            } else {
+              player.animations.play('down');
+            }
         }
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.A))
         {
             if(player.x>=(bounds.x+30))
               player.x=player.x-5;
+            if(this.game.input.keyboard.isDown(Phaser.KeyCode.W)) {
+              player.animations.play('topLeft');
+            } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.S)) {
+              player.animations.play('bottomLEft');
+            } else {
+              player.animations.play('left');
+            }
         }
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.D))
         {
             if(player.x<=(bounds.x+bounds.width-30))
               player.x=player.x+5;
+            if(this.game.input.keyboard.isDown(Phaser.KeyCode.W)) {
+              player.animations.play('topRight');
+            } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.S)) {
+              player.animations.play('bottomRight');
+            } else {
+              player.animations.play('right');
+            }
         }
         debugcounter=debugcounter+1;
         if(debugcounter==100)
