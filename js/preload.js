@@ -12,14 +12,17 @@ preload.prototype = {
         var loadingBar = this.add.sprite(this.world.centerX,this.world.centerY,"loading");
         this.load.json("spawn_lev","js/spawn_lev.json");
         this.load.json("Gang_lev","js/Gang_lev.json");
+        this.load.json("Vorrat_lev","js/Vorrat_lev.json");
+        this.load.json("Lebenserhaltung_lev","js/Lebenserhaltung_lev.json");
         loadingBar.anchor.setTo(0.5,0.5);
         this.load.setPreloadSprite(loadingBar);
 
         //backgrounds tiles etc vorladen
         this.game.load.image("bgTitleScreen","assets/background/background_titlescreen.png");
-        this.game.load.image("unknownTile", "Bilder/Unknown_Tile.png");
         this.game.load.image("bgStage", "Bilder/Spawn_test_neu.png");
         this.game.load.image("bgTutGang","Bilder/Tut_Gang.png");
+        this.game.load.image("bgVorrat","Bilder/Tut_Lebenserhaltung.png");
+        this.game.load.image("bgLebenerhaltung","Bilder/Tut_Vorräte.png");
 
         this.game.load.spritesheet("replay", "assets/background/button_replay.png",230,130);
         this.game.load.spritesheet("play", "assets/background/button_play.png",200,200);
