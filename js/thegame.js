@@ -14,7 +14,7 @@ thegame.prototype = {
 
     create : function(){
         //Bounds-Rechteck
-        bounds = new Phaser.Rectangle(350, 100, 1400, 900);
+        bounds = new Phaser.Rectangle(350, 250, 1300, 650);
 
         this.eventList=[];
         //Steuerung und Physik reinladen
@@ -102,7 +102,7 @@ thegame.prototype = {
             if(this.game.input.keyboard.isDown(Phaser.KeyCode.W)) {
               player.animations.play('topLeft');
             } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.S)) {
-              player.animations.play('bottomLEft');
+              player.animations.play('bottomLeft');
             } else {
               player.animations.play('left');
             }

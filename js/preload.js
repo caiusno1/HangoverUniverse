@@ -18,7 +18,7 @@ preload.prototype = {
         //backgrounds tiles etc vorladen
         this.game.load.image("bgTitleScreen","assets/background/background_titlescreen.png");
         this.game.load.image("unknownTile", "Bilder/Unknown_Tile.png");
-        this.game.load.image("bgStage", "Bilder/Spawn_test.png");
+        this.game.load.image("bgStage", "Bilder/Spawn_test_neu.png");
         this.game.load.image("bgTutGang","Bilder/Tut_Gang.png");
 
         this.game.load.spritesheet("replay", "assets/background/button_replay.png",230,130);
