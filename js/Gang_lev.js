@@ -13,6 +13,8 @@ Gang_lev.prototype = {
 
 
     create : function(){
+        bounds = new Phaser.Rectangle(400, 400, 1150, 300);
+
         this.eventList=[];
         //Steuerung und Physik reinladen
         cursors = this.game.input.keyboard.createCursorKeys();
@@ -24,10 +26,17 @@ Gang_lev.prototype = {
         player = this.game.add.sprite(this.game.world.centerX-500,this.game.world.height-600,'playerRocket');
 
         //Auto Animation hinzufuegen
-        player.animations.add('default', [0, 1, 2, 3], 10, true);
+        player.animations.add('down', [0], 10);
+        player.animations.add('bottomRight', [1], 10);
+        player.animations.add('topRight', [2], 10);
+        player.animations.add('right', [3], 10);
+        player.animations.add('up', [4], 10);
+        player.animations.add('bottomLeft', [5], 10);
+        player.animations.add('left', [6], 10);
+        player.animations.add('topLeft', [7], 10);
 
         //Auto Animation hinzufuegen
-        player.animations.play('default');
+        player.animations.play('up');
 
         //Player mit Physics
         this.game.physics.arcade.enable(player);
@@ -42,11 +51,20 @@ Gang_lev.prototype = {
         emitter1 = this.game.add.emitter(this.game.world.centerX, this.game.world.centerY, 400);
         emitter1.makeParticles( [ 'turbine1', 'turbine2'] );
 
+        //Bounds-Rechteck
+        var graphics = this.game.add.graphics(bounds.x, bounds.y);
+        graphics.lineStyle(4, 0xffd900, 1);
+        graphics.drawRect(0, 0, bounds.width, bounds.height);
+
+
         //Worldbounds
         player.body.collideWorldBounds = true;
-        this.eventList =  this.cache.getJSON('Gang_lev');
+        //this.eventList =  this.cache.getJSON('Gang_lev');
         this.registerevent(changeRoomBackDoor,400,400,100,200,"back");
-        this.debugEvents();
+        this.registerevent(changeRaumVorrat,600,400,200,100,"vorrat");
+        this.registerevent(changeRaumLebenserhaltung,1100,400,200,100,"Lebenserhaltung");
+
+        //this.debugEvents();
 
         //hud
         this.hud();
@@ -57,19 +75,54 @@ Gang_lev.prototype = {
     //Update Function - durchgehend kontinuierlich aufgerufen vom Spiel
     update: function () {
 
-        if(this.game.input.keyboard.isDown(Phaser.KeyCode.W))
-        {
-            player.y=player.y-5;
+      if(this.game.input.keyboard.isDown(Phaser.KeyCode.W))
+      {
+        if(player.y>=(bounds.y+30))
+          player.y = player.y-5;
+        if(this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
+          player.animations.play('topLeft');
+        } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
+          player.animations.play('topRight');
+        } else {
+          player.animations.play('up');
         }
-        if (this.game.input.keyboard.isDown(Phaser.KeyCode.S)) {
+      }
+      if (this.game.input.keyboard.isDown(Phaser.KeyCode.S))
+      {
+          if(player.y<=(bounds.y+bounds.height-30))
             player.y=player.y+5;
-        }
-        if (this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
+          if(this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
+            player.animations.play('bottomLeft');
+          } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
+            player.animations.play('bottomRight');
+          } else {
+            player.animations.play('down');
+          }
+      }
+      if (this.game.input.keyboard.isDown(Phaser.KeyCode.A))
+      {
+          if(player.x>=(bounds.x+30))
             player.x=player.x-5;
-        }
-        if (this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
+          if(this.game.input.keyboard.isDown(Phaser.KeyCode.W)) {
+            player.animations.play('topLeft');
+          } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.S)) {
+            player.animations.play('bottomLEft');
+          } else {
+            player.animations.play('left');
+          }
+      }
+      if (this.game.input.keyboard.isDown(Phaser.KeyCode.D))
+      {
+          if(player.x<=(bounds.x+bounds.width-30))
             player.x=player.x+5;
-        }
+          if(this.game.input.keyboard.isDown(Phaser.KeyCode.W)) {
+            player.animations.play('topRight');
+          } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.S)) {
+            player.animations.play('bottomRight');
+          } else {
+            player.animations.play('right');
+          }
+      }
         debugcounter=debugcounter+1;
         if(debugcounter==100)
         {
@@ -183,4 +236,10 @@ Gang_lev.prototype = {
 function changeRoomBackDoor(self,sender)
 {
   self.game.state.start("TheGame");
+}
+function changeRaumVorrat(self,sender)
+{
+}
+function changeRaumLebenserhaltung(self,sender)
+{
 }
