@@ -72,6 +72,9 @@ preload.prototype = {
         this.game.load.image("hungerImg", "assets/hud/hungerImg.png");
         this.game.load.image("oxygenImg", "assets/hud/oxygenImg.png");
 
+        //Book Lebenserhaltung
+        this.game.load.image("bookImg", "assets/background/bookImg.png");
+
         //Audio
         //GameTitle / GameOver Background Sound
         this.game.load.audio('sound_bgloop', ['assets/sounds/loop_menu.mp3','assets/sounds/loop_menu.ogg']);
