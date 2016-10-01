@@ -71,27 +71,22 @@ thegame.prototype = {
 
         if(this.game.input.keyboard.isDown(Phaser.KeyCode.W))
         {
-          if(player.angle != 0)
-            player.angle = 0;
           if(player.y>=(bounds.y+30))
             player.y = player.y-5;
         }
-        if (this.game.input.keyboard.isDown(Phaser.KeyCode.S)) {
-            if(player.angle != 180)
-              player.angle = 180;
+        if (this.game.input.keyboard.isDown(Phaser.KeyCode.S))
+        {
             if(player.y<=(bounds.y+bounds.height-30))
               player.y=player.y+5;
         }
-        if (this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
-            if(player.angle != 270)
-              player.angle = 270;
+        if (this.game.input.keyboard.isDown(Phaser.KeyCode.A))
+        {
             if(player.x>=(bounds.x+30))
               player.x=player.x-5;
             this.damage(1);
         }
-        if (this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
-            if(player.angle != 90)
-              player.angle = 90;
+        if (this.game.input.keyboard.isDown(Phaser.KeyCode.D))
+        {
             if(player.x<=(bounds.x+bounds.width-30))
               player.x=player.x+5;
         }
