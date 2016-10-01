@@ -9,7 +9,7 @@ var Lebenserhaltung_lev = function(game){
     var bounds;
     flag_alreadydown=false;
 };
-var bookIsFront = false;
+var bookIsFrontLebenserhaltungsraum = false;
 var bookImgLebenserhaltungsraum = undefined;
 var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
 
@@ -77,16 +77,17 @@ Lebenserhaltung_lev.prototype = {
         this.registerevent(changeRoomToGang3,1720,1460,1820-1720,1570-1460,"test");
         //this.debugEvents();
 
-        this.game.Hud.start();
         //this.registerevent(showBook,800,750,200,200,"test");
 
         //Book Lebenserhaltungsraum
-        this.registerevent(showBook,1750,500,100,130,"test");
+        this.registerevent(showBookLebenserhaltungsraum,1750,500,100,130,"test");
 
         //Nur ein Key (TEST 1/2)
         //var key = this.game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
         //key.onDown = this.onSpacePress;
 
+        //ComHUD
+        this.game.Hud.start();
         this.game.Hunger.start();
     },
 
@@ -226,7 +227,6 @@ Lebenserhaltung_lev.prototype = {
               if (this.flag_alreadydown == true) {
                 this.flag_alreadydown = false;
               }
-
             }
         }
       })
@@ -248,16 +248,16 @@ function changeRoomToGang3(self,sender)
   self.game.spawnposition={x:1100,y:400};
   self.game.state.start("Gang_lev");
 }
-function showBook(self,sender)
+function showBookLebenserhaltungsraum(self,sender)
 {
   if (!bookImgLebenserhaltungsraum) {
     //book Image
     bookImgLebenserhaltungsraum = self.game.add.sprite(self.game.world.centerX,0,"bookImgLebenserhaltungsraum",this);
-    bookIsFront = true;
+    bookIsFrontLebenserhaltungsraum = true;
   }
   else {
     bookImgLebenserhaltungsraum.destroy();
-    bookIsFront = false;
+    bookIsFrontLebenserhaltungsraum = false;
     bookImgLebenserhaltungsraum = undefined;
   }
 }
