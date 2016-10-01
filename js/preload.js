@@ -66,6 +66,7 @@ preload.prototype = {
         this.game.load.image("oxygenbar", "assets/hud/oxygenbar.png");
         this.game.load.image("heartImg", "assets/hud/heartImg.png");
         this.game.load.image("hungerImg", "assets/hud/hungerImg.png");
+        this.game.load.image("oxygenImg", "assets/hud/oxygenImg.png");
 
         //Audio
         //GameTitle / GameOver Background Sound
