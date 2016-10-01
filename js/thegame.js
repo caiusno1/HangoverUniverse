@@ -181,7 +181,7 @@ thegame.prototype = {
       hungerText.destroy();
       hungerText = this.game.add.text(this.world.width-510, this.game.world.height-47, this.game.Hunger.getHunger(),style);
       oxygenText.destroy();
-      oxygenText = this.game.add.text(this.world.width-510, this.game.world.height-47, this.game.Oxygen.getOxygen(),style);
+      oxygenText = this.game.add.text(this.world.width-210, this.game.world.height-47, this.game.Oxygen.getOxygen(),style);
     },
 
     registerevent: function(callbackfn,x,y,width,height,sender){
