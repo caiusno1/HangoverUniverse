@@ -5,12 +5,15 @@ var thegame = function(game){
     rotateDirection = 1;
     isShielded = false;
     isBoosted = false;
+    var invisWall;
+    var player;
 };
 
 thegame.prototype = {
 
-
     create : function(){
+        //Bounds-Rechteck
+        var bounds = new Phaser.Rectangle(350, 100, 1400, 900);
 
         //Steuerung und Physik reinladen
         cursors = this.game.input.keyboard.createCursorKeys();
@@ -29,7 +32,7 @@ thegame.prototype = {
         player.animations.play('default');
 
         //Player mit Physics
-        this.game.physics.arcade.enable(player);
+        this.game.physics.arcade.enable(player, Phaser.Physics.ARCADE);
 
         //Player Initialwerte
         player.anchor.x = 0.5;
@@ -41,14 +44,28 @@ thegame.prototype = {
         emitter1 = this.game.add.emitter(this.game.world.centerX, this.game.world.centerY, 400);
         emitter1.makeParticles( [ 'turbine1', 'turbine2'] );
 
-        //Worldbounds
-        player.body.collideWorldBounds = true;
+        //Bounds-Rechteck(test)
+        var graphics = this.game.add.graphics(bounds.x, bounds.y);
+        graphics.lineStyle(4, 0xffd900, 1);
+        graphics.drawRect(0, 0, bounds.width, bounds.height);
 
+        //Worldbounds
+          walls = this.game.add.group();
+          walls.enableBody = true;
+
+          invisWall = walls.create(bounds.x, bounds.y, 'unknownTile');
+          invisWall.scale.setTo(100, 5);
+          invisWall.body.width = 200;
+          invisWall.body.height = 10;
+          invisWall.body.immovable = true;
+        //this.createCustomBounds(bounds.x, bounds.y, bounds.width, bounds.height);
+        player.body.collideWorldBounds = true;
     },
 
 
     //Update Function - durchgehend kontinuierlich aufgerufen vom Spiel
     update: function () {
+        this.game.physics.arcade.collide(player, walls);
 
         if(this.game.input.keyboard.isDown(Phaser.KeyCode.W))
         {
@@ -106,7 +123,16 @@ thegame.prototype = {
 
         emitter1.start(true, playerParticleLifetime,null,playerParticleAmount);
 
-},
+      },
 
+      createCustomBounds : function(x, y, width, height)
+      {
+      },
+
+      render : function()
+      {
+        this.game.debug.body(invisWall);
+        this.game.debug.body(player);
+      }
 
 };
