@@ -98,14 +98,13 @@ Hunger.prototype = {
 
         return this;
 
-    }/*,
+    },
 
     updateCounter: function(){
       this.damage(1);
     },
     start: function(){
-      var self = this;
-      this.TimeEvent =this.game.time.events.loop(Phaser.Timer.SECOND,  this.updateCounter, this);
-    }*/
+      this.game.time.events.loop(Phaser.Timer.SECOND*5,  this.updateCounter, this);
+    }
 
 };

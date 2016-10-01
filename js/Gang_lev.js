@@ -75,6 +75,7 @@ Gang_lev.prototype = {
         //hud
         this.hud();
         this.updateHud();
+        this.game.Hunger.start();
     },
 
 
@@ -137,7 +138,7 @@ Gang_lev.prototype = {
         }
 
         this.askevent();
-
+        this.updateHud();
 
         //Bei Mouseclick/Touchklick das Player-Movement Dash mit Partikel Effekt
         /*if (this.game.input.activePointer.leftButton.isDown)

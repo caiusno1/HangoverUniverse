@@ -78,7 +78,7 @@ thegame.prototype = {
         //this.debugEvents();
         //hud
         this.hud();
-        this.start();
+        this.game.Hunger.start();
     },
 
 
@@ -153,13 +153,6 @@ thegame.prototype = {
         else
             this.rotatePlayer();
       */
-    },
-
-    updateCounter: function(){
-      this.game.Hunger.damage(1);
-    },
-    start: function(){
-      this.TimeEvent =this.game.time.events.loop(Phaser.Timer.SECOND*5,  this.updateCounter, this);
     },
 
 

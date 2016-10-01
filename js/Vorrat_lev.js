@@ -74,6 +74,7 @@ Vorrat_lev.prototype = {
         //this.debugEvents();
         //hud
         this.hud();
+        this.game.Hunger.start();
     },
 
 
