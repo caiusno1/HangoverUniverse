@@ -43,6 +43,10 @@ thegame.prototype = {
 
         //Worldbounds
         player.body.collideWorldBounds = true;
+        this.registerevent(this.testEventHandler,500,500,500,500,"test");
+
+
+
 
     },
 
@@ -63,6 +67,15 @@ thegame.prototype = {
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
             player.x=player.x+5;
         }
+        debugcounter=debugcounter+1;
+        if(debugcounter==100)
+        {
+            console.log(player.x+"/"+player.y);
+            debugcounter=0;
+        }
+
+        this.askevent();
+
 
         //Bei Mouseclick/Touchklick das Player-Movement Dash mit Partikel Effekt
         /*if (this.game.input.activePointer.leftButton.isDown)
@@ -106,7 +119,35 @@ thegame.prototype = {
 
         emitter1.start(true, playerParticleLifetime,null,playerParticleAmount);
 
-},
+    },
+    registerevent: function(callbackfn,x,y,width,height,sender){
+      newevent={"x":x,"y":y,"width":width,"height":height,"sender":sender,"callbackfn":callbackfn};
+      var graphics=this.game.add.graphics(500,500);
+      graphics.lineStyle(4,0xffd900,1);
+      graphics.drawRect(0,0,width,height);
+      eventList.push(newevent);
+
+    },
+    askevent: function()
+    {
+      var self=this;
+      eventList.forEach(function(element){
+        if(player.x>=element.x &&
+           player.x<=element.x+element.width &&
+           player.y>=element.y &&
+           player.y<=element.y+element.height)
+        {
+            if(self.game.input.keyboard.isDown(Phaser.KeyCode.SPACEBAR))
+            {
+                element.callbackfn(element.sender);
+            }
+        }
+      })
+    },
+    testEventHandler()
+    {
+      alert("Hallo");
+    }
 
 
 };
