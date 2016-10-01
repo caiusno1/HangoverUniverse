@@ -6,9 +6,7 @@ var Vorrat_lev = function(game){
     isShielded = false;
     isBoosted = false;
     eventList=[];
-    var lifebar, hungerbar;
     var bounds;
-    var lebenText, hungerText;
 };
 var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
 
@@ -72,8 +70,8 @@ Vorrat_lev.prototype = {
         //this.eventList =  this.cache.getJSON('Vorrat_lev');
         this.registerevent(changeRoomToGang2,600,700,200,200,"test");
         //this.debugEvents();
-        //hud
-        this.hud();
+
+        this.game.Hud.start();
         this.game.Hunger.start();
     },
 
@@ -136,7 +134,7 @@ Vorrat_lev.prototype = {
         }
 
         this.askevent();
-        this.updateHud();
+        this.game.Hud.updateHud();
 
         //Bei Mouseclick/Touchklick das Player-Movement Dash mit Partikel Effekt
         /*if (this.game.input.activePointer.leftButton.isDown)
@@ -149,26 +147,6 @@ Vorrat_lev.prototype = {
         else
             this.rotatePlayer();
       */
-    },
-
-    hud: function() {
-      //Lifebar Image
-      lifebar = this.game.add.sprite(this.game.world.width-600,this.game.world.height-60,"lifebar",this);
-      hungerbar = this.game.add.sprite(this.game.world.width-300,this.game.world.height-60,"hungerbar",this);
-
-
-      lebenText = this.game.add.text(this.world.width-510, this.game.world.height-47, this.game.Leben.getLeben(),style);
-      hungerText = this.game.add.text(this.world.width-210, this.game.world.height-47, this.game.Hunger.getHunger(),style);
-    },
-
-    updateHud: function () {
-      lifebar.width=this.game.Leben.getLeben()*2;
-      hungerbar.width=this.game.Hunger.getHunger()*2;
-
-      lebenText.destroy();
-      lebenText = this.game.add.text(this.world.width-510, this.game.world.height-47, this.game.Leben.getLeben(),style);
-      hungerText.destroy();
-      hungerText = this.game.add.text(this.world.width-210, this.game.world.height-47, this.game.Hunger.getHunger(),style);
     },
 
     //Player-Rotation

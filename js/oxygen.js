@@ -97,6 +97,12 @@ Oxygen.prototype = {
 
         return this;
 
+    },
+    updateCounter: function(){
+      this.damage(1);
+    },
+    start: function(){
+      this.game.time.events.loop(Phaser.Timer.SECOND,  this.updateCounter, this);
     }
 
 };
