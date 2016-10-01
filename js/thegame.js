@@ -62,9 +62,9 @@ thegame.prototype = {
 
         //Worldbounds
         player.body.collideWorldBounds = true;
-        this.eventList =  this.cache.getJSON('spawn_lev');
-        this.debugEvents();
-
+        //this.eventList =  this.cache.getJSON('spawn_lev');
+        this.registerevent(changeRoom,1600,200,200,200,"test");
+        //this.debugEvents();
         //hud
         this.hud();
     },
@@ -72,7 +72,6 @@ thegame.prototype = {
 
     //Update Function - durchgehend kontinuierlich aufgerufen vom Spiel
     update: function () {
-
         if(this.game.input.keyboard.isDown(Phaser.KeyCode.W))
         {
           if(player.y>=(bounds.y+30))
@@ -194,9 +193,9 @@ thegame.prototype = {
     },
     registerevent: function(callbackfn,x,y,width,height,sender){
       newevent={"x":x,"y":y,"width":width,"height":height,"sender":sender,"callbackfn":callbackfn};
-      var graphics=this.game.add.graphics(x,y);
+      var graphics=this.game.add.graphics(0,0);
       graphics.lineStyle(4,0xffd900,1);
-      graphics.drawRect(0,0,width,height);
+      graphics.drawRect(x,y,width,height);
       this.eventList.push(newevent);
 
     },
@@ -219,10 +218,10 @@ thegame.prototype = {
     debugEvents: function()
     {
       var self=this;
+      var graphics=self.game.add.graphics(0,0);
+      graphics.lineStyle(4,0xffd900,1);
       this.eventList.forEach(function(element){
-        var graphics=self.game.add.graphics(element.x,element.y);
-        graphics.lineStyle(4,0xffd900,1);
-        graphics.drawRect(0,0,element.width,element.height);
+        graphics.drawRect(element.x,element.y,element.width,element.height);
       });
 
     },
