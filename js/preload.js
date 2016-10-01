@@ -38,7 +38,7 @@ preload.prototype = {
 
 
         //Player-Enemy-Powerups
-        this.game.load.spritesheet("playerRocket","assets/player/speedship.png",64,64);
+        this.game.load.spritesheet("playerRocket","Bilder/char_8in1_kopfsync.png",100,100,8);
 
         this.game.load.spritesheet("enemyMine", "assets/enemies/mine.png",48,48);
         this.game.load.spritesheet("enemyBomb", "assets/enemies/alienbomb.png",48,48);
