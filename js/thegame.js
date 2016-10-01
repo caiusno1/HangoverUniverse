@@ -60,6 +60,14 @@ thegame.prototype = {
           invisWall.body.immovable = true;
         //this.createCustomBounds(bounds.x, bounds.y, bounds.width, bounds.height);
         player.body.collideWorldBounds = true;
+
+        eventList =  this.cache.getJSON('eventls');
+        this.registerevent(this.testEventHandler,1600,200,200,200,"test");
+        alert(eventList);
+        this.debugEvents();
+
+        //hud
+        this.hud();
     },
 
 
@@ -80,6 +88,15 @@ thegame.prototype = {
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
             player.x=player.x+5;
         }
+        debugcounter=debugcounter+1;
+        if(debugcounter==100)
+        {
+            console.log(player.x+"/"+player.y);
+            debugcounter=0;
+        }
+
+        this.askevent();
+
 
         //Bei Mouseclick/Touchklick das Player-Movement Dash mit Partikel Effekt
         /*if (this.game.input.activePointer.leftButton.isDown)
@@ -92,6 +109,11 @@ thegame.prototype = {
         else
             this.rotatePlayer();
       */
+    },
+
+    hud: function() {
+      //Lifebar Image
+      var lifebar = this.game.add.sprite(10,10,"lifebar",this);
     },
 
 
@@ -122,12 +144,44 @@ thegame.prototype = {
         emitter1.y = player.y;
 
         emitter1.start(true, playerParticleLifetime,null,playerParticleAmount);
+    },
+    registerevent: function(callbackfn,x,y,width,height,sender){
+      newevent={"x":x,"y":y,"width":width,"height":height,"sender":sender,"callbackfn":callbackfn};
+      var graphics=this.game.add.graphics(x,y);
+      graphics.lineStyle(4,0xffd900,1);
+      graphics.drawRect(0,0,width,height);
+      eventList.push(newevent);
 
-      },
+    },
+    askevent: function()
+    {
+      var self=this;
+      eventList.forEach(function(element){
+        if(player.x>=element.x &&
+           player.x<=element.x+element.width &&
+           player.y>=element.y &&
+           player.y<=element.y+element.height)
+        {
+            if(self.game.input.keyboard.isDown(Phaser.KeyCode.SPACEBAR))
+            {
+                eval(element.callbackfn)(element.sender);
+            }
+        }
+      })
+    },
+    changeRoom: function()
+    {
+    },
+    debugEvents: function()
+    {
+      var self=this;
+      eventList.forEach(function(element){
+        var graphics=self.game.add.graphics(element.x,element.y);
+        graphics.lineStyle(4,0xffd900,1);
+        graphics.drawRect(0,0,element.width,element.height);
+      });
 
-      createCustomBounds : function(x, y, width, height)
-      {
-      },
+    },
 
       render : function()
       {
@@ -136,3 +190,7 @@ thegame.prototype = {
       }
 
 };
+function testEventHandler()
+{
+  alert("Hallo");
+}
