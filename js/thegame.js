@@ -163,34 +163,6 @@ thegame.prototype = {
       hungerText = this.game.add.text(this.world.width-210, this.game.world.height-47, this.game.Hunger.getHunger(),style);
     },
 
-    //Player-Rotation
-    rotatePlayer : function()
-    {
-        player.angle +=rotationSpeed * rotateDirection;
-
-    },
-
-    //Player nach vorne Gas Geben 'DASH'
-    dash : function()
-    {
-        player.angle +=0 ;
-        this.game.physics.arcade.velocityFromAngle(player.angle + 90, playerDashSpeed, player.body.velocity);
-    },
-
-    //PartikelSystem für Player-Dirtlines hinter sich her ziehen
-    particleDirtLine : function()
-    {
-        var px = player.angle;
-        var py = player.angle;
-
-        emitter1.minParticleSpeed.set(px,py);
-        emitter1.maxParticleSpeed.set(px,py);
-
-        emitter1.x = player.x;
-        emitter1.y = player.y;
-
-        emitter1.start(true, playerParticleLifetime,null,playerParticleAmount);
-    },
     registerevent: function(callbackfn,x,y,width,height,sender){
       newevent={"x":x,"y":y,"width":width,"height":height,"sender":sender,"callbackfn":callbackfn};
       var graphics=this.game.add.graphics(0,0);
