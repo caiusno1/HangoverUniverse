@@ -100,9 +100,10 @@ Oxygen.prototype = {
     },
     usk: function(bool){
       if(bool=="1"){
-
+        console.log("Oxy");
       }
       else {
+        console.log("NoOxy");
         this.start();
       }
     },

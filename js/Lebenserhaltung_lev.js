@@ -86,7 +86,7 @@ Lebenserhaltung_lev.prototype = {
         //Nur ein Key (TEST 1/2)
         //var key = this.game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
         //key.onDown = this.onSpacePress;
-
+        this.game.Oxygen.usk(this.cache.getJSON('Lebenserhaltung_lev').sauerstoff);
         this.game.Hunger.start();
     },
 

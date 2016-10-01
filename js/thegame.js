@@ -67,6 +67,7 @@ thegame.prototype = {
         //this.debugEvents();
         this.game.Hud.start();
         this.game.Hunger.start();
+        this.game.Oxygen.usk(this.cache.getJSON('spawn_lev').sauerstoff);
     },
 
 
