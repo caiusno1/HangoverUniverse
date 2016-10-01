@@ -86,7 +86,7 @@ thegame.prototype = {
         }
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
             player.x=player.x-5;
-            Leben.damage(1);
+
         }
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
             player.x=player.x+5;
@@ -98,6 +98,8 @@ thegame.prototype = {
             debugcounter=0;
         }
 
+
+        
         //this.askevent();
         lifebar.width=Leben.getLeben()*2;
         hungerbar.width=Hunger.getHunger()*2;

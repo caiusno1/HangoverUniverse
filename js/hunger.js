@@ -1,4 +1,6 @@
-Hunger = function () {};
+Hunger = function () {
+  this.alive = true;
+};
 
 Hunger.prototype = {
 

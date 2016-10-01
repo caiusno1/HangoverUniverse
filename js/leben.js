@@ -1,4 +1,5 @@
 Leben = function () {
+  this.alive = true;
 };
 
 Leben.prototype = {
@@ -35,10 +36,7 @@ Leben.prototype = {
 
         if (this.alive)
         {
-          console.log(amount);
-          console.log(this.leben);
             this.leben -= amount;
-            console.log(this.leben);
             if (this.leben <= 0)
             {
                 this.kill();
