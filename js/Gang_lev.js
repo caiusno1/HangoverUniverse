@@ -26,14 +26,14 @@ Gang_lev.prototype = {
         player = this.game.add.sprite(200,500,'playerRocket');
 
         //Auto Animation hinzufuegen
-        player.animations.add('down', [0], 10);
-        player.animations.add('bottomRight', [1], 10);
-        player.animations.add('topRight', [2], 10);
-        player.animations.add('right', [3], 10);
-        player.animations.add('up', [4], 10);
-        player.animations.add('bottomLeft', [5], 10);
-        player.animations.add('left', [6], 10);
-        player.animations.add('topLeft', [7], 10);
+        player.animations.add('left', [0], 10);
+        player.animations.add('down', [1], 10);
+        player.animations.add('bottomRight', [2], 10);
+        player.animations.add('topRight', [3], 10);
+        player.animations.add('topLeft', [4], 10);
+        player.animations.add('up', [5], 10);
+        player.animations.add('bottomLeft', [6], 10);
+        player.animations.add('right', [7], 10);
 
         //Auto Animation hinzufuegen
         player.animations.play('up');
@@ -209,15 +209,17 @@ Gang_lev.prototype = {
 };
 function changeRoomBackDoor(self,sender)
 {
-  self.game.state.start("TheGame");
   self.game.spawnposition={x:1600,y:400};
+  self.game.state.start("TheGame");
 
 }
 function changeRaumVorrat(self,sender)
 {
+  self.game.spawnposition={x:1775,y:1650};
   self.game.state.start("Vorrat_lev");
 }
 function changeRaumLebenserhaltung(self,sender)
 {
+  self.game.spawnposition={x:1775,y:1650};
   self.game.state.start("Lebenserhaltung_lev");
 }

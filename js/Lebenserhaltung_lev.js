@@ -39,14 +39,14 @@ Lebenserhaltung_lev.prototype = {
         graphics.drawRect(0, 0, bounds.width, bounds.height);
 
         //Auto Animation hinzufuegen
-        player.animations.add('down', [0], 10);
-        player.animations.add('bottomRight', [1], 10);
-        player.animations.add('topRight', [2], 10);
-        player.animations.add('right', [3], 10);
-        player.animations.add('up', [4], 10);
-        player.animations.add('bottomLeft', [5], 10);
-        player.animations.add('left', [6], 10);
-        player.animations.add('topLeft', [7], 10);
+        player.animations.add('left', [0], 10);
+        player.animations.add('down', [1], 10);
+        player.animations.add('bottomRight', [2], 10);
+        player.animations.add('topRight', [3], 10);
+        player.animations.add('topLeft', [4], 10);
+        player.animations.add('up', [5], 10);
+        player.animations.add('bottomLeft', [6], 10);
+        player.animations.add('right', [7], 10);
 
         //Auto Animation hinzufuegen
         player.animations.play('up');
@@ -72,11 +72,14 @@ Lebenserhaltung_lev.prototype = {
         //Worldbounds
         player.body.collideWorldBounds = true;
         //this.eventList =  this.cache.getJSON('Lebenserhaltung_lev');
-        this.registerevent(changeRoomToGang3,800,750,200,200,"test");
+        this.registerevent(changeRoomToGang3,1720,1460,1820-1720,1570-1460,"test");
         //this.debugEvents();
 
         this.game.Hud.start();
         //this.registerevent(showBook,800,750,200,200,"test");
+
+        //Timo
+        this.registerevent(function(){ console.log("123"); },1750,500,100,130,"test");
 
 
         this.game.Hunger.start();

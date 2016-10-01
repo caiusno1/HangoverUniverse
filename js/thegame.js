@@ -28,14 +28,14 @@ thegame.prototype = {
         player = this.game.add.sprite(400,850,'playerRocket');
 
         //Auto Animation hinzufuegen
-        player.animations.add('down', [0], 10);
-        player.animations.add('bottomRight', [1], 10);
-        player.animations.add('topRight', [2], 10);
-        player.animations.add('right', [3], 10);
-        player.animations.add('up', [4], 10);
-        player.animations.add('bottomLeft', [5], 10);
-        player.animations.add('left', [6], 10);
-        player.animations.add('topLeft', [7], 10);
+        player.animations.add('left', [0], 10);
+        player.animations.add('down', [1], 10);
+        player.animations.add('bottomRight', [2], 10);
+        player.animations.add('topRight', [3], 10);
+        player.animations.add('topLeft', [4], 10);
+        player.animations.add('up', [5], 10);
+        player.animations.add('bottomLeft', [6], 10);
+        player.animations.add('right', [7], 10);
 
         //Auto Animation hinzufuegen
         player.animations.play('right');
@@ -54,22 +54,20 @@ thegame.prototype = {
             player.x=this.game.spawnposition.x;
             player.y=this.game.spawnposition.y;
         }
-
-        //Particle Dirtline
-        /*emitter1 = this.game.add.emitter(this.game.world.centerX, this.game.world.centerY, 400);
-        emitter1.makeParticles( [ 'turbine1', 'turbine2'] );
-        emitter1.minRotation = 0;
-        emitter1.maxRotation = 90;
-        emitter1.minParticleSpeed.set(0, -100);
-        emitter1.maxParticleSpeed.set(0, -100);
-        emitter1.start(false, 1500, 200, 0);*/
+            var emitter = this.game.add.emitter(this.game.world.centerX, this.game.world.centerY, 400);
+            emitter.makeParticles(['fire1', 'fire2' ,'fire3']);
+            emitter.gravity = -300;
+            emitter.maxRotation = 90;
+            emitter.setAlpha(0.8, 0, 3000);
+            emitter.setScale(1, 0.5, 1, 1);
+            emitter.start(false, 600, 100);
 
         //Bounds-Rechteck(test)
         var graphics = this.game.add.graphics(bounds.x, bounds.y);
         graphics.lineStyle(4, 0xffd900, 1);
         graphics.drawRect(0, 0, bounds.width, bounds.height);
 
-        //Worldbounds
+        //Worldboundsx
         player.body.collideWorldBounds = true;
         //this.eventList =  this.cache.getJSON('spawn_lev').events;
         this.registerevent(changeRoomToGang1,1425,270,200,200,"test");
