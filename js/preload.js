@@ -63,6 +63,8 @@ preload.prototype = {
         //HUD
         this.game.load.image("lifebar", "assets/hud/lifebar.png");
         this.game.load.image("hungerbar", "assets/hud/hungerbar.png");
+        this.game.load.image("heartImg", "assets/hud/heartImg.png");
+        this.game.load.image("hungerImg", "assets/hud/hungerImg.png");
 
         //Audio
         //GameTitle / GameOver Background Sound
