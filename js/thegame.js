@@ -52,8 +52,13 @@ thegame.prototype = {
         player.body.height = 50;
 
         //Particle Dirtline
-        emitter1 = this.game.add.emitter(this.game.world.centerX, this.game.world.centerY, 400);
+        /*emitter1 = this.game.add.emitter(this.game.world.centerX, this.game.world.centerY, 400);
         emitter1.makeParticles( [ 'turbine1', 'turbine2'] );
+        emitter1.minRotation = 0;
+        emitter1.maxRotation = 90;
+        emitter1.minParticleSpeed.set(0, -100);
+        emitter1.maxParticleSpeed.set(0, -100);
+        emitter1.start(false, 1500, 200, 0);*/
 
         //Bounds-Rechteck(test)
         var graphics = this.game.add.graphics(bounds.x, bounds.y);
