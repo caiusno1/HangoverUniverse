@@ -41,7 +41,7 @@ gameover.prototype = {
     playTheGame: function(){
         sound_bg.stop();
         sound_button.play('',0,1,false);
-        this.game.state.start("TheGame");
+        this.game.state.start("GameInit");
     },
     //Mute Button
     muteGame : function()
