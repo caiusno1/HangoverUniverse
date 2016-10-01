@@ -82,14 +82,6 @@ Lebenserhaltung_lev.prototype = {
         //Timo
         this.registerevent(showBook,1750,500,100,130,"test");
 
-
-<<<<<<< HEAD
-        console.log(this.world.height);
-
-        //hud
-        this.hud();
-=======
->>>>>>> origin/master
         this.game.Hunger.start();
     },
 
