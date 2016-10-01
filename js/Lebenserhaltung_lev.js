@@ -24,10 +24,16 @@ Lebenserhaltung_lev.prototype = {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         //BackgroundTile hinzufuegen
-        bgTileSprite = this.game.add.tileSprite(0, 0, 1920, 1080, 'bgLebenerhaltung');
+        var imggroup=this.game.add.group();
+        bgTileSprite = this.game.add.image(0, 0,'bgLebenserhaltung');
+        bgTileSprite.x=1000;
+        imggroup.add(bgTileSprite);
 
         //Sprite hinzufuegen und auf Spieler setzen
         player = this.game.add.sprite(this.game.world.centerX,this.game.world.height-200,'playerRocket');
+        imggroup.add(player);
+
+        imggroup.scale.setTo(0.5,0.5);
 
         //Auto Animation hinzufuegen
         player.animations.add('down', [0], 10);
