@@ -5,19 +5,18 @@ var thegame = function(game){
     rotateDirection = 1;
     isShielded = false;
     isBoosted = false;
-    var invisWall;
-    var player;
     var lifebar, hungerbar;
     var life = 100;
     var maxLife = 100;
     var alive = true;
+    var bounds;
 };
 
 thegame.prototype = {
 
     create : function(){
         //Bounds-Rechteck
-        var bounds = new Phaser.Rectangle(350, 100, 1400, 900);
+        bounds = new Phaser.Rectangle(350, 100, 1400, 900);
 
         //Steuerung und Physik reinladen
         cursors = this.game.input.keyboard.createCursorKeys();
@@ -54,19 +53,10 @@ thegame.prototype = {
         graphics.drawRect(0, 0, bounds.width, bounds.height);
 
         //Worldbounds
-          walls = this.game.add.group();
-          walls.enableBody = true;
-
-          invisWall = walls.create(bounds.x, bounds.y, 'unknownTile');
-          invisWall.scale.setTo(100, 5);
-          invisWall.body.width = 200;
-          invisWall.body.height = 10;
-          invisWall.body.immovable = true;
-        //this.createCustomBounds(bounds.x, bounds.y, bounds.width, bounds.height);
         player.body.collideWorldBounds = true;
 
         eventList =  this.cache.getJSON('eventls');
-        this.registerevent(this.testEventHandler,1600,200,200,200,"test");
+        //this.registerevent(this.testEventHandler,1600,200,200,200,"test");
         alert(eventList);
         this.debugEvents();
 
@@ -77,21 +67,32 @@ thegame.prototype = {
 
     //Update Function - durchgehend kontinuierlich aufgerufen vom Spiel
     update: function () {
-        this.game.physics.arcade.collide(player, walls);
 
         if(this.game.input.keyboard.isDown(Phaser.KeyCode.W))
         {
-            player.y=player.y-5;
+          if(player.angle != 0)
+            player.angle = 0;
+          if(player.y>=(bounds.y+30))
+            player.y = player.y-5;
         }
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.S)) {
-            player.y=player.y+5;
+            if(player.angle != 180)
+              player.angle = 180;
+            if(player.y<=(bounds.y+bounds.height-30))
+              player.y=player.y+5;
         }
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
-            player.x=player.x-5;
+            if(player.angle != 270)
+              player.angle = 270;
+            if(player.x>=(bounds.x+30))
+              player.x=player.x-5;
             this.damage(1);
         }
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
-            player.x=player.x+5;
+            if(player.angle != 90)
+              player.angle = 90;
+            if(player.x<=(bounds.x+bounds.width-30))
+              player.x=player.x+5;
         }
         debugcounter=debugcounter+1;
         if(debugcounter==100)
@@ -242,12 +243,6 @@ thegame.prototype = {
       });
 
     },
-
-      render : function()
-      {
-        this.game.debug.body(invisWall);
-        this.game.debug.body(player);
-      }
 
 };
 function testEventHandler()
