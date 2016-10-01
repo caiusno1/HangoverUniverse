@@ -9,5 +9,7 @@ gameinit.prototype = {
       this.game.Hunger = new Hunger(this.game);
       this.game.Hunger.setHunger(100);
       this.game.state.start("TheGame");
+
+
     }
 };
