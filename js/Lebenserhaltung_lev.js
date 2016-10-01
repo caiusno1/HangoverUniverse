@@ -78,7 +78,7 @@ Lebenserhaltung_lev.prototype = {
         //this.debugEvents();
 
         //Timo
-        //this.registerevent(showBook,800,750,200,200,"test");
+        this.registerevent(function(){ console.log("123"); },1750,500,100,130,"test");
 
         //hud
         this.hud();
