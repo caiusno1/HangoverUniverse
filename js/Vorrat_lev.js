@@ -7,6 +7,7 @@ var Vorrat_lev = function(game){
     isBoosted = false;
     eventList=[];
     var bounds;
+    flag_alreadydown=false;
 };
 var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
 
@@ -208,7 +209,15 @@ Vorrat_lev.prototype = {
         {
             if(self.game.input.keyboard.isDown(Phaser.KeyCode.SPACEBAR))
             {
+              if (this.flag_alreadydown == false) {
                 eval(element.callbackfn)(self,element.sender);
+                this.flag_alreadydown = true;
+              }
+            }
+            else {
+              if (this.flag_alreadydown == true) {
+                this.flag_alreadydown = false;
+              }
             }
             if(element.sender == "tod") {
               eval(element.callbackfn)(self,element.sender);

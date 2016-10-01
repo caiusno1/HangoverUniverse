@@ -9,7 +9,6 @@ var Gang_lev = function(game){
     var bounds;
     flag_alreadydown=false;
 };
-var bookIsFrontKeinZutritt = false;
 var bookImgKeinZutritt = undefined;
 
 Gang_lev.prototype = {
@@ -77,7 +76,6 @@ Gang_lev.prototype = {
         //this.debugEvents();
 
         //Book KeinZutritt
-        this.registerevent(showBookKeinZutritt,1500,460,100,150,"test");
 
         //ComHUD
         this.game.Hud.start();
@@ -239,16 +237,13 @@ function changeRaumLebenserhaltung(self,sender)
   self.game.spawnposition={x:1775,y:1650};
   self.game.state.start("Lebenserhaltung_lev");
 }
-function showBookKeinZutritt(self,sender)
 {
   if (!bookImgKeinZutritt) {
     //book Image
     bookImgKeinZutritt = self.game.add.sprite(self.game.world.centerX,0,"bookImgKeinZutritt",this);
-    bookIsFrontKeinZutritt = true;
   }
   else {
     bookImgKeinZutritt.destroy();
-    bookIsFrontKeinZutritt = false;
     bookImgKeinZutritt = undefined;
   }
 }
