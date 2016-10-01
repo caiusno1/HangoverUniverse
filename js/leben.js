@@ -1,6 +1,8 @@
-Phaser.Component.Leben = function () {};
+Leben = function () {
+  this.alive = true;
+};
 
-Phaser.Component.Leben.prototype = {
+Leben.prototype = {
 
     /**
     * The Game Objects Hunger value. This is a handy property for setting and manipulating Hunger on a Game Object.
@@ -10,7 +12,7 @@ Phaser.Component.Leben.prototype = {
     * @property {number} leben
     * @default
     */
-    leben: 1,
+    leben: 100,
 
     /**
     * The Game Objects maximum Hunger value. This works in combination with the `heal` method to ensure
@@ -35,7 +37,6 @@ Phaser.Component.Leben.prototype = {
         if (this.alive)
         {
             this.leben -= amount;
-
             if (this.leben <= 0)
             {
                 this.kill();

@@ -1,13 +1,16 @@
 ﻿<!DOCTYPE html>
 <html>
-<head lang="en">
+<head lang="de">
     <meta charset="UTF-8">
-    <title>Your PIT Game</title>
+    <title>HangoverUniverse</title>
     <script src="js/phaser.min.js"></script>
     <script src="js/boot.js"></script>
     <script src="js/preload.js"></script>
     <script src="js/gametitle.js"></script>
     <script src="js/thegame.js"></script>
+    <script src="js/gameinit.js"></script>
+      <script src="js/hunger.js"></script>
+      <script src="js/leben.js"></script>
     <script src="js/gameover.js"></script>
     <script src="js/settings.js"></script>
     <script src="js/Gang_lev.js"></script>
@@ -45,6 +48,7 @@
             game.state.add("GameTitle",gametitle);
             game.state.add("TheGame",thegame);
             game.state.add("Gang_lev",Gang_lev);
+            game.state.add("GameInit", gameinit);
             game.state.add("GameOver", gameover);
 
             //Start BootScreen

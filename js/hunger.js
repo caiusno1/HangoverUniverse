@@ -1,6 +1,8 @@
-Phaser.Component.Hunger = function () {};
+Hunger = function () {
+  this.alive = true;
+};
 
-Phaser.Component.Hunger.prototype = {
+Hunger.prototype = {
 
     /**
     * The Game Objects Hunger value. This is a handy property for setting and manipulating Hunger on a Game Object.
@@ -10,7 +12,7 @@ Phaser.Component.Hunger.prototype = {
     * @property {number} hunger
     * @default
     */
-    hunger: 1,
+    hunger: 100,
 
     /**
     * The Game Objects maximum Hunger value. This works in combination with the `heal` method to ensure
