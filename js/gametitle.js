@@ -12,6 +12,8 @@ gametitle.prototype = {
         //Background Image
         this.game.add.sprite(0,0,"bgTitleScreen",this);
 
+
+
         /*
         //GameTitleText, mittlerweile in Grafik eingebunden
         var style = { font: "80px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 5};
@@ -41,7 +43,7 @@ gametitle.prototype = {
     playTheGame: function(){
         sound_bg.stop();
         sound_button.play('',0,1,false);
-        this.game.state.start("TheGame");
+        this.game.state.start("GameInit");
     },
     //Mute Button
     muteGame : function()

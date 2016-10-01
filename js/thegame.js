@@ -102,11 +102,8 @@ thegame.prototype = {
             debugcounter=0;
         }
 
-
-
         //this.askevent();
-        lifebar.width=Leben.getLeben()*2;
-        hungerbar.width=Hunger.getHunger()*2;
+        this.updateHud();
 
         //Bei Mouseclick/Touchklick das Player-Movement Dash mit Partikel Effekt
         /*if (this.game.input.activePointer.leftButton.isDown)
@@ -125,6 +122,15 @@ thegame.prototype = {
       //Lifebar Image
       lifebar = this.game.add.sprite(this.game.world.width-600,this.game.world.height-60,"lifebar",this);
       Leben = new Leben();
+
+      var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
+      var lebenText = this.game.add.text(this.world.width-500, this.game.world.height-30, this.getLife(),style);
+      lebenText.anchor.set(0.5);
+      lebenText.alpha = 0.1;
+
+      //Alpha Wert verändern
+      this.game.add.tween(lebenText).to( { alpha: 1 }, 1000, "Linear", true);
+
       hungerbar = this.game.add.sprite(this.game.world.width-300,this.game.world.height-60,"hungerbar",this);
       Hunger = new Hunger();
     },
@@ -159,6 +165,11 @@ thegame.prototype = {
         lifebar.width = life;
         return this;
 
+    },
+
+    updateHud: function () {
+      lifebar.width=Leben.getLeben()*2;
+      hungerbar.width=Hunger.getHunger()*2;
     },
 
     getLife: function () {
