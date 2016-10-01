@@ -74,7 +74,7 @@ Lebenserhaltung_lev.prototype = {
         //Worldbounds
         player.body.collideWorldBounds = true;
         //this.eventList =  this.cache.getJSON('Lebenserhaltung_lev');
-        this.registerevent(changeRoomToGang3,800,750,200,200,"test");
+        this.registerevent(changeRoomToGang3,1720,1460,1820-1720,1570-1460,"test");
         //this.debugEvents();
 
         //Timo

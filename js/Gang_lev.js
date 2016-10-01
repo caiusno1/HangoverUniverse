@@ -241,15 +241,17 @@ Gang_lev.prototype = {
 };
 function changeRoomBackDoor(self,sender)
 {
-  self.game.state.start("TheGame");
   self.game.spawnposition={x:1600,y:400};
+  self.game.state.start("TheGame");
 
 }
 function changeRaumVorrat(self,sender)
 {
+  self.game.spawnposition={x:1775,y:1650};
   self.game.state.start("Vorrat_lev");
 }
 function changeRaumLebenserhaltung(self,sender)
 {
+  self.game.spawnposition={x:1775,y:1040};
   self.game.state.start("Lebenserhaltung_lev");
 }
