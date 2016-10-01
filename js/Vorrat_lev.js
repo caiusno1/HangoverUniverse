@@ -71,6 +71,8 @@ Vorrat_lev.prototype = {
         player.body.collideWorldBounds = true;
         //this.eventList =  this.cache.getJSON('Vorrat_lev');
         this.registerevent(changeRoomToGang2,1280,1430,1460-1280,1525-1430,"test");
+        this.registerevent(essenTrigger,1280,425,1425-1280,615-425,"test");
+
         //this.debugEvents();
         //hud
         this.hud();
@@ -239,4 +241,8 @@ function changeRoomToGang2(self,sender)
 {
   self.game.spawnposition={x:600,y:400};
   self.game.state.start("Gang_lev");
+}
+function essenTrigger(self,sender)
+{
+  self.game.Hunger.eat(50);
 }
