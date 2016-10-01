@@ -8,7 +8,6 @@ var thegame = function(game){
     var invisWall;
     var player;
     var lifebar, hungerbar;
-    var Hunger, Leben;
 };
 
 thegame.prototype = {
@@ -101,8 +100,8 @@ thegame.prototype = {
 
         
         //this.askevent();
-        lifebar.width=Leben.getLeben()*2;
-        hungerbar.width=Hunger.getHunger()*2;
+        lifebar.width=this.game.Leben.getLeben()*2;
+        hungerbar.width=this.game.Hunger.getHunger()*2;
 
         //Bei Mouseclick/Touchklick das Player-Movement Dash mit Partikel Effekt
         /*if (this.game.input.activePointer.leftButton.isDown)
@@ -120,9 +119,7 @@ thegame.prototype = {
     hud: function() {
       //Lifebar Image
       lifebar = this.game.add.sprite(this.game.world.width-600,this.game.world.height-60,"lifebar",this);
-      Leben = new Leben();
       hungerbar = this.game.add.sprite(this.game.world.width-300,this.game.world.height-60,"hungerbar",this);
-      Hunger = new Hunger();
     },
 
     damage: function (amount) {
