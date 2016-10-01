@@ -13,7 +13,7 @@ Gang_lev.prototype = {
 
 
     create : function(){
-        bounds = new Phaser.Rectangle(400, 400, 1150, 300);
+        bounds = new Phaser.Rectangle(350, 400, 1250, 300);
 
         this.eventList=[];
         //Steuerung und Physik reinladen
@@ -66,7 +66,7 @@ Gang_lev.prototype = {
         //Worldbounds
         player.body.collideWorldBounds = true;
         //this.eventList =  this.cache.getJSON('Gang_lev');
-        this.registerevent(changeRoomBackDoor,400,400,100,200,"back");
+        this.registerevent(changeRoomBackDoor,350,400,100,200,"back");
         this.registerevent(changeRaumVorrat,600,400,200,100,"vorrat");
         this.registerevent(changeRaumLebenserhaltung,1100,400,200,100,"Lebenserhaltung");
 
