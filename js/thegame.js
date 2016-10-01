@@ -58,8 +58,13 @@ thegame.prototype = {
         }
 
         //Particle Dirtline
-        emitter1 = this.game.add.emitter(this.game.world.centerX, this.game.world.centerY, 400);
+        /*emitter1 = this.game.add.emitter(this.game.world.centerX, this.game.world.centerY, 400);
         emitter1.makeParticles( [ 'turbine1', 'turbine2'] );
+        emitter1.minRotation = 0;
+        emitter1.maxRotation = 90;
+        emitter1.minParticleSpeed.set(0, -100);
+        emitter1.maxParticleSpeed.set(0, -100);
+        emitter1.start(false, 1500, 200, 0);*/
 
         //Bounds-Rechteck(test)
         var graphics = this.game.add.graphics(bounds.x, bounds.y);
@@ -73,6 +78,7 @@ thegame.prototype = {
         //this.debugEvents();
         //hud
         this.hud();
+        this.game.Hunger.start();
     },
 
 
@@ -149,11 +155,13 @@ thegame.prototype = {
       */
     },
 
+
     hud: function() {
       //Lifebar Image
       lifebar = this.game.add.sprite(this.game.world.width-600,this.game.world.height-60,"lifebar",this);
       hungerbar = this.game.add.sprite(this.game.world.width-300,this.game.world.height-60,"hungerbar",this);
-
+      heartImg = this.game.add.sprite(this.game.world.width-660,this.game.world.height-60,"heartImg",this);
+      hungerImg = this.game.add.sprite(this.game.world.width-360,this.game.world.height-60,"hungerImg",this);
 
       lebenText = this.game.add.text(this.world.width-510, this.game.world.height-47, this.game.Leben.getLeben(),style);
       hungerText = this.game.add.text(this.world.width-210, this.game.world.height-47, this.game.Hunger.getHunger(),style);
