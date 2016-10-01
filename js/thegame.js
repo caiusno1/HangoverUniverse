@@ -59,8 +59,8 @@ thegame.prototype = {
         var graphics = this.game.add.graphics(bounds.x, bounds.y);
         graphics.lineStyle(4, 0xffd900, 1);
         graphics.drawRect(0, 0, bounds.width, bounds.height);
-
-        //Worldboundsx
+        graphics.drawRect(500, 300, 200, 100);
+        //Worldbounds
         player.body.collideWorldBounds = true;
         //this.eventList =  this.cache.getJSON('spawn_lev').events;
         this.registerevent(changeRoomToGang1,1425,270,200,200,"test");

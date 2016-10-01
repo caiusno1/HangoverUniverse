@@ -79,7 +79,7 @@ Vorrat_lev.prototype = {
         //this.eventList =  this.cache.getJSON('Vorrat_lev');
         this.registerevent(changeRoomToGang2,1280,1430,1460-1280,1525-1430,"test");
         this.registerevent(essenTrigger,1280,425,1425-1280,615-425,"test");
-
+        this.registerevent(todDurchFeuer,1400, 590, 1710-1355, 905-845+300, "tod");
         //this.debugEvents();
 
         this.game.Hud.start();
@@ -210,6 +210,9 @@ Vorrat_lev.prototype = {
             {
                 eval(element.callbackfn)(self,element.sender);
             }
+            if(element.sender == "tod") {
+              eval(element.callbackfn)(self,element.sender);
+            }
         }
       })
     },
@@ -233,4 +236,8 @@ function changeRoomToGang2(self,sender)
 function essenTrigger(self,sender)
 {
   self.game.Hunger.eat(50);
+}
+function todDurchFeuer(self, sender)
+{
+  self.game.Leben.damage(1);
 }
