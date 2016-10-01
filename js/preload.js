@@ -41,7 +41,7 @@ preload.prototype = {
 
 
         //Player-Enemy-Powerups
-        this.game.load.spritesheet("playerRocket","Bilder/char_8in1_kopfsync.png",100,100,8);
+        this.game.load.spritesheet("playerRocket","Bilder/char_8in1_astronaut.png",100,100,8);
 
         this.game.load.spritesheet("enemyMine", "assets/enemies/mine.png",48,48);
         this.game.load.spritesheet("enemyBomb", "assets/enemies/alienbomb.png",48,48);
@@ -59,6 +59,10 @@ preload.prototype = {
 
         this.game.load.image("explodeMine", "assets/particles/mineCollision.png");
         this.game.load.image("explodeBomb", "assets/particles/bombCollision.png");
+
+        this.game.load.image("fire1", "Bilder/fire1.png");
+        this.game.load.image("fire2", "Bilder/fire2.png");
+        this.game.load.image("fire3", "Bilder/fire3.png");
 
         //HUD
         this.game.load.image("lifebar", "assets/hud/lifebar.png");
