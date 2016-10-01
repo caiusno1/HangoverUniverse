@@ -40,7 +40,7 @@ thegame.prototype = {
         player.animations.add('topLeft', [7], 10);
 
         //Auto Animation hinzufuegen
-        player.animations.play('up');
+        player.animations.play('right');
 
         //Player mit Physics
         this.game.physics.arcade.enable(player, Phaser.Physics.ARCADE);
