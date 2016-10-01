@@ -7,9 +7,10 @@ var Lebenserhaltung_lev = function(game){
     isBoosted = false;
     eventList=[];
     var bounds;
+    flag_alreadydown=false;
 };
 var bookIsFront = false;
-var bookImg = undefined;
+var bookImgLebenserhaltungsraum = undefined;
 var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
 
 Lebenserhaltung_lev.prototype = {
@@ -79,12 +80,21 @@ Lebenserhaltung_lev.prototype = {
         this.game.Hud.start();
         //this.registerevent(showBook,800,750,200,200,"test");
 
-        //Timo
+        //Book Lebenserhaltungsraum
         this.registerevent(showBook,1750,500,100,130,"test");
+
+        //Nur ein Key (TEST 1/2)
+        //var key = this.game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
+        //key.onDown = this.onSpacePress;
 
         this.game.Hunger.start();
     },
 
+    //Nur ein Key (TEST 2/2)
+    /*onSpacePress: function () {
+      //eval(element.callbackfn)(self,element.sender);
+      //showBook(self, element.sender);
+    },*/
 
     //Update Function - durchgehend kontinuierlich aufgerufen vom Spiel
     update: function () {
@@ -207,7 +217,16 @@ Lebenserhaltung_lev.prototype = {
         {
             if(self.game.input.keyboard.isDown(Phaser.KeyCode.SPACEBAR))
             {
-                eval(element.callbackfn)(self,element.sender);
+                if (this.flag_alreadydown == false) {
+                  eval(element.callbackfn)(self,element.sender);
+                  this.flag_alreadydown = true;
+                }
+            }
+            else {
+              if (this.flag_alreadydown == true) {
+                this.flag_alreadydown = false;
+              }
+
             }
         }
       })
@@ -231,14 +250,14 @@ function changeRoomToGang3(self,sender)
 }
 function showBook(self,sender)
 {
-  if (!bookImg) {
+  if (!bookImgLebenserhaltungsraum) {
     //book Image
-    bookImg = self.game.add.sprite(self.game.world.centerX,0,"bookImg",this);
+    bookImgLebenserhaltungsraum = self.game.add.sprite(self.game.world.centerX,0,"bookImgLebenserhaltungsraum",this);
     bookIsFront = true;
   }
   else {
-    bookImg.destroy();
-    bookIstFront = false;
-    bookImg = undefined;
+    bookImgLebenserhaltungsraum.destroy();
+    bookIsFront = false;
+    bookImgLebenserhaltungsraum = undefined;
   }
 }

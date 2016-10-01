@@ -99,7 +99,7 @@ Oxygen.prototype = {
 
     },
     usk: function(bool){
-      if(bool){
+      if(bool=="1"){
 
       }
       else {
