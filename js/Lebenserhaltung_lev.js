@@ -72,13 +72,14 @@ Lebenserhaltung_lev.prototype = {
         emitter1.makeParticles( [ 'turbine1', 'turbine2'] );
 
         //Worldbounds
-        player.body.collideWorldBounds = true;
         //this.eventList =  this.cache.getJSON('Lebenserhaltung_lev');
         this.registerevent(changeRoomToGang3,1720,1460,1820-1720,1570-1460,"test");
         //this.debugEvents();
 
         //Timo
         this.registerevent(function(){ console.log("123"); },1750,500,100,130,"test");
+
+        console.log(this.world.height);
 
         //hud
         this.hud();
@@ -88,6 +89,7 @@ Lebenserhaltung_lev.prototype = {
 
     //Update Function - durchgehend kontinuierlich aufgerufen vom Spiel
     update: function () {
+
         if(this.game.input.keyboard.isDown(Phaser.KeyCode.W))
         {
           if(player.y>=(bounds.y+30))

@@ -33,7 +33,7 @@ Vorrat_lev.prototype = {
         var graphics = this.game.add.graphics(bounds.x, bounds.y);
 
         //Sprite hinzufuegen und auf Spieler setzen
-        player = this.game.add.sprite(1300,2000,'playerRocket');
+        player = this.game.add.sprite(1330,1490,'playerRocket');
         imggroup.add(player);
         imggroup.add(graphics);
         imggroup.scale.setTo(0.5,0.5);
@@ -68,7 +68,7 @@ Vorrat_lev.prototype = {
         emitter1.makeParticles( [ 'turbine1', 'turbine2'] );
 
         //Worldbounds
-        player.body.collideWorldBounds = true;
+        player.body.collideWorldBounds = false;
         //this.eventList =  this.cache.getJSON('Vorrat_lev');
         this.registerevent(changeRoomToGang2,1280,1430,1460-1280,1525-1430,"test");
         this.registerevent(essenTrigger,1280,425,1425-1280,615-425,"test");

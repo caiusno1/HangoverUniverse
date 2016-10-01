@@ -50,8 +50,8 @@ Gang_lev.prototype = {
 
         if(this.game.spawnposition)
         {
-            player.x=this.game.spawnposition.x;
-            player.y=this.game.spawnposition.y;
+            player.position.x=this.game.spawnposition.x;
+            player.position.y=this.game.spawnposition.y;
         }
 
         //Particle Dirtline
@@ -70,6 +70,7 @@ Gang_lev.prototype = {
         this.registerevent(changeRoomBackDoor,400,400,100,200,"back");
         this.registerevent(changeRaumVorrat,600,400,200,100,"vorrat");
         this.registerevent(changeRaumLebenserhaltung,1100,400,200,100,"Lebenserhaltung");
+
 
         //this.debugEvents();
 
@@ -247,7 +248,7 @@ function changeRoomBackDoor(self,sender)
 }
 function changeRaumVorrat(self,sender)
 {
-  self.game.spawnposition={x:1775,y:1650};
+  self.game.spawnposition={x:1330,y:1490};
   self.game.state.start("Vorrat_lev");
 }
 function changeRaumLebenserhaltung(self,sender)
