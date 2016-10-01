@@ -59,13 +59,11 @@ thegame.prototype = {
         }
             var emitter = this.game.add.emitter(this.game.world.centerX, this.game.world.centerY, 400);
             emitter.makeParticles(['fire1', 'fire2' ,'fire3']);
-            emitter.gravity = 300;
-            emitter.minParticleSpeed = (-100, -200);
-            emitter.maxParticleSpeed = (100, -200);
-            emitter.bringToTop = true;
-            //emitter.setAlpha(0.8, 0, 3000);
-            //emitter.setScale(0.8, 0, 0.8, 1);
-            emitter.start(false, 600, 300);
+            emitter.gravity = -300;
+            emitter.maxRotation = 90;
+            emitter.setAlpha(0.8, 0, 3000);
+            emitter.setScale(1, 0.5, 1, 1);
+            emitter.start(false, 600, 100);
 
         //Bounds-Rechteck(test)
         var graphics = this.game.add.graphics(bounds.x, bounds.y);

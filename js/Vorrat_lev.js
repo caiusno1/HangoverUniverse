@@ -42,14 +42,14 @@ Vorrat_lev.prototype = {
 
 
         //Auto Animation hinzufuegen
-        player.animations.add('down', [0], 10);
-        player.animations.add('bottomRight', [1], 10);
-        player.animations.add('topRight', [2], 10);
-        player.animations.add('right', [3], 10);
-        player.animations.add('up', [4], 10);
-        player.animations.add('bottomLeft', [5], 10);
-        player.animations.add('left', [6], 10);
-        player.animations.add('topLeft', [7], 10);
+        player.animations.add('left', [0], 10);
+        player.animations.add('down', [1], 10);
+        player.animations.add('bottomRight', [2], 10);
+        player.animations.add('topRight', [3], 10);
+        player.animations.add('topLeft', [4], 10);
+        player.animations.add('up', [5], 10);
+        player.animations.add('bottomLeft', [6], 10);
+        player.animations.add('right', [7], 10);
 
         //Auto Animation hinzufuegen
         player.animations.play('up');
