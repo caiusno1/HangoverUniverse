@@ -51,6 +51,12 @@ thegame.prototype = {
         player.body.width = 50;
         player.body.height = 50;
 
+        if(this.game.spawnposition)
+        {
+            player.x=this.game.spawnposition.x;
+            player.y=this.game.spawnposition.y;
+        }
+
         //Particle Dirtline
         /*emitter1 = this.game.add.emitter(this.game.world.centerX, this.game.world.centerY, 400);
         emitter1.makeParticles( [ 'turbine1', 'turbine2'] );
