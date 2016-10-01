@@ -44,6 +44,8 @@ thegame.prototype = {
         //Worldbounds
         player.body.collideWorldBounds = true;
 
+        //hud
+        this.hud();
     },
 
 
@@ -75,6 +77,11 @@ thegame.prototype = {
         else
             this.rotatePlayer();
       */
+    },
+
+    hud: function() {
+      //Lifebar Image
+      var lifebar = this.game.add.sprite(10,10,"lifebar",this);
     },
 
 

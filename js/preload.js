@@ -54,6 +54,9 @@ preload.prototype = {
         this.game.load.image("explodeMine", "assets/particles/mineCollision.png");
         this.game.load.image("explodeBomb", "assets/particles/bombCollision.png");
 
+        //HUD
+        this.game.load.image("lifebar", "assets/hud/lifebar.png");
+
         //Audio
         //GameTitle / GameOver Background Sound
         this.game.load.audio('sound_bgloop', ['assets/sounds/loop_menu.mp3','assets/sounds/loop_menu.ogg']);
