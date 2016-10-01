@@ -78,6 +78,7 @@ thegame.prototype = {
         //this.debugEvents();
         //hud
         this.hud();
+        this.start();
     },
 
 
@@ -154,11 +155,20 @@ thegame.prototype = {
       */
     },
 
+    updateCounter: function(){
+      this.game.Hunger.damage(1);
+    },
+    start: function(){
+      this.TimeEvent =this.game.time.events.loop(Phaser.Timer.SECOND*5,  this.updateCounter, this);
+    },
+
+
     hud: function() {
       //Lifebar Image
       lifebar = this.game.add.sprite(this.game.world.width-600,this.game.world.height-60,"lifebar",this);
       hungerbar = this.game.add.sprite(this.game.world.width-300,this.game.world.height-60,"hungerbar",this);
-
+      heartImg = this.game.add.sprite(this.game.world.width-660,this.game.world.height-60,"heartImg",this);
+      hungerImg = this.game.add.sprite(this.game.world.width-360,this.game.world.height-60,"hungerImg",this);
 
       lebenText = this.game.add.text(this.world.width-510, this.game.world.height-47, this.game.Leben.getLeben(),style);
       hungerText = this.game.add.text(this.world.width-210, this.game.world.height-47, this.game.Hunger.getHunger(),style);
