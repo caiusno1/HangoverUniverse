@@ -23,7 +23,7 @@ Gang_lev.prototype = {
         //BackgroundTile hinzufuegen
         bgTileSprite = this.game.add.tileSprite(0, 0, 1920, 1080, 'bgTutGang');
         //Sprite hinzufuegen und auf Spieler setzen
-        player = this.game.add.sprite(this.game.world.centerX-500,this.game.world.height-600,'playerRocket');
+        player = this.game.add.sprite(200,500,'playerRocket');
 
         //Auto Animation hinzufuegen
         player.animations.add('down', [0], 10);

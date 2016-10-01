@@ -56,6 +56,11 @@ Lebenserhaltung_lev.prototype = {
         player.anchor.y = 0.5;
         player.body.width = 50;
         player.body.height = 50;
+        if(this.game.spawnposition)
+        {
+            player.x=this.game.spawnposition.x;
+            player.y=this.game.spawnposition.y;
+        }
 
         //Particle Dirtline
         emitter1 = this.game.add.emitter(this.game.world.centerX, this.game.world.centerY, 400);
@@ -68,8 +73,8 @@ Lebenserhaltung_lev.prototype = {
 
         //Worldbounds
         player.body.collideWorldBounds = true;
-        //this.eventList =  this.cache.getJSON('spawn_lev');
-        this.registerevent(changeRoom,1600,200,200,200,"test");
+        //this.eventList =  this.cache.getJSON('Lebenserhaltung_lev');
+        this.registerevent(changeRoomToGang3,800,1000,200,200,"test");
         //this.debugEvents();
         //hud
         this.hud();
@@ -233,7 +238,8 @@ Lebenserhaltung_lev.prototype = {
     },
 
 };
-function changeRoom(self,sender)
+function changeRoomToGang3(self,sender)
 {
+  self.game.spawnposition={x:1100,y:400};
   self.game.state.start("Gang_lev");
 }

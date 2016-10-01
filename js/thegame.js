@@ -68,8 +68,8 @@ thegame.prototype = {
 
         //Worldbounds
         player.body.collideWorldBounds = true;
-        //this.eventList =  this.cache.getJSON('spawn_lev');
-        this.registerevent(changeRoom,1425,270,200,200,"test");
+        //this.eventList =  this.cache.getJSON('spawn_lev').events;
+        this.registerevent(changeRoomToGang1,1425,270,200,200,"test");
         //this.debugEvents();
         //hud
         this.hud();
@@ -205,7 +205,8 @@ thegame.prototype = {
     },
 
 };
-function changeRoom(self,sender)
+function changeRoomToGang1(self,sender)
 {
+  self.game.spawnposition={x:460,y:510};
   self.game.state.start("Gang_lev");
 }

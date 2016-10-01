@@ -68,7 +68,7 @@ Vorrat_lev.prototype = {
         //Worldbounds
         player.body.collideWorldBounds = true;
         //this.eventList =  this.cache.getJSON('Vorrat_lev');
-        this.registerevent(changeRoom,1600,200,200,200,"test");
+        this.registerevent(changeRoomToGang2,1600,200,200,200,"test");
         //this.debugEvents();
         //hud
         this.hud();
@@ -232,7 +232,8 @@ Vorrat_lev.prototype = {
     },
 
 };
-function changeRoom(self,sender)
+function changeRoomToGang2(self,sender)
 {
+  self.game.spawnposition={x:600,y:400};
   self.game.state.start("Gang_lev");
 }
