@@ -5,6 +5,10 @@ var thegame = function(game){
     rotateDirection = 1;
     isShielded = false;
     isBoosted = false;
+    var lifebar, hungerbar;
+    var life = 100;
+    var maxLife = 100;
+    var alive = true;
 };
 
 thegame.prototype = {
@@ -65,6 +69,7 @@ thegame.prototype = {
         }
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
             player.x=player.x-5;
+            this.damage(1);
         }
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
             player.x=player.x+5;
@@ -94,9 +99,64 @@ thegame.prototype = {
 
     hud: function() {
       //Lifebar Image
-      var lifebar = this.game.add.sprite(10,10,"lifebar",this);
+      lifebar = this.game.add.sprite(this.game.world.width-600,this.game.world.height-60,"lifebar",this);
+      hungerbar = this.game.add.sprite(this.game.world.width-300,this.game.world.height-60,"hungerbar",this);
     },
 
+    damage: function (amount) {
+
+        if (this.alive)
+        {
+            this.life -= amount;
+
+            if (this.life <= 0)
+            {
+                this.kill();
+            }
+        }
+
+        lifebar.width = this.life;
+        console.log(this.life);
+        return this;
+
+    },
+
+    setLife: function (amount) {
+
+        this.life = amount;
+
+        if (this.life > this.maxLife)
+        {
+            this.life = this.maxLife;
+        }
+
+        lifebar.width = life;
+        return this;
+
+    },
+
+    getLife: function () {
+
+        return this.life;
+
+    },
+
+    heal: function (amount) {
+
+        if (this.alive)
+        {
+            this.life += amount;
+
+            if (this.life > this.maxLife)
+            {
+                this.life = this.maxLife;
+            }
+        }
+
+        lifebar.width = life;
+        return this;
+
+    },
 
     //Player-Rotation
     rotatePlayer : function()
