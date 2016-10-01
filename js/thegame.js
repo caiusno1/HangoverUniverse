@@ -83,7 +83,6 @@ thegame.prototype = {
         {
             if(player.x>=(bounds.x+30))
               player.x=player.x-5;
-            this.game.Leben.damage(1);
         }
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.D))
         {
@@ -97,7 +96,7 @@ thegame.prototype = {
             debugcounter=0;
         }
 
-        //this.askevent();
+        this.askevent();
         this.updateHud();
 
         //Bei Mouseclick/Touchklick das Player-Movement Dash mit Partikel Effekt
