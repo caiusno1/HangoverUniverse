@@ -1,25 +1,25 @@
-Phaser.Component.Hunger = function () {};
+Phaser.Component.Leben = function () {};
 
-Phaser.Component.Hunger.prototype = {
+Phaser.Component.Leben.prototype = {
 
     /**
     * The Game Objects Hunger value. This is a handy property for setting and manipulating Hunger on a Game Object.
     *
     * It can be used in combination with the `damage` method or modified directly.
     *
-    * @property {number} hunger
+    * @property {number} leben
     * @default
     */
-    hunger: 1,
+    leben: 1,
 
     /**
     * The Game Objects maximum Hunger value. This works in combination with the `heal` method to ensure
     * the Hunger value never exceeds the maximum.
     *
-    * @property {number} maxHunger
+    * @property {number} maxLeben
     * @default
     */
-    maxHunger: 100,
+    maxLeben: 100,
 
     /**
     * Damages the Game Object. This removes the given amount of Hunger from the `Hunger` property.
@@ -34,9 +34,9 @@ Phaser.Component.Hunger.prototype = {
 
         if (this.alive)
         {
-            this.hunger -= amount;
+            this.leben -= amount;
 
-            if (this.hunger <= 0)
+            if (this.leben <= 0)
             {
                 this.kill();
             }
@@ -54,22 +54,22 @@ Phaser.Component.Hunger.prototype = {
     * @param {number} amount - The amount to set the `Hunger` value to. The total will never exceed `maxHunger`.
     * @return {Phaser.Sprite} This instance.
     */
-    setHunger: function (amount) {
+    setLeben: function (amount) {
 
-        this.hunger = amount;
+        this.leben = amount;
 
-        if (this.hunger > this.maxHunger)
+        if (this.leben > this.maxLeben)
         {
-            this.hunger = this.maxHunger;
+            this.leben = this.maxLeben;
         }
 
         return this;
 
     },
 
-    getHunger: function () {
+    getLeben: function () {
 
-        return this.hunger;
+        return this.leben;
 
     },
 
@@ -84,11 +84,11 @@ Phaser.Component.Hunger.prototype = {
 
         if (this.alive)
         {
-            this.hunger += amount;
+            this.leben += amount;
 
-            if (this.hunger > this.maxHunger)
+            if (this.leben > this.maxLeben)
             {
-                this.hunger = this.maxHunger;
+                this.leben = this.maxLeben;
             }
         }
 
