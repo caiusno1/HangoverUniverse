@@ -6,8 +6,9 @@ var thegame = function(game) {
     isShielded = false;
     isBoosted = false;
     eventList=[];
-    var lifebar, hungerbar, oxygenbar;
     var bounds;
+    //ComHUD
+    var lifebar, hungerbar, oxygenbar;
     var lebenText, hungerText, oxygenText;
 };
 var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
@@ -76,7 +77,7 @@ thegame.prototype = {
         //this.eventList =  this.cache.getJSON('spawn_lev').events;
         this.registerevent(changeRoomToGang1,1425,270,200,200,"test");
         //this.debugEvents();
-        //hud
+        //ComHUD
         this.hud();
         this.game.Hunger.start();
     },
@@ -140,22 +141,11 @@ thegame.prototype = {
         }
 
         this.askevent();
+        //ComHUD
         this.updateHud();
-
-        //Bei Mouseclick/Touchklick das Player-Movement Dash mit Partikel Effekt
-        /*if (this.game.input.activePointer.leftButton.isDown)
-        {
-                this.particleDirtLine();
-                this.dash();
-        }
-
-        //Sonst durchgehend Player rotieren
-        else
-            this.rotatePlayer();
-      */
     },
 
-
+    //ComHUD
     hud: function() {
       //Lifebar Image
       lifebar = this.game.add.sprite(this.game.world.width-900,this.game.world.height-60,"lifebar",this);
