@@ -20,6 +20,10 @@ gameover.prototype = {
         //var scoreText = this.game.add.text(this.game.world.centerX-90, 90, '0', { font: "36px Roboto", fill: "white", align: "center",stroke:"black",strokeThickness:3});
         //scoreText.setText('Score: ' + pointCounter);
 
+        var gameTitleText = this.game.add.text(this.world.centerX,this.world.centerY-100, 'Du bist gestorben',style);
+        gameTitleText.anchor.set(0.5);
+        gameTitleText.alpha = 1;
+
         //ReplayButton Hinzufuegen
         var replayButton = this.game.add.button(this.world.centerX,this.world.centerY,"replay",this.playTheGame,this,1,0,2);
         replayButton.anchor.setTo(0.5,0.5);

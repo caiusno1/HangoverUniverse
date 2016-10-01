@@ -40,7 +40,11 @@ Hunger.prototype = {
         if (this.alive)
         {
             this.hunger -= amount;
-            if (this.hunger <= 0)
+            if (this.hunger <= 20 && this.hunger>0)
+            {
+                this.game.Leben.damage(1);
+            }
+            else if (this.hunger <= 0)
             {
                 this.game.state.start("GameOver");
             }
