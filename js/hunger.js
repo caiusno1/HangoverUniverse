@@ -32,7 +32,7 @@ Hunger.prototype = {
     * @param {number} amount - The amount to subtract from the current `Hunger` value.
     * @return {Phaser.Sprite} This instance.
     */
-    damage: function (amount) {
+    hunger: function (amount) {
 
         if (this.alive)
         {
@@ -82,7 +82,7 @@ Hunger.prototype = {
     * @param {number} amount - The amount to add to the current `Hunger` value. The total will never exceed `maxHunger`.
     * @return {Phaser.Sprite} This instance.
     */
-    heal: function (amount) {
+    eat: function (amount) {
 
         if (this.alive)
         {
