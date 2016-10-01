@@ -8,9 +8,7 @@ var thegame = function(game){
     var invisWall;
     var player;
     var lifebar, hungerbar;
-    var life = 100;
-    var maxLife = 100;
-    var alive = true;
+    var Hunger, Leben;
 };
 
 thegame.prototype = {
@@ -88,7 +86,7 @@ thegame.prototype = {
         }
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
             player.x=player.x-5;
-            this.damage(1);
+            Leben.damage(1);
         }
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
             player.x=player.x+5;
@@ -100,8 +98,9 @@ thegame.prototype = {
             debugcounter=0;
         }
 
-        this.askevent();
-
+        //this.askevent();
+        lifebar.width=Leben.getLeben()*2;
+        hungerbar.width=Hunger.getHunger()*2;
 
         //Bei Mouseclick/Touchklick das Player-Movement Dash mit Partikel Effekt
         /*if (this.game.input.activePointer.leftButton.isDown)
@@ -119,7 +118,9 @@ thegame.prototype = {
     hud: function() {
       //Lifebar Image
       lifebar = this.game.add.sprite(this.game.world.width-600,this.game.world.height-60,"lifebar",this);
+      Leben = new Leben();
       hungerbar = this.game.add.sprite(this.game.world.width-300,this.game.world.height-60,"hungerbar",this);
+      Hunger = new Hunger();
     },
 
     damage: function (amount) {
