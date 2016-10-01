@@ -16,7 +16,7 @@ Vorrat_lev.prototype = {
 
     create : function(){
         //Bounds-Rechteck
-        bounds = new Phaser.Rectangle(350, 250, 1300, 650);
+        bounds = new Phaser.Rectangle(1200, 250, 700, 1300);
 
         this.eventList=[];
         //Steuerung und Physik reinladen
@@ -29,10 +29,17 @@ Vorrat_lev.prototype = {
         bgTileSprite.x=1000;
         imggroup.add(bgTileSprite);
 
+        //Bounds-Rechteck(test)
+        var graphics = this.game.add.graphics(bounds.x, bounds.y);
+
         //Sprite hinzufuegen und auf Spieler setzen
-        player = this.game.add.sprite(this.game.world.centerX,this.game.world.height-200,'playerRocket');
+        player = this.game.add.sprite(1300,2000,'playerRocket');
         imggroup.add(player);
+        imggroup.add(graphics);
         imggroup.scale.setTo(0.5,0.5);
+        graphics.lineStyle(4, 0xffd900, 1);
+        graphics.drawRect(0, 0, bounds.width, bounds.height);
+
 
         //Auto Animation hinzufuegen
         player.animations.add('down', [0], 10);
@@ -60,15 +67,10 @@ Vorrat_lev.prototype = {
         emitter1 = this.game.add.emitter(this.game.world.centerX, this.game.world.centerY, 400);
         emitter1.makeParticles( [ 'turbine1', 'turbine2'] );
 
-        //Bounds-Rechteck(test)
-        var graphics = this.game.add.graphics(bounds.x, bounds.y);
-        graphics.lineStyle(4, 0xffd900, 1);
-        graphics.drawRect(0, 0, bounds.width, bounds.height);
-
         //Worldbounds
         player.body.collideWorldBounds = true;
         //this.eventList =  this.cache.getJSON('Vorrat_lev');
-        this.registerevent(changeRoom,1600,200,200,200,"test");
+        this.registerevent(changeRoom,600,700,200,200,"test");
         //this.debugEvents();
         //hud
         this.hud();
