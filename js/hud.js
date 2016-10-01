@@ -17,6 +17,10 @@ Hud.prototype = {
     lebenText = this.game.add.text(this.game.world.width-810, this.game.world.height-47, this.game.Leben.getLeben(),style);
     hungerText = this.game.add.text(this.game.world.width-510, this.game.world.height-47, this.game.Hunger.getHunger(),style);
     oxygenText = this.game.add.text(this.game.world.width-210, this.game.world.height-47, this.game.Oxygen.getOxygen(),style);
+
+
+    //Anfrage ob Sauerstoff im Raum ist
+    //this.game.Oxygen.usk(boolean);
   },
 
   updateHud: function () {

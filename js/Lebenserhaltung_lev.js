@@ -73,7 +73,6 @@ Lebenserhaltung_lev.prototype = {
         emitter1.makeParticles( [ 'turbine1', 'turbine2'] );
 
         //Worldbounds
-        player.body.collideWorldBounds = true;
         //this.eventList =  this.cache.getJSON('Lebenserhaltung_lev');
         this.registerevent(changeRoomToGang3,1720,1460,1820-1720,1570-1460,"test");
         //this.debugEvents();
@@ -84,12 +83,14 @@ Lebenserhaltung_lev.prototype = {
         //Book Lebenserhaltungsraum
         this.registerevent(showBook,1750,500,100,130,"test");
 
+        //Nur ein Key (TEST 1/2)
         //var key = this.game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
         //key.onDown = this.onSpacePress;
 
         this.game.Hunger.start();
     },
 
+    //Nur ein Key (TEST 2/2)
     /*onSpacePress: function () {
       //eval(element.callbackfn)(self,element.sender);
       //showBook(self, element.sender);
@@ -97,6 +98,7 @@ Lebenserhaltung_lev.prototype = {
 
     //Update Function - durchgehend kontinuierlich aufgerufen vom Spiel
     update: function () {
+
         if(this.game.input.keyboard.isDown(Phaser.KeyCode.W))
         {
           if(player.y>=(bounds.y+30))

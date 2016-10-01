@@ -13,7 +13,7 @@ Gang_lev.prototype = {
 
 
     create : function(){
-        bounds = new Phaser.Rectangle(400, 400, 1150, 300);
+        bounds = new Phaser.Rectangle(350, 400, 1250, 300);
 
         this.eventList=[];
         //Steuerung und Physik reinladen
@@ -49,8 +49,8 @@ Gang_lev.prototype = {
 
         if(this.game.spawnposition)
         {
-            player.x=this.game.spawnposition.x;
-            player.y=this.game.spawnposition.y;
+            player.position.x=this.game.spawnposition.x;
+            player.position.y=this.game.spawnposition.y;
         }
 
         //Particle Dirtline
@@ -66,9 +66,10 @@ Gang_lev.prototype = {
         //Worldbounds
         player.body.collideWorldBounds = true;
         //this.eventList =  this.cache.getJSON('Gang_lev');
-        this.registerevent(changeRoomBackDoor,400,400,100,200,"back");
+        this.registerevent(changeRoomBackDoor,350,400,100,200,"back");
         this.registerevent(changeRaumVorrat,600,400,200,100,"vorrat");
         this.registerevent(changeRaumLebenserhaltung,1100,400,200,100,"Lebenserhaltung");
+
 
         //this.debugEvents();
 
@@ -215,7 +216,7 @@ function changeRoomBackDoor(self,sender)
 }
 function changeRaumVorrat(self,sender)
 {
-  self.game.spawnposition={x:1775,y:1650};
+  self.game.spawnposition={x:1330,y:1490};
   self.game.state.start("Vorrat_lev");
 }
 function changeRaumLebenserhaltung(self,sender)
