@@ -1,5 +1,6 @@
-Hunger = function () {
+Hunger = function (game) {
   this.alive = true;
+  this.game = game;
 };
 
 Hunger.prototype = {
@@ -32,15 +33,15 @@ Hunger.prototype = {
     * @param {number} amount - The amount to subtract from the current `Hunger` value.
     * @return {Phaser.Sprite} This instance.
     */
-    hunger: function (amount) {
+    damage: function (amount) {
+
 
         if (this.alive)
         {
             this.hunger -= amount;
-
             if (this.hunger <= 0)
             {
-                this.kill();
+                this.game.state.start("GameOver");
             }
         }
 

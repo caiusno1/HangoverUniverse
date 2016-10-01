@@ -13,12 +13,12 @@ gameover.prototype = {
         //Background Image
         this.game.add.sprite(0,0,"bgTitleScreen",this);
         //Highscore Image View hinzufuegen
-        this.game.add.sprite(this.game.world.centerX-175,35,"highscore");
+        //this.game.add.sprite(this.game.world.centerX-175,35,"highscore");
 
 
         //ScoreText Hinzufuegen
-        var scoreText = this.game.add.text(this.game.world.centerX-90, 90, '0', { font: "36px Roboto", fill: "white", align: "center",stroke:"black",strokeThickness:3});
-        scoreText.setText('Score: ' + pointCounter);
+        //var scoreText = this.game.add.text(this.game.world.centerX-90, 90, '0', { font: "36px Roboto", fill: "white", align: "center",stroke:"black",strokeThickness:3});
+        //scoreText.setText('Score: ' + pointCounter);
 
         //ReplayButton Hinzufuegen
         var replayButton = this.game.add.button(this.world.centerX,this.world.centerY,"replay",this.playTheGame,this,1,0,2);

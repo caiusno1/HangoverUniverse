@@ -1,7 +1,7 @@
 /**
  * Created by Schlag on 01.07.2016
  */
-var thegame = function(game) {
+var Vorrat_lev = function(game){
     rotateDirection = 1;
     isShielded = false;
     isBoosted = false;
@@ -12,9 +12,9 @@ var thegame = function(game) {
 };
 var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
 
-thegame.prototype = {
+Vorrat_lev.prototype = {
 
-    create : function() {
+    create : function(){
         //Bounds-Rechteck
         bounds = new Phaser.Rectangle(350, 250, 1300, 650);
 
@@ -24,10 +24,10 @@ thegame.prototype = {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         //BackgroundTile hinzufuegen
-        bgTileSprite = this.game.add.tileSprite(0, 0, 1920, 1080, 'bgStage');
+        bgTileSprite = this.game.add.tileSprite(0, 0, 1920, 1080, 'bgVorrat');
 
         //Sprite hinzufuegen und auf Spieler setzen
-        player = this.game.add.sprite(400,850,'playerRocket');
+        player = this.game.add.sprite(this.game.world.centerX,this.game.world.height-200,'playerRocket');
 
         //Auto Animation hinzufuegen
         player.animations.add('down', [0], 10);
@@ -40,7 +40,7 @@ thegame.prototype = {
         player.animations.add('topLeft', [7], 10);
 
         //Auto Animation hinzufuegen
-        player.animations.play('right');
+        player.animations.play('up');
 
         //Player mit Physics
         this.game.physics.arcade.enable(player, Phaser.Physics.ARCADE);
@@ -62,8 +62,8 @@ thegame.prototype = {
 
         //Worldbounds
         player.body.collideWorldBounds = true;
-        //this.eventList =  this.cache.getJSON('spawn_lev');
-        this.registerevent(changeRoom,1425,270,200,200,"test");
+        //this.eventList =  this.cache.getJSON('Vorrat_lev');
+        this.registerevent(changeRoom,1600,200,200,200,"test");
         //this.debugEvents();
         //hud
         this.hud();
@@ -163,6 +163,34 @@ thegame.prototype = {
       hungerText = this.game.add.text(this.world.width-210, this.game.world.height-47, this.game.Hunger.getHunger(),style);
     },
 
+    //Player-Rotation
+    rotatePlayer : function()
+    {
+        player.angle +=rotationSpeed * rotateDirection;
+
+    },
+
+    //Player nach vorne Gas Geben 'DASH'
+    dash : function()
+    {
+        player.angle +=0 ;
+        this.game.physics.arcade.velocityFromAngle(player.angle + 90, playerDashSpeed, player.body.velocity);
+    },
+
+    //PartikelSystem für Player-Dirtlines hinter sich her ziehen
+    particleDirtLine : function()
+    {
+        var px = player.angle;
+        var py = player.angle;
+
+        emitter1.minParticleSpeed.set(px,py);
+        emitter1.maxParticleSpeed.set(px,py);
+
+        emitter1.x = player.x;
+        emitter1.y = player.y;
+
+        emitter1.start(true, playerParticleLifetime,null,playerParticleAmount);
+    },
     registerevent: function(callbackfn,x,y,width,height,sender){
       newevent={"x":x,"y":y,"width":width,"height":height,"sender":sender,"callbackfn":callbackfn};
       var graphics=this.game.add.graphics(0,0);

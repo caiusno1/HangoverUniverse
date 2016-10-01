@@ -239,7 +239,9 @@ function changeRoomBackDoor(self,sender)
 }
 function changeRaumVorrat(self,sender)
 {
+  self.game.state.start("Vorrat_lev");
 }
 function changeRaumLebenserhaltung(self,sender)
 {
+  self.game.state.start("Lebenserhaltung_lev");
 }
