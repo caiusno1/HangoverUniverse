@@ -8,6 +8,8 @@ var Lebenserhaltung_lev = function(game){
     eventList=[];
     var bounds;
 };
+var bookIsFront = false;
+var bookImg = undefined;
 var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
 
 Lebenserhaltung_lev.prototype = {
@@ -79,7 +81,7 @@ Lebenserhaltung_lev.prototype = {
         //this.registerevent(showBook,800,750,200,200,"test");
 
         //Timo
-        this.registerevent(function(){ console.log("123"); },1750,500,100,130,"test");
+        this.registerevent(showBook,1750,500,100,130,"test");
 
 
         this.game.Hunger.start();
@@ -227,4 +229,17 @@ function changeRoomToGang3(self,sender)
 {
   self.game.spawnposition={x:1100,y:400};
   self.game.state.start("Gang_lev");
+}
+function showBook(self,sender)
+{
+  if (!bookImg) {
+    //book Image
+    bookImg = self.game.add.sprite(self.game.world.centerX,0,"bookImg",this);
+    bookIsFront = true;
+  }
+  else {
+    bookImg.destroy();
+    bookIstFront = false;
+    bookImg = undefined;
+  }
 }
