@@ -78,6 +78,7 @@ thegame.prototype = {
         //this.debugEvents();
         //hud
         this.hud();
+        this.game.Hunger.start();
     },
 
 
@@ -153,6 +154,7 @@ thegame.prototype = {
             this.rotatePlayer();
       */
     },
+
 
     hud: function() {
       //Lifebar Image

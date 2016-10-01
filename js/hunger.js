@@ -1,6 +1,7 @@
 Hunger = function (game) {
   this.alive = true;
   this.game = game;
+
 };
 
 Hunger.prototype = {
@@ -97,6 +98,13 @@ Hunger.prototype = {
 
         return this;
 
+    },
+
+    updateCounter: function(){
+      this.damage(1);
+    },
+    start: function(){
+      this.game.time.events.loop(Phaser.Timer.SECOND*5,  this.updateCounter, this);
     }
 
 };

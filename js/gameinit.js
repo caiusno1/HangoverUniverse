@@ -10,6 +10,9 @@ gameinit.prototype = {
       this.game.Hunger.setHunger(100);
       this.game.Oxygen = new Oxygen(this.game);
       this.game.Oxygen.setOxygen(100);
+      this.game.Hunger.start();
       this.game.state.start("TheGame");
+
+
     }
 };
