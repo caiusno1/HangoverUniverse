@@ -7,9 +7,8 @@ var gametitle = function(game){
 
 gametitle.prototype = {
 
-    create: function()
-    {
-
+        create: function()
+        {
         //Background Image
         this.game.add.sprite(0,0,"bgTitleScreen",this);
 

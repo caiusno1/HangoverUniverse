@@ -43,11 +43,10 @@ thegame.prototype = {
 
         //Worldbounds
         player.body.collideWorldBounds = true;
-        this.registerevent(this.testEventHandler,500,500,500,500,"test");
-
-
-
-
+        eventList =  this.cache.getJSON('eventls');
+        this.registerevent(this.testEventHandler,1600,200,200,200,"test");
+        alert(eventList);
+        this.debugEvents();
     },
 
 
@@ -122,7 +121,7 @@ thegame.prototype = {
     },
     registerevent: function(callbackfn,x,y,width,height,sender){
       newevent={"x":x,"y":y,"width":width,"height":height,"sender":sender,"callbackfn":callbackfn};
-      var graphics=this.game.add.graphics(500,500);
+      var graphics=this.game.add.graphics(x,y);
       graphics.lineStyle(4,0xffd900,1);
       graphics.drawRect(0,0,width,height);
       eventList.push(newevent);
@@ -139,15 +138,29 @@ thegame.prototype = {
         {
             if(self.game.input.keyboard.isDown(Phaser.KeyCode.SPACEBAR))
             {
-                element.callbackfn(element.sender);
+                eval(element.callbackfn)(element.sender);
             }
         }
       })
     },
-    testEventHandler()
+    changeRoom: function()
     {
-      alert("Hallo");
+    },
+    debugEvents: function()
+    {
+      var self=this;
+      eventList.forEach(function(element){
+        var graphics=self.game.add.graphics(element.x,element.y);
+        graphics.lineStyle(4,0xffd900,1);
+        graphics.drawRect(0,0,element.width,element.height);
+      });
+
     }
 
 
+
 };
+function testEventHandler()
+{
+  alert("Hallo");
+}

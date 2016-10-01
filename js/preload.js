@@ -10,6 +10,7 @@ preload.prototype = {
 
         //Loadingbar
         var loadingBar = this.add.sprite(this.world.centerX,this.world.centerY,"loading");
+        this.load.json("eventls","js/events.json");
         loadingBar.anchor.setTo(0.5,0.5);
         this.load.setPreloadSprite(loadingBar);
 
