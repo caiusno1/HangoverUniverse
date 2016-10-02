@@ -24,6 +24,7 @@ Oxygen.prototype = {
     * @default
     */
     maxOxygen: 100,
+    lowOxygen:   0,
 
     /**
     * Damages the Game Object. This removes the given amount of Oxygen from the `Oxygen` property.
@@ -40,9 +41,10 @@ Oxygen.prototype = {
         if (this.alive)
         {
             this.oxygen -= amount;
-            if (this.oxygen <= 0)
+            if (this.oxygen <= this.lowOxygen)
             {
-                this.game.state.start("GameOver");
+              this.oxygen = this.lowOxygen;
+                this.game.Leben.damage(5);
             }
         }
 
