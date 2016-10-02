@@ -76,6 +76,7 @@ Gang_lev.prototype = {
         //this.debugEvents();
 
         //Book KeinZutritt
+        this.registerevent(showBookKeinZutritt,1500,460,100,150,"test");
 
         //ComHUD
         this.game.Hud.start();
