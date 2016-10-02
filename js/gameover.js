@@ -43,6 +43,7 @@ gameover.prototype = {
     playTheGame: function(){
         sound_bg.stop();
         sound_button.play('',0,1,false);
+        this.game.spawnposition={x:460,y:510};
         this.game.state.start("GameInit");
     },
     //Mute Button
