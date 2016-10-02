@@ -91,6 +91,7 @@ thegame.prototype = {
     },
 
     btn_up_down: function () {
+      alert("OBEN");
     },
 
     btn_up_release: function () {
