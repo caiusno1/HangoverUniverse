@@ -83,7 +83,6 @@ thegame.prototype = {
           // load touch buttons here
           alert("MOBIL");
           var btn_up = game.add.button(game.world.centerX - 95, 400, 'btn_up', actionOnClick, this, 2, 1, 0);
-          button.onInputOver.add(btn_up_over, this);
         }
     },
 
