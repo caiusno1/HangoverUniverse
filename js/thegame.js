@@ -95,7 +95,7 @@ thegame.prototype = {
         if(this.game.input.keyboard.isDown(Phaser.KeyCode.W))
         {
           if(player.y>=(bounds.y+30))
-            player.y = player.y-5;
+            player.y = player.y-7;
           if(this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
             player.animations.play('topLeft');
           } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
@@ -107,7 +107,7 @@ thegame.prototype = {
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.S))
         {
             if(player.y<=(bounds.y+bounds.height-30))
-              player.y=player.y+5;
+              player.y=player.y+7;
             if(this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
               player.animations.play('bottomLeft');
             } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
@@ -119,7 +119,7 @@ thegame.prototype = {
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.A))
         {
             if(player.x>=(bounds.x+30))
-              player.x=player.x-5;
+              player.x=player.x-7;
             if(this.game.input.keyboard.isDown(Phaser.KeyCode.W)) {
               player.animations.play('topLeft');
             } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.S)) {
@@ -131,7 +131,7 @@ thegame.prototype = {
         if (this.game.input.keyboard.isDown(Phaser.KeyCode.D))
         {
             if(player.x<=(bounds.x+bounds.width-30))
-              player.x=player.x+5;
+              player.x=player.x+7;
             if(this.game.input.keyboard.isDown(Phaser.KeyCode.W)) {
               player.animations.play('topRight');
             } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.S)) {
