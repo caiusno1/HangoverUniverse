@@ -38,9 +38,9 @@ Lebenserhaltung_lev.prototype = {
         imggroup.add(player);
         imggroup.add(graphics);
         imggroup.scale.setTo(0.5,0.5);
-        graphics.lineStyle(4, 0xffd900, 1);
+        /*graphics.lineStyle(4, 0xffd900, 1);
         graphics.drawRect(0, 0, bounds.width, bounds.height);
-
+*/
         //Auto Animation hinzufuegen
         player.animations.add('left', [0], 10);
         player.animations.add('down', [1], 10);
@@ -202,9 +202,9 @@ Lebenserhaltung_lev.prototype = {
     },
     registerevent: function(callbackfn,x,y,width,height,sender){
       newevent={"x":x,"y":y,"width":width,"height":height,"sender":sender,"callbackfn":callbackfn};
-      var graphics=this.game.add.graphics(0,0);
-      graphics.lineStyle(4,0xffd900,1);
-      graphics.drawRect(x,y,width,height);
+      //var graphics=this.game.add.graphics(0,0);
+      //graphics.lineStyle(4,0xffd900,1);
+      //graphics.drawRect(x,y,width,height);
       this.eventList.push(newevent);
 
     },
@@ -246,7 +246,7 @@ Lebenserhaltung_lev.prototype = {
 };
 function changeRoomToGang3(self,sender)
 {
-  self.game.spawnposition={x:1100,y:400};
+  self.game.spawnposition={x:1100,y:450};
   self.game.state.start("Gang_lev");
 }
 function showBookLebenserhaltungsraum(self,sender)

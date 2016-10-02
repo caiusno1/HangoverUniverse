@@ -36,9 +36,9 @@ Vorrat_lev.prototype = {
         imggroup.add(player);
         imggroup.add(graphics);
         imggroup.scale.setTo(0.5,0.5);
-        graphics.lineStyle(4, 0xffd900, 1);
+        /*graphics.lineStyle(4, 0xffd900, 1);
         graphics.drawRect(0, 0, bounds.width, bounds.height);
-
+*/
 
         //Auto Animation hinzufuegen
         player.animations.add('left', [0], 10);
@@ -80,7 +80,7 @@ Vorrat_lev.prototype = {
         //this.eventList =  this.cache.getJSON('Vorrat_lev');
         this.registerevent(changeRoomToGang2,1280,1430,1460-1280,1525-1430,"test");
         this.registerevent(essenTrigger,1280,425,1425-1280,615-425,"test");
-        this.registerevent(todDurchFeuer,1400, 590, 1710-1355, 905-845+300, "tod");
+        this.registerevent(todDurchFeuer,1000, 590, 1710-1355+600, 905-845+300, "tod");
         //this.debugEvents();
 
         this.game.Hud.start();
@@ -193,9 +193,9 @@ Vorrat_lev.prototype = {
     },
     registerevent: function(callbackfn,x,y,width,height,sender){
       newevent={"x":x,"y":y,"width":width,"height":height,"sender":sender,"callbackfn":callbackfn};
-      var graphics=this.game.add.graphics(0,0);
-      graphics.lineStyle(4,0xffd900,1);
-      graphics.drawRect(x,y,width,height);
+      //var graphics=this.game.add.graphics(0,0);
+      //graphics.lineStyle(4,0xffd900,1);
+      //graphics.drawRect(x,y,width,height);
       this.eventList.push(newevent);
 
     },
@@ -240,7 +240,7 @@ Vorrat_lev.prototype = {
 };
 function changeRoomToGang2(self,sender)
 {
-  self.game.spawnposition={x:600,y:400};
+  self.game.spawnposition={x:600,y:450};
   self.game.state.start("Gang_lev");
 }
 function essenTrigger(self,sender)
