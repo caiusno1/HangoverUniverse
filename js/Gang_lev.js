@@ -38,7 +38,7 @@ Gang_lev.prototype = {
         player.animations.add('right', [7], 10);
 
         //Auto Animation hinzufuegen
-        player.animations.play('up');
+        player.animations.play('right');
 
         //Player mit Physics
         this.game.physics.arcade.enable(player);
@@ -60,10 +60,10 @@ Gang_lev.prototype = {
         emitter1.makeParticles( [ 'turbine1', 'turbine2'] );
 
         //Bounds-Rechteck
-        var graphics = this.game.add.graphics(bounds.x, bounds.y);
+        /*var graphics = this.game.add.graphics(bounds.x, bounds.y);
         graphics.lineStyle(4, 0xffd900, 1);
         graphics.drawRect(0, 0, bounds.width, bounds.height);
-
+*/
 
         //Worldbounds
         player.body.collideWorldBounds = true;
@@ -177,9 +177,9 @@ Gang_lev.prototype = {
     },
     registerevent: function(callbackfn,x,y,width,height,sender){
       newevent={"x":x,"y":y,"width":width,"height":height,"sender":sender,"callbackfn":callbackfn};
-      var graphics=this.game.add.graphics(x,y);
-      graphics.lineStyle(4,0xffd900,1);
-      graphics.drawRect(0,0,width,height);
+      //var graphics=this.game.add.graphics(x,y);
+      //graphics.lineStyle(4,0xffd900,1);
+      //graphics.drawRect(0,0,width,height);
       this.eventList.push(newevent);
 
     },

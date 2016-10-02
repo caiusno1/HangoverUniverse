@@ -57,10 +57,13 @@ thegame.prototype = {
         }
 
         //Bounds-Rechteck(test)
-        var graphics = this.game.add.graphics(bounds.x, bounds.y);
+  /*      var graphics = this.game.add.graphics(bounds.x, bounds.y);
         graphics.lineStyle(4, 0xffd900, 1);
-        graphics.drawRect(0, 0, bounds.width, bounds.height);
-        graphics.drawRect(500, 300, 200, 100);
+        var gr = graphics.drawRect(0, 0, bounds.width, bounds.height);
+        gr.renderable = false;
+        gr = graphics.drawRect(500, 300, 200, 100);
+        gr.renderable = false;
+*/
         //Worldbounds
         player.body.collideWorldBounds = true;
         //this.eventList =  this.cache.getJSON('spawn_lev').events;
@@ -135,9 +138,9 @@ thegame.prototype = {
 
     registerevent: function(callbackfn,x,y,width,height,sender){
       newevent={"x":x,"y":y,"width":width,"height":height,"sender":sender,"callbackfn":callbackfn};
-      var graphics=this.game.add.graphics(0,0);
-      graphics.lineStyle(4,0xffd900,1);
-      graphics.drawRect(x,y,width,height);
+      //var graphics=this.game.add.graphics(0,0);
+      //graphics.lineStyle(4,0xffd900,1);
+      //graphics.drawRect(x,y,width,height);
       this.eventList.push(newevent);
 
     },
