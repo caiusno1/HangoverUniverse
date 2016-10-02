@@ -1,6 +1,7 @@
 /**
  * Created by Schlag on 01.07.2016
  */
+ // Stable Alpha
 var thegame = function(game) {
     rotateDirection = 1;
     isShielded = false;
