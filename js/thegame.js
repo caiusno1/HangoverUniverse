@@ -108,7 +108,7 @@ thegame.prototype = {
 
     //Update Function - durchgehend kontinuierlich aufgerufen vom Spiel
     update: function () {
-        if(this.game.input.keyboard.isDown(Phaser.KeyCode.W) || this.btn_up_key.frame == '0')
+        if(this.game.input.keyboard.isDown(Phaser.KeyCode.W) || (this.btn_up_key && this.btn_up_key.frame == '0'))
         {
           if(player.y>=(bounds.y+30))
             player.y = player.y-7;
