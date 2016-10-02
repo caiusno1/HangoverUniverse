@@ -83,7 +83,7 @@ Oxygen.prototype = {
     * @param {number} amount - The amount to add to the current `Oxygen` value. The total will never exceed `maxOxygen`.
     * @return {Phaser.Sprite} This instance.
     */
-    eat: function (amount) {
+    refill: function (amount) {
 
         if (this.alive)
         {
