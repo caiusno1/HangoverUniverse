@@ -9,6 +9,11 @@ var thegame = function(game) {
     eventList=[];
     var bounds;
     flag_alreadydown=false;
+    up = false;
+    down = false;
+    right = false;
+    left = false;
+    interact = false;
 };
 var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
 
@@ -82,33 +87,27 @@ thegame.prototype = {
         else {
           // load touch buttons here
           alert("MOBIL");
-          var btn_up_key = this.game.add.button(200, this.game.height-475, 'btn_up', this.btn_up_down, this, 2, 1, 0);
+          var btn_up_key = this.game.add.button(200, this.game.height-475, 'btn_up', this.actionOnClick, this, 2, 1, 0);
+          btn_up_key.onInputDown.add(btn_up_down, this);
+          btn_up_key.onInputUp.add(btn_up_up, this);
           var btn_down = this.game.add.button(200, this.game.height-225, 'btn_down', this.actionOnClick, this, 2, 1, 0);
+          btn_down.onInputDown.add(btn_down_down, this);
+          btn_down.onInputUp.add(btn_down_up, this);
           var btn_left = this.game.add.button(50, this.game.height-350, 'btn_left', this.actionOnClick, this, 2, 1, 0);
+          btn_left.onInputDown.add(btn_left_down, this);
+          btn_left.onInputUp.add(btn_left_up, this);
           var btn_right = this.game.add.button(350, this.game.height-350, 'btn_right', this.actionOnClick, this, 2, 1, 0);
-          var btn_interact = this.game.add.button(1700, this.game.height-350, 'btn_interact', this.actionOnClick, this, 2, 1, 0);
+          btn_right.onInputDown.add(btn_right_down, this);
+          btn_right.onInputUp.add(btn_right_up, this);
+          var btn_interact = this.game.add.button(1700, this.game.height-350, 'btn_interact', this.interact, this, 2, 1, 0);
+          btn_interact.onInputDown.add(btn_interact_down, this);
+          btn_interact.onInputUp.add(btn_interact_up, this);
         }
-    },
-
-    btn_up_down: function () {
-      alert("OBEN");
-    },
-
-    btn_up_release: function () {
-    },
-
-    btn_down: function () {
-    },
-
-    btn_left: function () {
-    },
-
-    btn_right: function () {
     },
 
     //Update Function - durchgehend kontinuierlich aufgerufen vom Spiel
     update: function () {
-        if(this.game.input.keyboard.isDown(Phaser.KeyCode.W) || (this.btn_up_key && this.btn_up_key.frame == '0'))
+        if(this.game.input.keyboard.isDown(Phaser.KeyCode.W) || this.up)
         {
           if(player.y>=(bounds.y+30))
             player.y = player.y-7;
@@ -120,7 +119,7 @@ thegame.prototype = {
             player.animations.play('up');
           }
         }
-        if (this.game.input.keyboard.isDown(Phaser.KeyCode.S) || this.btn_down.frame == '0')
+        if (this.game.input.keyboard.isDown(Phaser.KeyCode.S) || this.down)
         {
             if(player.y<=(bounds.y+bounds.height-30))
               player.y=player.y+7;
@@ -132,7 +131,7 @@ thegame.prototype = {
               player.animations.play('down');
             }
         }
-        if (this.game.input.keyboard.isDown(Phaser.KeyCode.A) || this.btn_left.frame == '0')
+        if (this.game.input.keyboard.isDown(Phaser.KeyCode.A) || this.left)
         {
             if(player.x>=(bounds.x+30))
               player.x=player.x-7;
@@ -144,7 +143,7 @@ thegame.prototype = {
               player.animations.play('left');
             }
         }
-        if (this.game.input.keyboard.isDown(Phaser.KeyCode.D) || this.btn_right.frame == '0')
+        if (this.game.input.keyboard.isDown(Phaser.KeyCode.D) || this.right)
         {
             if(player.x<=(bounds.x+bounds.width-30))
               player.x=player.x+7;
@@ -185,7 +184,7 @@ thegame.prototype = {
            player.y>=element.y &&
            player.y<=element.y+element.height)
         {
-          if(self.game.input.keyboard.isDown(Phaser.KeyCode.SPACEBAR))
+          if(self.game.input.keyboard.isDown(Phaser.KeyCode.SPACEBAR) || self.interact)
           {
             if (this.flag_alreadydown == false) {
               eval(element.callbackfn)(self,element.sender);
@@ -212,6 +211,44 @@ thegame.prototype = {
     },
 
 };
+function btn_up_down() {
+  //alert("up down");
+  this.up = true;
+}
+function btn_up_up() {
+  //alert("up up");
+  this.up = false;
+}
+function btn_down_down() {
+  //alert("up down");
+  this.down = true;
+}
+function btn_down_up() {
+  //alert("up up");
+  this.down = false;
+}
+function btn_right_down() {
+  //alert("up down");
+  this.right = true;
+}
+function btn_right_up() {
+  //alert("up up");
+  this.right = false;
+}
+function btn_left_down() {
+  //alert("up down");
+  this.left = true;
+}
+function btn_left_up() {
+  //alert("up up");
+  this.left = false;
+}
+function btn_interact_up() {
+  this.interact = false;
+}
+function btn_interact_down() {
+  this.interact = true;
+}
 function changeRoomToGang1(self,sender)
 {
   self.game.spawnposition={x:460,y:510};
