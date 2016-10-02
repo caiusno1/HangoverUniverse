@@ -18,6 +18,7 @@ Vorrat_lev.prototype = {
         bounds = new Phaser.Rectangle(1200, 250, 700, 1300);
 
         this.eventList=[];
+        this.fire = true;
         //Steuerung und Physik reinladen
         cursors = this.game.input.keyboard.createCursorKeys();
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -63,17 +64,13 @@ Vorrat_lev.prototype = {
         player.body.height = 50;
 
         //FEUER!!!!
-        var emitter = this.game.add.emitter(800, 400, 400);
-        emitter.makeParticles(['fire1', 'fire2' ,'fire3']);
-        emitter.gravity = -300;
-        emitter.maxRotation = 90;
-        emitter.setAlpha(0.8, 0, 3000);
-        emitter.setScale(1, 0.5, 1, 1);
-        emitter.start(false, 600, 100);
-
-        //Particle Dirtline
-        emitter1 = this.game.add.emitter(this.game.world.centerX, this.game.world.centerY, 400);
-        emitter1.makeParticles( [ 'turbine1', 'turbine2'] );
+        var emitter1 = this.game.add.emitter(800, 400, 400);
+        emitter1.makeParticles(['fire1', 'fire2' ,'fire3']);
+        emitter1.gravity = -300;
+        emitter1.maxRotation = 90;
+        emitter1.setAlpha(0.8, 0, 3000);
+        emitter1.setScale(1, 0.5, 1, 1);
+        emitter1.start(false, 600, 100);
 
         //Worldbounds
         player.body.collideWorldBounds = false;
@@ -91,6 +88,10 @@ Vorrat_lev.prototype = {
 
     //Update Function - durchgehend kontinuierlich aufgerufen vom Spiel
     update: function () {
+      if(this.cache.getJSON('Vorrat_lev').sauerstoff=='0') {
+        this.fire = false;
+        //emitter1.destroy();
+      }
         if(this.game.input.keyboard.isDown(Phaser.KeyCode.W))
         {
           if(player.y>=(bounds.y+30))
@@ -162,34 +163,6 @@ Vorrat_lev.prototype = {
       */
     },
 
-    //Player-Rotation
-    rotatePlayer : function()
-    {
-        player.angle +=rotationSpeed * rotateDirection;
-
-    },
-
-    //Player nach vorne Gas Geben 'DASH'
-    dash : function()
-    {
-        player.angle +=0 ;
-        this.game.physics.arcade.velocityFromAngle(player.angle + 90, playerDashSpeed, player.body.velocity);
-    },
-
-    //PartikelSystem für Player-Dirtlines hinter sich her ziehen
-    particleDirtLine : function()
-    {
-        var px = player.angle;
-        var py = player.angle;
-
-        emitter1.minParticleSpeed.set(px,py);
-        emitter1.maxParticleSpeed.set(px,py);
-
-        emitter1.x = player.x;
-        emitter1.y = player.y;
-
-        emitter1.start(true, playerParticleLifetime,null,playerParticleAmount);
-    },
     registerevent: function(callbackfn,x,y,width,height,sender){
       newevent={"x":x,"y":y,"width":width,"height":height,"sender":sender,"callbackfn":callbackfn};
       //var graphics=this.game.add.graphics(0,0);
@@ -198,6 +171,7 @@ Vorrat_lev.prototype = {
       this.eventList.push(newevent);
 
     },
+
     askevent: function()
     {
       var self=this;
@@ -225,6 +199,7 @@ Vorrat_lev.prototype = {
         }
       })
     },
+
     debugEvents: function()
     {
       var self=this;
@@ -248,5 +223,6 @@ function essenTrigger(self,sender)
 }
 function todDurchFeuer(self, sender)
 {
-  self.game.Leben.damage(1);
+  if(self.fire)
+    self.game.Leben.damage(1);
 }

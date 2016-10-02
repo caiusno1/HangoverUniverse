@@ -81,6 +81,7 @@ Lebenserhaltung_lev.prototype = {
 
         //Book Lebenserhaltungsraum
         this.registerevent(showBookLebenserhaltungsraum,1750,500,100,130,"test");
+        this.registerevent(sauerstoffAnAus,1500,400,100,100,"test");
 
         //Nur ein Key (TEST 1/2)
         //var key = this.game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
@@ -260,4 +261,7 @@ function showBookLebenserhaltungsraum(self,sender)
     bookIsFrontLebenserhaltungsraum = false;
     bookImgLebenserhaltungsraum = undefined;
   }
+}
+function sauerstoffAnAus(self, sender) {
+    self.cache.getJSON('Vorrat_lev').sauerstoff = 0;
 }
