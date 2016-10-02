@@ -1,6 +1,7 @@
 Oxygen = function (game) {
   this.alive = true;
   this.game = game;
+  this.oxyAn = false;
 };
 
 Oxygen.prototype = {
@@ -113,9 +114,11 @@ Oxygen.prototype = {
       this.damage(1);
     },
     start: function(){
+      this.oxyAn = true;
       this.timerEvents=this.game.time.events.loop(Phaser.Timer.SECOND,  this.updateCounter, this);
     },
     stop:function(){
+      this.oxyAn = false;
       this.game.time.events.remove(this.timerEvents);
     }
 

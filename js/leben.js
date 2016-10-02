@@ -1,6 +1,7 @@
 Leben = function (game) {
   this.alive = true;
   this.game = game;
+  this.lif = false;
 };
 
 Leben.prototype = {
@@ -101,10 +102,14 @@ Leben.prototype = {
 
     healing: function(){
       if(this.game.Hunger.getHunger()>=80){
+        if(this.lif==false){
         this.game.Leben.start();
+        }
       }
       else{
+        if(this.lif){
         this.game.Leben.stop();
+        }
       }
     },
 
@@ -114,9 +119,11 @@ Leben.prototype = {
       this.heal(1);
     },
     start: function(){
+      this.lif = true;
       this.timerEvents=this.game.time.events.loop(Phaser.Timer.SECOND*4,  this.updateCounter, this);
     },
     stop:function(){
+      this.lif = false;
       this.game.time.events.remove(this.timerEvents);
     }
 

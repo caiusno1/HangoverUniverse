@@ -73,7 +73,7 @@ thegame.prototype = {
         this.game.Hud.start();
         this.game.Hunger.start();
         this.game.Oxygen.usk(this.cache.getJSON('spawn_lev').sauerstoff);
-        this.game.Leben.healing();
+
 
         //Mobil
         if(this.game.device.desktop === true) {
@@ -149,6 +149,7 @@ thegame.prototype = {
 
         this.askevent();
         this.game.Hud.updateHud();
+        //this.game.Leben.healing();
     },
 
     registerevent: function(callbackfn,x,y,width,height,sender){
