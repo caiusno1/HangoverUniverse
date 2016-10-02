@@ -107,7 +107,7 @@ thegame.prototype = {
 
     //Update Function - durchgehend kontinuierlich aufgerufen vom Spiel
     update: function () {
-        if(this.game.input.keyboard.isDown(Phaser.KeyCode.W))
+        if(this.game.input.keyboard.isDown(Phaser.KeyCode.W) || this.btn_up_key.frame == '0')
         {
           if(player.y>=(bounds.y+30))
             player.y = player.y-7;
@@ -119,7 +119,7 @@ thegame.prototype = {
             player.animations.play('up');
           }
         }
-        if (this.game.input.keyboard.isDown(Phaser.KeyCode.S))
+        if (this.game.input.keyboard.isDown(Phaser.KeyCode.S) || this.btn_down.frame == '0')
         {
             if(player.y<=(bounds.y+bounds.height-30))
               player.y=player.y+7;
@@ -131,7 +131,7 @@ thegame.prototype = {
               player.animations.play('down');
             }
         }
-        if (this.game.input.keyboard.isDown(Phaser.KeyCode.A))
+        if (this.game.input.keyboard.isDown(Phaser.KeyCode.A) || this.btn_left.frame == '0')
         {
             if(player.x>=(bounds.x+30))
               player.x=player.x-7;
@@ -143,7 +143,7 @@ thegame.prototype = {
               player.animations.play('left');
             }
         }
-        if (this.game.input.keyboard.isDown(Phaser.KeyCode.D))
+        if (this.game.input.keyboard.isDown(Phaser.KeyCode.D) || this.btn_right.frame == '0')
         {
             if(player.x<=(bounds.x+bounds.width-30))
               player.x=player.x+7;
