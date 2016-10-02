@@ -6,7 +6,13 @@ var boot = function(game){
 
 boot.prototype = {
     preload: function(){
-        this.game.load.image("loading","assets/background/loading.png");
+        //this.game.load.image("loading","assets/background/loading.png");
+        video = game.add.video('space');
+
+        video.play(true);
+
+        //  x, y, anchor x, anchor y, scale x, scale y
+        video.addToWorld();
 
     },
     create: function(){
