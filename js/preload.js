@@ -19,10 +19,11 @@ preload.prototype = {
 
         //backgrounds tiles etc vorladen
         this.game.load.image("bgTitleScreen","assets/background/background_titlescreen.png");
-        this.game.load.image("bgStage", "Bilder/Spawn_neu.png");
-        this.game.load.image("bgTutGang","Bilder/Tut_Gang_neuePersp.png");
-        this.game.load.image("bgVorrat","Bilder/Tut_Vorräte.png");
-        this.game.load.image("bgLebenserhaltung","Bilder/Tut_Lebenserhaltung_neu.png");
+        this.game.load.image("bgDeathScreen","assets/background/background_deathscreen.png");
+        this.game.load.image("bgStage", "assets/background/bgSpawn.png");
+        this.game.load.image("bgTutGang","assets/background/bgTutGang.png");
+        this.game.load.image("bgVorrat","assets/background/bgVorrat.png");
+        this.game.load.image("bgLebenserhaltung","assets/Background/bgLebenserhaltung.png");
 
         this.game.load.spritesheet("replay", "assets/background/button_replay.png",230,130);
         this.game.load.spritesheet("play", "assets/background/button_play.png",200,200);
@@ -41,7 +42,7 @@ preload.prototype = {
 
 
         //Player-Enemy-Powerups
-        this.game.load.spritesheet("playerRocket","Bilder/char_8in1_astronaut.png",100,100,8);
+        this.game.load.spritesheet("playerRocket","assets/player/char_8in1_astronaut.png",100,100,8);
 
         this.game.load.spritesheet("enemyMine", "assets/enemies/mine.png",48,48);
         this.game.load.spritesheet("enemyBomb", "assets/enemies/alienbomb.png",48,48);
@@ -60,9 +61,9 @@ preload.prototype = {
         this.game.load.image("explodeMine", "assets/particles/mineCollision.png");
         this.game.load.image("explodeBomb", "assets/particles/bombCollision.png");
 
-        this.game.load.image("fire1", "Bilder/fire1.png");
-        this.game.load.image("fire2", "Bilder/fire2.png");
-        this.game.load.image("fire3", "Bilder/fire3.png");
+        this.game.load.image("fire1", "assets/particles/fire1.png");
+        this.game.load.image("fire2", "assets/particles/fire2.png");
+        this.game.load.image("fire3", "assets/particles/fire3.png");
 
         //HUD
         this.game.load.image("lifebar", "assets/hud/lifebar.png");

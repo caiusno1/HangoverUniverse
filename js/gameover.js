@@ -11,7 +11,7 @@ gameover.prototype = {
 
 
         //Background Image
-        this.game.add.sprite(0,0,"bgTitleScreen",this);
+        this.game.add.sprite(0,0,"bgDeathScreen",this);
         //Highscore Image View hinzufuegen
         //this.game.add.sprite(this.game.world.centerX-175,35,"highscore");
 
@@ -20,10 +20,10 @@ gameover.prototype = {
         //var scoreText = this.game.add.text(this.game.world.centerX-90, 90, '0', { font: "36px Roboto", fill: "white", align: "center",stroke:"black",strokeThickness:3});
         //scoreText.setText('Score: ' + pointCounter);
 
-        var style = { font: "80px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 5};
+        /*var style = { font: "80px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 5};
         var gameTitleText = this.game.add.text(this.world.centerX,this.world.centerY-100, 'Du bist gestorben',style);
         gameTitleText.anchor.set(0.5);
-        gameTitleText.alpha = 1;
+        gameTitleText.alpha = 1;*/
 
         //ReplayButton Hinzufuegen
         var replayButton = this.game.add.button(this.world.centerX,this.world.centerY,"replay",this.playTheGame,this,1,0,2);
@@ -39,9 +39,6 @@ gameover.prototype = {
         //MuteButton
         muteButton = this.game.add.button(this.world.width-25,30,"mute",this.muteGame,this,1,0,2);
         muteButton.anchor.setTo(0.5,0.5);
-
-
-
     },
     playTheGame: function(){
         sound_bg.stop();
