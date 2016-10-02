@@ -24,6 +24,7 @@ Hunger.prototype = {
     * @default
     */
     maxHunger: 100,
+    lowHunger:0,
 
     /**
     * Damages the Game Object. This removes the given amount of Hunger from the `Hunger` property.
@@ -44,9 +45,10 @@ Hunger.prototype = {
             {
                 this.game.Leben.damage(1);
             }
-            else if (this.hunger <= 0)
+            else if (this.hunger <= this.lowHunger)
             {
-                this.game.state.start("GameOver");
+                this.hunger = this.lowHunger;
+                this.game.Leben.damage(4);
             }
         }
 
@@ -108,10 +110,10 @@ Hunger.prototype = {
       this.damage(1);
     },
     start: function(){
-      timerEvents=this.game.time.events.loop(Phaser.Timer.SECOND*5,  this.updateCounter, this);
+      this.timerEvents=this.game.time.events.loop(Phaser.Timer.SECOND*5,  this.updateCounter, this);
     },
     stop:function(){
-      this.game.time.events.remove(timerEvents);
+      this.game.time.events.remove(this.timerEvents);
     }
 
 };

@@ -76,11 +76,13 @@ Gang_lev.prototype = {
         //this.debugEvents();
 
         //Book KeinZutritt
+        this.registerevent(showBookKeinZutritt,1500,460,100,150,"test");
 
         //ComHUD
         this.game.Hud.start();
         this.game.Hunger.start();
         this.game.Oxygen.usk(this.cache.getJSON('Gang_lev').sauerstoff);
+        this.game.Leben.healing();
     },
 
 
@@ -237,6 +239,7 @@ function changeRaumLebenserhaltung(self,sender)
   self.game.spawnposition={x:1775,y:1650};
   self.game.state.start("Lebenserhaltung_lev");
 }
+function showBookKeinZutritt(self,sender)
 {
   if (!bookImgKeinZutritt) {
     //book Image

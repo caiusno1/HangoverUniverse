@@ -73,8 +73,22 @@ thegame.prototype = {
         this.game.Hud.start();
         this.game.Hunger.start();
         this.game.Oxygen.usk(this.cache.getJSON('spawn_lev').sauerstoff);
+        this.game.Leben.healing();
+
+        //Mobil
+        if(this.game.device.desktop === true) {
+          return;
+        }
+        else {
+          // load touch buttons here
+          alert("MOBIL");
+          var btn_up = game.add.button(game.world.centerX - 95, 400, 'btn_up', actionOnClick, this, 2, 1, 0);
+        }
     },
 
+    actionOnClick: function () {
+        alert("Click!");
+    },
 
     //Update Function - durchgehend kontinuierlich aufgerufen vom Spiel
     update: function () {

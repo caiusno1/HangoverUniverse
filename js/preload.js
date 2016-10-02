@@ -76,6 +76,13 @@ preload.prototype = {
         this.game.load.image("bookImgLebenserhaltungsraum", "assets/background/bookImgLebenserhaltungsraum.png");
         this.game.load.image("bookImgKeinZutritt", "assets/background/bookImgKeinZutritt.png");
 
+        //Mobile
+        this.game.load.image("btn_up", "assets/mobile/btn_up.png");
+        this.game.load.image("btn_down", "assets/mobile/btn_down.png");
+        this.game.load.image("btn_left", "assets/mobile/btn_left.png");
+        this.game.load.image("btn_right", "assets/mobile/btn_right.png");
+        this.game.load.image("btn_interact", "assets/mobile/btn_interact.png");
+
         //Audio
         //GameTitle / GameOver Background Sound
         this.game.load.audio('sound_bgloop', ['assets/sounds/loop_menu.mp3','assets/sounds/loop_menu.ogg']);

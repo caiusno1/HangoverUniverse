@@ -97,6 +97,27 @@ Leben.prototype = {
 
         return this;
 
+    },
+
+    healing: function(){
+      if(this.game.Hunger.getHunger()>=80){
+        this.game.Leben.start();
+      }
+      else{
+        this.game.Leben.stop();
+      }
+    },
+
+
+
+    updateCounter: function(){
+      this.heal(1);
+    },
+    start: function(){
+      this.timerEvents=this.game.time.events.loop(Phaser.Timer.SECOND*4,  this.updateCounter, this);
+    },
+    stop:function(){
+      this.game.time.events.remove(this.timerEvents);
     }
 
 };
