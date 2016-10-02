@@ -64,13 +64,13 @@ Vorrat_lev.prototype = {
         player.body.height = 50;
 
         //FEUER!!!!
-        var emitter1 = this.game.add.emitter(800, 400, 400);
-        emitter1.makeParticles(['fire1', 'fire2' ,'fire3']);
-        emitter1.gravity = -300;
-        emitter1.maxRotation = 90;
-        emitter1.setAlpha(0.8, 0, 3000);
-        emitter1.setScale(1, 0.5, 1, 1);
-        emitter1.start(false, 600, 100);
+        this.emitter1 = this.game.add.emitter(800, 400, 400);
+        this.emitter1.makeParticles(['fire1', 'fire2' ,'fire3']);
+        this.emitter1.gravity = -300;
+        this.emitter1.maxRotation = 90;
+        this.emitter1.setAlpha(0.8, 0, 3000);
+        this.emitter1.setScale(1, 0.5, 1, 1);
+        this.emitter1.start(false, 600, 100);
 
         //Worldbounds
         player.body.collideWorldBounds = false;
@@ -91,7 +91,8 @@ Vorrat_lev.prototype = {
     update: function () {
       if(this.cache.getJSON('Vorrat_lev').sauerstoff=='0') {
         this.fire = false;
-        //emitter1.destroy();
+        if(this.emitter1 && this.emitter1.on)
+          this.emitter1.on = false;
       }
         if(this.game.input.keyboard.isDown(Phaser.KeyCode.W))
         {

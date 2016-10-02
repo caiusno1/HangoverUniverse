@@ -81,12 +81,12 @@ Lebenserhaltung_lev.prototype = {
 
         //Book Lebenserhaltungsraum
         this.registerevent(showBookLebenserhaltungsraum,1750,500,100,130,"test");
-        this.registerevent(sauerstoffAnAus,1500,400,100,100,"test");
+        this.registerevent(sauerstoffAnAus,1400,300,200,200,"test");
 
         //Nur ein Key (TEST 1/2)
         //var key = this.game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
         //key.onDown = this.onSpacePress;
-        
+
         this.game.Hud.start();
         this.game.Hunger.start();
         this.game.Oxygen.usk(this.cache.getJSON('Lebenserhaltung_lev').sauerstoff);
