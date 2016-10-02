@@ -100,7 +100,7 @@ Leben.prototype = {
     },
 
     healing: function(){
-      if(this.game.Leben.getLeben()>=80){
+      if(this.game.Hunger.getHunger()>=80){
         this.game.Leben.start();
       }
       else{
