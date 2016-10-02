@@ -76,18 +76,33 @@ thegame.prototype = {
 
 
         //Mobil
-        if(this.game.device.desktop === true) {
+        if(this.game.device.desktop == true) {
           return;
         }
         else {
           // load touch buttons here
           alert("MOBIL");
-          var btn_up = game.add.button(game.world.centerX - 95, 400, 'btn_up', actionOnClick, this, 2, 1, 0);
+          var btn_up_key = this.game.add.button(200, this.game.height-475, 'btn_up', this.btn_up_down, this, 2, 1, 0);
+          var btn_down = this.game.add.button(200, this.game.height-225, 'btn_down', this.actionOnClick, this, 2, 1, 0);
+          var btn_left = this.game.add.button(50, this.game.height-350, 'btn_left', this.actionOnClick, this, 2, 1, 0);
+          var btn_right = this.game.add.button(350, this.game.height-350, 'btn_right', this.actionOnClick, this, 2, 1, 0);
+          var btn_interact = this.game.add.button(1700, this.game.height-350, 'btn_interact', this.actionOnClick, this, 2, 1, 0);
         }
     },
 
-    actionOnClick: function () {
-        alert("Click!");
+    btn_up_down: function () {
+    },
+
+    btn_up_release: function () {
+    },
+
+    btn_down: function () {
+    },
+
+    btn_left: function () {
+    },
+
+    btn_right: function () {
     },
 
     //Update Function - durchgehend kontinuierlich aufgerufen vom Spiel
