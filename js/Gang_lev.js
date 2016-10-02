@@ -239,6 +239,7 @@ function changeRaumLebenserhaltung(self,sender)
   self.game.spawnposition={x:1775,y:1650};
   self.game.state.start("Lebenserhaltung_lev");
 }
+function showBookKeinZutritt(self,sender)
 {
   if (!bookImgKeinZutritt) {
     //book Image
