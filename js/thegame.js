@@ -70,6 +70,7 @@ thegame.prototype = {
         this.game.Hud.start();
         this.game.Hunger.start();
         this.game.Oxygen.usk(this.cache.getJSON('spawn_lev').sauerstoff);
+        this.game.Leben.healing();
     },
 
 

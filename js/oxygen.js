@@ -101,6 +101,7 @@ Oxygen.prototype = {
     usk: function(bool){
       if(bool=="1"){
         //console.log("Oxy");
+        this.stop();
       }
       else {
         //console.log("NoOxy");
@@ -112,10 +113,10 @@ Oxygen.prototype = {
       this.damage(1);
     },
     start: function(){
-      timerEvents=this.game.time.events.loop(Phaser.Timer.SECOND,  this.updateCounter, this);
+      this.timerEvents=this.game.time.events.loop(Phaser.Timer.SECOND,  this.updateCounter, this);
     },
     stop:function(){
-      this.game.time.events.remove(timerEvents);
+      this.game.time.events.remove(this.timerEvents);
     }
 
 };

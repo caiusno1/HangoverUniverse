@@ -81,6 +81,7 @@ Gang_lev.prototype = {
         this.game.Hud.start();
         this.game.Hunger.start();
         this.game.Oxygen.usk(this.cache.getJSON('Gang_lev').sauerstoff);
+        this.game.Leben.healing();
     },
 
 
