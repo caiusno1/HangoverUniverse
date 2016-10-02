@@ -7,9 +7,9 @@ var boot = function(game){
 boot.prototype = {
     preload: function(){
         //this.game.load.image("loading","assets/background/loading.png");
-        video = game.add.video('space');
+        var video = this.game.add.video('intro');
 
-        video.play(true);
+        video.play(false);
 
         //  x, y, anchor x, anchor y, scale x, scale y
         video.addToWorld();

@@ -15,7 +15,7 @@ preload.prototype = {
         this.load.json("Vorrat_lev","js/Vorrat_lev.json");
         this.load.json("Lebenserhaltung_lev","js/Lebenserhaltung_lev.json");
 
-        this.game.load.video('intro', 'Video/RaumschiffIntro.mp4');
+        this.game.load.video('intro', 'Videos/RaumschiffIntro.mp4');
         loadingBar.anchor.setTo(0.5,0.5);
         this.load.setPreloadSprite(loadingBar);
 
