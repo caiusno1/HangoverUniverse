@@ -74,7 +74,7 @@ Lebenserhaltung_lev.prototype = {
 
         //Worldbounds
         //this.eventList =  this.cache.getJSON('Lebenserhaltung_lev');
-        this.registerevent(changeRoomToGang3,1720,1460,1820-1720,1570-1460,"test");
+        this.registerevent(changeRoomToGang3,1650,1460,225,250,"test");
         //this.debugEvents();
 
         //this.registerevent(showBook,800,750,200,200,"test");
@@ -86,7 +86,7 @@ Lebenserhaltung_lev.prototype = {
         //Nur ein Key (TEST 1/2)
         //var key = this.game.input.keyboard.addKey(Phaser.KeyCode.SPACEBAR);
         //key.onDown = this.onSpacePress;
-        
+
         this.game.Hud.start();
         this.game.Hunger.start();
         this.game.Oxygen.usk(this.cache.getJSON('Lebenserhaltung_lev').sauerstoff);
