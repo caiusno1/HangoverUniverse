@@ -24,7 +24,7 @@ preload.prototype = {
         this.game.load.image("bgStage", "assets/background/bgSpawn.png");
         this.game.load.image("bgTutGang","assets/background/bgTutGang.png");
         this.game.load.image("bgVorrat","assets/background/bgVorrat.png");
-        this.game.load.image("bgLebenserhaltung","assets/Background/bgLebenserhaltung.png");
+        this.game.load.image("bgLebenserhaltung","assets/background/bgLebenserhaltung.png");
 
         this.game.load.spritesheet("replay", "assets/background/button_replay.png",230,130);
         this.game.load.spritesheet("play", "assets/background/button_play.png",200,200);
