@@ -15,6 +15,7 @@ var Vorrat_lev = function(game){
     interact = false;
 };
 var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
+var eventHintImg = undefined;
 
 Vorrat_lev.prototype = {
 
@@ -171,10 +172,15 @@ Vorrat_lev.prototype = {
             }
         }
         debugcounter=debugcounter+1;
+        eventHintImgCounter=eventHintImgCounter+1;
         if(debugcounter==100)
         {
             console.log(player.x+"/"+player.y);
             debugcounter=0;
+        }
+        if(eventHintImgCounter >= 10) {
+          showEventHint(self, false);
+          eventHintImgCounter = 0;
         }
 
         this.askevent();
@@ -211,6 +217,7 @@ Vorrat_lev.prototype = {
            player.y>=element.y &&
            player.y<=element.y+element.height)
         {
+            showEventHint(self, true);
             if(self.game.input.keyboard.isDown(Phaser.KeyCode.SPACEBAR) ||self.interact)
             {
               if (this.flag_alreadydown == false) {
@@ -279,6 +286,20 @@ function btn_interact_up() {
 }
 function btn_interact_down() {
   this.interact = true;
+}
+function showEventHint(self, toShow) {
+  if (toShow) {
+    //Event Image
+    if (!eventHintImg) {
+      eventHintImg = self.game.add.sprite(self.game.world.width-50,self.game.world.height-50,"eventHintImg",this);
+    }
+  }
+  else {
+    if (eventHintImg) {
+      eventHintImg.destroy();
+      eventHintImg = undefined;
+    }
+  }
 }
 function changeRoomToGang2(self,sender)
 {

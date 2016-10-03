@@ -16,6 +16,7 @@ var Lebenserhaltung_lev = function(game){
 };
 var bookIsFrontLebenserhaltungsraum = false;
 var bookImgLebenserhaltungsraum = undefined;
+var eventHintImg = undefined;
 var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
 
 Lebenserhaltung_lev.prototype = {
@@ -179,10 +180,15 @@ Lebenserhaltung_lev.prototype = {
             }
         }
         debugcounter=debugcounter+1;
+        eventHintImgCounter=eventHintImgCounter+1;
         if(debugcounter==100)
         {
             console.log(player.x+"/"+player.y);
             debugcounter=0;
+        }
+        if(eventHintImgCounter >= 10) {
+          showEventHint(self, false);
+          eventHintImgCounter = 0;
         }
 
         this.askevent();
@@ -246,6 +252,7 @@ Lebenserhaltung_lev.prototype = {
            player.y>=element.y &&
            player.y<=element.y+element.height)
         {
+            showEventHint(self, true);
             if(self.game.input.keyboard.isDown(Phaser.KeyCode.SPACEBAR) || self.interact)
             {
                 if (this.flag_alreadydown == false) {
@@ -315,6 +322,20 @@ function changeRoomToGang3(self,sender)
 {
   self.game.spawnposition={x:1100,y:450};
   self.game.state.start("Gang_lev");
+}
+function showEventHint(self, toShow) {
+  if (toShow) {
+    //Event Image
+    if (!eventHintImg) {
+      eventHintImg = self.game.add.sprite(self.game.world.width-50,self.game.world.height-50,"eventHintImg",this);
+    }
+  }
+  else {
+    if (eventHintImg) {
+      eventHintImg.destroy();
+      eventHintImg = undefined;
+    }
+  }
 }
 function showBookLebenserhaltungsraum(self,sender)
 {

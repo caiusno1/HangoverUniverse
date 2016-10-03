@@ -17,4 +17,5 @@ var playerDashSpeed = -300;
 var eventList_Spawn=[];
 var eventList_Gang=[];
 
-var debugcounter=0;
+var debugcounter = 0;
+var eventHintImgCounter = 0;

@@ -78,6 +78,8 @@ preload.prototype = {
         this.game.load.image("bookImgLebenserhaltungsraum", "assets/background/bookImgLebenserhaltungsraum.png");
         this.game.load.image("bookImgKeinZutritt", "assets/background/bookImgKeinZutritt.png");
 
+        this.game.load.image("eventHintImg", "assets/background/eventHintImg.png");
+
         //Mobile
         this.game.load.image("btn_up", "assets/mobile/btn_up.png");
         this.game.load.image("btn_down", "assets/mobile/btn_down.png");
@@ -92,8 +94,6 @@ preload.prototype = {
 
         //ButtonClick Sound
         this.game.load.audio('sound_buttonclick', ["assets/sounds//buttonsound.mp3","assets/sounds/buttonsound.ogg"]);
-
-
     },
     create: function(){
         this.game.state.start("GameTitle");
