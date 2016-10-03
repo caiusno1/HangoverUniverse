@@ -86,7 +86,7 @@ thegame.prototype = {
         }
         else {
           // load touch buttons here
-          alert("MOBIL");
+          //alert("MOBIL");
           var btn_up_key = this.game.add.button(200, this.game.height-475, 'btn_up', this.actionOnClick, this, 2, 1, 0);
           btn_up_key.onInputDown.add(btn_up_down, this);
           btn_up_key.onInputUp.add(btn_up_up, this);
