@@ -12,6 +12,7 @@ preload.prototype = {
         var loadingBar = this.add.sprite(this.world.centerX,this.world.centerY,"loading");
         this.load.json("spawn_lev","js/spawn_lev.json");
         this.load.json("Gang_lev","js/Gang_lev.json");
+        this.load.json("Gang_lev2","js/Gang_lev2.json");
         this.load.json("Vorrat_lev","js/Vorrat_lev.json");
         this.load.json("Lebenserhaltung_lev","js/Lebenserhaltung_lev.json");
 

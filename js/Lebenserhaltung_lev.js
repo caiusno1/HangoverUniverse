@@ -80,7 +80,7 @@ Lebenserhaltung_lev.prototype = {
         //Worldbounds
         //this.eventList =  this.cache.getJSON('Lebenserhaltung_lev');
         this.registerevent(changeRoomToGang3,1650,1460,225,250,"test");
-        //this.debugEvents();
+        debugEvents(this);
 
         //this.registerevent(showBook,800,750,200,200,"test");
 

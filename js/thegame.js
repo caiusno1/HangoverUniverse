@@ -155,15 +155,19 @@ thegame.prototype = {
               player.animations.play('right');
             }
         }
-        debugcounter=debugcounter+1;
-        if(debugcounter==100)
+        if(enabledebug)
         {
+          debugcounter=debugcounter+1;
+          if(debugcounter==100)
+          {
             console.log(player.x+"/"+player.y);
             debugcounter=0;
+          }
         }
 
         this.askevent();
         this.game.Hud.updateHud();
+        debugEvents(this);
         //this.game.Leben.healing();
     },
 
@@ -198,18 +202,7 @@ thegame.prototype = {
           }
         }
       })
-    },
-    debugEvents: function()
-    {
-      var self=this;
-      var graphics=self.game.add.graphics(0,0);
-      graphics.lineStyle(4,0xffd900,1);
-      this.eventList.forEach(function(element){
-        graphics.drawRect(element.x,element.y,element.width,element.height);
-      });
-
-    },
-
+    }
 };
 function btn_up_down() {
   //alert("up down");

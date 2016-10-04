@@ -1,7 +1,7 @@
 /**
  * Created by Schlag on 01.07.2016
  */
-var Gang_lev = function(game){
+var Gang_lev2 = function(game){
     rotateDirection = 1;
     isShielded = false;
     isBoosted = false;
@@ -16,7 +16,7 @@ var Gang_lev = function(game){
 };
 var bookImgKeinZutritt = undefined;
 
-Gang_lev.prototype = {
+Gang_lev2.prototype = {
 
 
     create : function(){
@@ -28,7 +28,8 @@ Gang_lev.prototype = {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         //BackgroundTile hinzufuegen
-        bgTileSprite = this.game.add.tileSprite(0, 0, 1920, 1080, 'bgTutGang');
+        bgTileSprite = this.game.add.tileSprite(1920, 1130, 1920, 1080, 'bgTutGang');
+        bgTileSprite.angle=180;
         //Sprite hinzufuegen und auf Spieler setzen
         player = this.game.add.sprite(200,500,'playerRocket');
 
@@ -72,21 +73,21 @@ Gang_lev.prototype = {
 
         //Worldbounds
         player.body.collideWorldBounds = true;
-        //this.eventList =  this.cache.getJSON('Gang_lev');
-        this.registerevent(changeRoomBackDoor,350,400,100,200,"back");
-        this.registerevent(changeRaumVorrat,600,400,200,100,"vorrat");
-        this.registerevent(changeRaumLebenserhaltung,1100,400,200,100,"Lebenserhaltung");
+        this.eventList =  this.cache.getJSON('Gang_lev2').events;
+        //this.registerevent(changeRoomBackDoor,350,480,100,200,"back");
+        //this.registerevent(changeRaumVorrat,600,650,200,100,"vorrat");
+        //this.registerevent(changeRaumLebenserhaltung,1100,650,200,100,"Lebenserhaltung");
 
 
         debugEvents(this);
 
         //Book KeinZutritt
-        this.registerevent(showBookKeinZutritt,1500,460,100,150,"test");
+        //this.registerevent(showBookKeinZutritt,1500,510,100,150,"test");
 
         //ComHUD
         this.game.Hud.start();
         this.game.Hunger.start();
-        this.game.Oxygen.usk(this.cache.getJSON('Gang_lev').sauerstoff);
+        this.game.Oxygen.usk(this.cache.getJSON('Gang_lev2').sauerstoff);
         this.game.Leben.healing();
 
         if(this.game.device.desktop == true) {
@@ -236,20 +237,7 @@ Gang_lev.prototype = {
             }
         }
       })
-    },
-    debugEvents: function()
-    {
-      var self=this;
-      this.eventList.forEach(function(element){
-        var graphics=self.game.add.graphics(element.x,element.y);
-        graphics.lineStyle(4,0xffd900,1);
-        graphics.drawRect(0,0,element.width,element.height);
-      });
-
     }
-
-
-
 };
 function btn_up_down() {
   //alert("up down");

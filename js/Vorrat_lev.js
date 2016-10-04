@@ -83,7 +83,7 @@ Vorrat_lev.prototype = {
         this.registerevent(changeRoomToGang2,1280,1430,1460-1280,1525-1430,"test");
         this.registerevent(essenTrigger,1280,425,1425-1280,615-425,"test");
         this.registerevent(todDurchFeuer,1000, 590, 1710-1355+600, 905-845+300, "tod");
-        //this.debugEvents();
+        debugEvents(this);
 
         this.game.Hud.start();
         this.game.Hunger.start();

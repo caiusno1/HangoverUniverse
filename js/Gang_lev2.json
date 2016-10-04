@@ -1,0 +1,9 @@
+{
+  "events":[
+    {"x":350,"y":480,"width":100,"height":200,"sender":"back","callbackfn":"changeRoomBackDoor"},
+    {"x":600,"y":650,"width":200,"height":100,"sender":"vorrat","callbackfn":"changeRaumVorrat"},
+    {"x":1100,"y":650,"width":200,"height":100,"sender":"Lebenserhaltung","callbackfn":"changeRaumLebenserhaltung"},
+    {"x":1500,"y":510,"width":100,"height":150,"sender":"KeinZutritt","callbackfn":"showBookKeinZutritt"}
+  ],
+  "sauerstoff":"1"
+}
