@@ -15,7 +15,8 @@ var thegame = function(game) {
     left = false;
     interact = false;
 };
-var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
+var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black", strokeThickness: 3 };
+var eventHintImg = undefined;
 
 thegame.prototype = {
 
@@ -155,7 +156,9 @@ thegame.prototype = {
               player.animations.play('right');
             }
         }
+        eventHintImgCounter=eventHintImgCounter+1;
         if(enabledebug)
+        if(debugcounter == 100)
         {
           debugcounter=debugcounter+1;
           if(debugcounter==100)
@@ -163,6 +166,11 @@ thegame.prototype = {
             console.log(player.x+"/"+player.y);
             debugcounter=0;
           }
+        }
+
+        if(eventHintImgCounter >= 10) {
+          showEventHint(self, false);
+          eventHintImgCounter = 0;
         }
 
         this.askevent();
@@ -188,6 +196,7 @@ thegame.prototype = {
            player.y>=element.y &&
            player.y<=element.y+element.height)
         {
+          showEventHint(self, true);
           if(self.game.input.keyboard.isDown(Phaser.KeyCode.SPACEBAR) || self.interact)
           {
             if (this.flag_alreadydown == false) {
@@ -242,7 +251,21 @@ function btn_interact_up() {
 function btn_interact_down() {
   this.interact = true;
 }
-function changeRoomToGang1(self,sender)
+function showEventHint(self, toShow) {
+  if (toShow) {
+    //Event Image
+    if (!eventHintImg) {
+      eventHintImg = self.game.add.sprite(self.game.world.width-50,self.game.world.height-50,"eventHintImg",this);
+    }
+  }
+  else {
+    if (eventHintImg) {
+      eventHintImg.destroy();
+      eventHintImg = undefined;
+    }
+  }
+}
+function changeRoomToGang1(self, sender)
 {
   self.game.spawnposition={x:460,y:510};
   self.game.state.start("Gang_lev");

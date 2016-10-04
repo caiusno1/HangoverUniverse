@@ -15,6 +15,7 @@ var Gang_lev = function(game){
     interact = false;
 };
 var bookImgKeinZutritt = undefined;
+var eventHintImg = undefined;
 
 Gang_lev.prototype = {
 
@@ -166,10 +167,15 @@ Gang_lev.prototype = {
           }
       }
         debugcounter=debugcounter+1;
+        eventHintImgCounter=eventHintImgCounter+1;
         if(debugcounter==100)
         {
             console.log(player.x+"/"+player.y);
             debugcounter=0;
+        }
+        if(eventHintImgCounter >= 10) {
+          showEventHint(self, false);
+          eventHintImgCounter = 0;
         }
 
         this.askevent();
@@ -211,7 +217,6 @@ Gang_lev.prototype = {
       //graphics.lineStyle(4,0xffd900,1);
       //graphics.drawRect(0,0,width,height);
       this.eventList.push(newevent);
-
     },
     askevent: function()
     {
@@ -222,6 +227,7 @@ Gang_lev.prototype = {
            player.y>=element.y &&
            player.y<=element.y+element.height)
         {
+            showEventHint(self, true);
             if(self.game.input.keyboard.isDown(Phaser.KeyCode.SPACEBAR) || self.interact)
             {
               if (this.flag_alreadydown == false) {
@@ -247,8 +253,6 @@ Gang_lev.prototype = {
       });
 
     }
-
-
 
 };
 function btn_up_down() {
@@ -293,7 +297,6 @@ function changeRoomBackDoor(self,sender)
 {
   self.game.spawnposition={x:1600,y:400};
   self.game.state.start("TheGame");
-
 }
 function changeRaumVorrat(self,sender)
 {
@@ -304,6 +307,20 @@ function changeRaumLebenserhaltung(self,sender)
 {
   self.game.spawnposition={x:1775,y:1650};
   self.game.state.start("Lebenserhaltung_lev");
+}
+function showEventHint(self, toShow) {
+  if (toShow) {
+    //Event Image
+    if (!eventHintImg) {
+      eventHintImg = self.game.add.sprite(self.game.world.width-50,self.game.world.height-50,"eventHintImg",this);
+    }
+  }
+  else {
+    if (eventHintImg) {
+      eventHintImg.destroy();
+      eventHintImg = undefined;
+    }
+  }
 }
 function showBookKeinZutritt(self,sender)
 {

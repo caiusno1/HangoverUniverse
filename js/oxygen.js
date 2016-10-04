@@ -80,7 +80,7 @@ Oxygen.prototype = {
     },
 
     /**
-    * Heal the Game Object. This adds the given amount of Oxygen to the `Oxygen` property.
+    * Refill the Game Object. This adds the given amount of Oxygen to the `Oxygen` property.
     *
     * @member
     * @param {number} amount - The amount to add to the current `Oxygen` value. The total will never exceed `maxOxygen`.
