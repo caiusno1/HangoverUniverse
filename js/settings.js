@@ -19,3 +19,4 @@ var eventList_Gang=[];
 
 var debugcounter=0;
 
+var enabledebug=false;
