@@ -14,8 +14,10 @@ var playerParticleAmount = 1;
 //"Dash" Speed
 var playerDashSpeed = -300;
 
-var debugcounter=0;
+var World=undefined;
 
 var enabledebug=false;
 
 var eventHintImgCounter = 0;
+
+var tutorial = true;

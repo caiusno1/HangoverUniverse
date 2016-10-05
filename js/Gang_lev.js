@@ -14,6 +14,9 @@ var Gang_lev = function(game){
     left = false;
     interact = false;
 };
+Gang_lev.id = "Gang_lev";
+Gang_lev.doors = ["DoorHorizontalGangLeft","DoorHorizontalGangTopFirst","DoorHorizontalGangTopSecond","DoorHorizontalGangRight"];
+
 var bookImgKeinZutritt = undefined;
 var eventHintImg = undefined;
 
@@ -74,15 +77,12 @@ Gang_lev.prototype = {
         //Worldbounds
         player.body.collideWorldBounds = true;
         //this.eventList =  this.cache.getJSON('Gang_lev');
-        this.registerevent(changeRoomBackDoor,350,400,100,200,"back");
-        this.registerevent(changeRaumVorrat,600,400,200,100,"vorrat");
-        this.registerevent(changeRaumLebenserhaltung,1100,400,200,100,"Lebenserhaltung");
-
-
-        debugEvents(this);
+        this.registerevent(changeRoom,350,400,100,200,"DoorHorizontalGangLeft");
+        this.registerevent(changeRoom,600,400,200,100,"DoorHorizontalGangTopFirst");
+        this.registerevent(changeRoom,1100,400,200,100,"DoorHorizontalGangTopSecond");
 
         //Book KeinZutritt
-        this.registerevent(showBookKeinZutritt,1500,460,100,150,"test");
+        this.registerevent(changeRoom,1500,460,100,150,"DoorHorizontalGangRight");
 
         //ComHUD
         this.game.Hud.start();
@@ -112,6 +112,7 @@ Gang_lev.prototype = {
           btn_interact.onInputDown.add(btn_interact_down, this);
           btn_interact.onInputUp.add(btn_interact_up, this);
         }
+        CreationDebug(this);
     },
 
 
@@ -166,20 +167,15 @@ Gang_lev.prototype = {
             player.animations.play('right');
           }
       }
-        debugcounter=debugcounter+1;
-        eventHintImgCounter=eventHintImgCounter+1;
-        if(debugcounter==100)
-        {
-            console.log(player.x+"/"+player.y);
-            debugcounter=0;
-        }
-        if(eventHintImgCounter >= 10) {
+      eventHintImgCounter=eventHintImgCounter+1;
+      if(eventHintImgCounter >= 10) {
           showEventHint(self, false);
           eventHintImgCounter = 0;
         }
 
         this.askevent();
         this.game.Hud.updateHud();
+        UpdateDebug(this)
     },
 
     //Player-Rotation
@@ -242,18 +238,7 @@ Gang_lev.prototype = {
             }
         }
       })
-    },
-    debugEvents: function()
-    {
-      var self=this;
-      this.eventList.forEach(function(element){
-        var graphics=self.game.add.graphics(element.x,element.y);
-        graphics.lineStyle(4,0xffd900,1);
-        graphics.drawRect(0,0,element.width,element.height);
-      });
-
     }
-
 };
 function btn_up_down() {
   //alert("up down");
@@ -292,21 +277,6 @@ function btn_interact_up() {
 }
 function btn_interact_down() {
   this.interact = true;
-}
-function changeRoomBackDoor(self,sender)
-{
-  self.game.spawnposition={x:1600,y:400};
-  self.game.state.start("TheGame");
-}
-function changeRaumVorrat(self,sender)
-{
-  self.game.spawnposition={x:1330,y:1490};
-  self.game.state.start("Vorrat_lev");
-}
-function changeRaumLebenserhaltung(self,sender)
-{
-  self.game.spawnposition={x:1775,y:1650};
-  self.game.state.start("Lebenserhaltung_lev");
 }
 function showEventHint(self, toShow) {
   if (toShow) {

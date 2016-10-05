@@ -15,6 +15,10 @@ var thegame = function(game) {
     left = false;
     interact = false;
 };
+
+thegame.id = "thegame";
+thegame.doors =  ["DoorSpawnRight"];
+
 var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black", strokeThickness: 3 };
 var eventHintImg = undefined;
 
@@ -74,12 +78,11 @@ thegame.prototype = {
         //Worldbounds
         player.body.collideWorldBounds = true;
         //this.eventList =  this.cache.getJSON('spawn_lev').events;
-        this.registerevent(changeRoomToGang1,1425,270,200,200,"test");
-        //this.debugEvents();
+        this.registerevent(changeRoom,1425,270,200,200,"DoorSpawnRight");
         this.game.Hud.start();
         this.game.Hunger.start();
         this.game.Oxygen.usk(this.cache.getJSON('spawn_lev').sauerstoff);
-
+        CreationDebug(this);
 
         //Mobil
         if(this.game.device.desktop == true) {
@@ -157,16 +160,6 @@ thegame.prototype = {
             }
         }
         eventHintImgCounter=eventHintImgCounter+1;
-        if(enabledebug)
-        if(debugcounter == 100)
-        {
-          debugcounter=debugcounter+1;
-          if(debugcounter==100)
-          {
-            console.log(player.x+"/"+player.y);
-            debugcounter=0;
-          }
-        }
 
         if(eventHintImgCounter >= 10) {
           showEventHint(self, false);
@@ -175,7 +168,7 @@ thegame.prototype = {
 
         this.askevent();
         this.game.Hud.updateHud();
-        debugEvents(this);
+        UpdateDebug(this);
         //this.game.Leben.healing();
     },
 
@@ -264,9 +257,4 @@ function showEventHint(self, toShow) {
       eventHintImg = undefined;
     }
   }
-}
-function changeRoomToGang1(self, sender)
-{
-  self.game.spawnposition={x:460,y:510};
-  self.game.state.start("Gang_lev");
 }

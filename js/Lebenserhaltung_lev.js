@@ -14,6 +14,10 @@ var Lebenserhaltung_lev = function(game){
     left = false;
     interact = false;
 };
+
+Lebenserhaltung_lev.id = "Lebenserhaltung_lev";
+Lebenserhaltung_lev.doors = ["DoorLifeSupportBot"];
+
 var bookIsFrontLebenserhaltungsraum = false;
 var bookImgLebenserhaltungsraum = undefined;
 var eventHintImg = undefined;
@@ -80,8 +84,7 @@ Lebenserhaltung_lev.prototype = {
 
         //Worldbounds
         //this.eventList =  this.cache.getJSON('Lebenserhaltung_lev');
-        this.registerevent(changeRoomToGang3,1650,1460,225,250,"test");
-        debugEvents(this);
+        this.registerevent(changeRoom,1650,1460,225,250,"DoorLifeSupportBot");
 
         //this.registerevent(showBook,800,750,200,200,"test");
 
@@ -97,6 +100,7 @@ Lebenserhaltung_lev.prototype = {
         this.game.Hunger.start();
         this.game.Oxygen.usk(this.cache.getJSON('Lebenserhaltung_lev').sauerstoff);
         this.game.Leben.healing();
+        CreationDebug(this);
 
         if(this.game.device.desktop == true) {
           return;
@@ -179,13 +183,7 @@ Lebenserhaltung_lev.prototype = {
               player.animations.play('right');
             }
         }
-        debugcounter=debugcounter+1;
         eventHintImgCounter=eventHintImgCounter+1;
-        if(debugcounter==100)
-        {
-            console.log(player.x+"/"+player.y);
-            debugcounter=0;
-        }
         if(eventHintImgCounter >= 10) {
           showEventHint(self, false);
           eventHintImgCounter = 0;
@@ -193,6 +191,7 @@ Lebenserhaltung_lev.prototype = {
 
         this.askevent();
         this.game.Hud.updateHud();
+        UpdateDebug(this);
 
         //Bei Mouseclick/Touchklick das Player-Movement Dash mit Partikel Effekt
         /*if (this.game.input.activePointer.leftButton.isDown)
@@ -317,11 +316,6 @@ function btn_interact_up() {
 }
 function btn_interact_down() {
   this.interact = true;
-}
-function changeRoomToGang3(self,sender)
-{
-  self.game.spawnposition={x:1100,y:450};
-  self.game.state.start("Gang_lev");
 }
 function showEventHint(self, toShow) {
   if (toShow) {

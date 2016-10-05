@@ -14,6 +14,10 @@ var Vorrat_lev = function(game){
     left = false;
     interact = false;
 };
+
+Vorrat_lev.id = "Vorrat_lev";
+Vorrat_lev.doors = ["DoorVorratBot"];
+
 var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
 var eventHintImg = undefined;
 
@@ -81,15 +85,15 @@ Vorrat_lev.prototype = {
         //Worldbounds
         player.body.collideWorldBounds = false;
         //this.eventList =  this.cache.getJSON('Vorrat_lev');
-        this.registerevent(changeRoomToGang2,1280,1430,1460-1280,1525-1430,"test");
+        this.registerevent(changeRoom,1280,1430,1460-1280,1525-1430,"DoorVorratBot");
         this.registerevent(essenTrigger,1280,425,1425-1280,615-425,"test");
         this.registerevent(todDurchFeuer,1000, 590, 1710-1355+600, 905-845+300, "tod");
-        debugEvents(this);
 
         this.game.Hud.start();
         this.game.Hunger.start();
         this.game.Oxygen.usk(this.cache.getJSON('Vorrat_lev').sauerstoff);
         this.game.Leben.healing();
+        CreationDebug();
 
         if(this.game.device.desktop == true) {
           return;
@@ -171,13 +175,7 @@ Vorrat_lev.prototype = {
               player.animations.play('right');
             }
         }
-        debugcounter=debugcounter+1;
         eventHintImgCounter=eventHintImgCounter+1;
-        if(debugcounter==100)
-        {
-            console.log(player.x+"/"+player.y);
-            debugcounter=0;
-        }
         if(eventHintImgCounter >= 10) {
           showEventHint(self, false);
           eventHintImgCounter = 0;
@@ -185,6 +183,7 @@ Vorrat_lev.prototype = {
 
         this.askevent();
         this.game.Hud.updateHud();
+        UpdateDebug(this);
 
         //Bei Mouseclick/Touchklick das Player-Movement Dash mit Partikel Effekt
         /*if (this.game.input.activePointer.leftButton.isDown)
@@ -235,19 +234,7 @@ Vorrat_lev.prototype = {
             }
         }
       })
-    },
-
-    debugEvents: function()
-    {
-      var self=this;
-      var graphics=self.game.add.graphics(0,0);
-      graphics.lineStyle(4,0xffd900,1);
-      this.eventList.forEach(function(element){
-        graphics.drawRect(element.x,element.y,element.width,element.height);
-      });
-
-    },
-
+    }
 };
 function btn_up_down() {
   //alert("up down");
@@ -300,11 +287,6 @@ function showEventHint(self, toShow) {
       eventHintImg = undefined;
     }
   }
-}
-function changeRoomToGang2(self,sender)
-{
-  self.game.spawnposition={x:600,y:450};
-  self.game.state.start("Gang_lev");
 }
 function essenTrigger(self,sender)
 {

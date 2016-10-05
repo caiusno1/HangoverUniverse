@@ -15,6 +15,8 @@ var Gang_lev2 = function(game){
     interact = false;
 };
 var bookImgKeinZutritt = undefined;
+Gang_lev2.id = "Gang2_lev";
+Gang_lev2.doors = ["DoorHorizontal180GangLeft","DoorHorizontal180GangTopFirst","DoorHorizontal180GangTopSecond","DoorHorizontal180GangRight"];
 
 Gang_lev2.prototype = {
 
