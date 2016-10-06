@@ -12,6 +12,7 @@ preload.prototype = {
         var loadingBar = this.add.sprite(this.world.centerX,this.world.centerY,"loading");
         this.load.json("spawn_lev","js/spawn_lev.json");
         this.load.json("Gang_lev","js/Gang_lev.json");
+        this.load.json("Gang_lev2","js/Gang_lev2.json");
         this.load.json("Vorrat_lev","js/Vorrat_lev.json");
         this.load.json("Lebenserhaltung_lev","js/Lebenserhaltung_lev.json");
 
@@ -24,7 +25,7 @@ preload.prototype = {
         this.game.load.image("bgStage", "assets/background/bgSpawn.png");
         this.game.load.image("bgTutGang","assets/background/bgTutGang.png");
         this.game.load.image("bgVorrat","assets/background/bgVorrat.png");
-        this.game.load.image("bgLebenserhaltung","assets/Background/bgLebenserhaltung.png");
+        this.game.load.image("bgLebenserhaltung","assets/background/bgLebenserhaltung.png");
 
         this.game.load.spritesheet("replay", "assets/background/button_replay.png",230,130);
         this.game.load.spritesheet("play", "assets/background/button_play.png",200,200);
@@ -78,6 +79,8 @@ preload.prototype = {
         this.game.load.image("bookImgLebenserhaltungsraum", "assets/background/bookImgLebenserhaltungsraum.png");
         this.game.load.image("bookImgKeinZutritt", "assets/background/bookImgKeinZutritt.png");
 
+        this.game.load.image("eventHintImg", "assets/background/eventHintImg.png");
+
         //Mobile
         this.game.load.image("btn_up", "assets/mobile/btn_up.png");
         this.game.load.image("btn_down", "assets/mobile/btn_down.png");
@@ -92,8 +95,6 @@ preload.prototype = {
 
         //ButtonClick Sound
         this.game.load.audio('sound_buttonclick', ["assets/sounds//buttonsound.mp3","assets/sounds/buttonsound.ogg"]);
-
-
     },
     create: function(){
         this.game.state.start("GameTitle");

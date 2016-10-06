@@ -1,7 +1,7 @@
 /**
  * Created by Schlag on 01.07.2016
  */
-var Gang_lev = function(game){
+var Gang_lev2 = function(game){
     rotateDirection = 1;
     isShielded = false;
     isBoosted = false;
@@ -14,13 +14,11 @@ var Gang_lev = function(game){
     left = false;
     interact = false;
 };
-Gang_lev.id = "Gang_lev";
-Gang_lev.doors = ["DoorHorizontalGangLeft","DoorHorizontalGangTopFirst","DoorHorizontalGangTopSecond","DoorHorizontalGangRight"];
-
 var bookImgKeinZutritt = undefined;
-var eventHintImg = undefined;
+Gang_lev2.id = "Gang2_lev";
+Gang_lev2.doors = ["DoorHorizontal180GangLeft","DoorHorizontal180GangTopFirst","DoorHorizontal180GangTopSecond","DoorHorizontal180GangRight"];
 
-Gang_lev.prototype = {
+Gang_lev2.prototype = {
 
 
     create : function(){
@@ -32,7 +30,8 @@ Gang_lev.prototype = {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         //BackgroundTile hinzufuegen
-        bgTileSprite = this.game.add.tileSprite(0, 0, 1920, 1080, 'bgTutGang');
+        bgTileSprite = this.game.add.tileSprite(1920, 1130, 1920, 1080, 'bgTutGang');
+        bgTileSprite.angle=180;
         //Sprite hinzufuegen und auf Spieler setzen
         player = this.game.add.sprite(200,500,'playerRocket');
 
@@ -76,18 +75,21 @@ Gang_lev.prototype = {
 
         //Worldbounds
         player.body.collideWorldBounds = true;
-        //this.eventList =  this.cache.getJSON('Gang_lev');
-        this.registerevent(changeRoom,350,400,100,200,"DoorHorizontalGangLeft");
-        this.registerevent(changeRoom,600,400,200,100,"DoorHorizontalGangTopFirst");
-        this.registerevent(changeRoom,1100,400,200,100,"DoorHorizontalGangTopSecond");
+        this.eventList =  this.cache.getJSON('Gang_lev2').events;
+        //this.registerevent(changeRoomBackDoor,350,480,100,200,"back");
+        //this.registerevent(changeRaumVorrat,600,650,200,100,"vorrat");
+        //this.registerevent(changeRaumLebenserhaltung,1100,650,200,100,"Lebenserhaltung");
+
+
+        debugEvents(this);
 
         //Book KeinZutritt
-        this.registerevent(changeRoom,1500,460,100,150,"DoorHorizontalGangRight");
+        //this.registerevent(showBookKeinZutritt,1500,510,100,150,"test");
 
         //ComHUD
         this.game.Hud.start();
         this.game.Hunger.start();
-        this.game.Oxygen.usk(this.cache.getJSON('Gang_lev').sauerstoff);
+        this.game.Oxygen.usk(this.cache.getJSON('Gang_lev2').sauerstoff);
         this.game.Leben.healing();
 
         if(this.game.device.desktop == true) {
@@ -112,7 +114,6 @@ Gang_lev.prototype = {
           btn_interact.onInputDown.add(btn_interact_down, this);
           btn_interact.onInputUp.add(btn_interact_up, this);
         }
-        CreationDebug(this);
     },
 
 
@@ -122,7 +123,7 @@ Gang_lev.prototype = {
       if(this.game.input.keyboard.isDown(Phaser.KeyCode.W) || this.up)
       {
         if(player.y>=(bounds.y+30))
-          player.y = player.y-7;
+          player.y = player.y-5;
         if(this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
           player.animations.play('topLeft');
         } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
@@ -134,7 +135,7 @@ Gang_lev.prototype = {
       if (this.game.input.keyboard.isDown(Phaser.KeyCode.S) || this.down)
       {
           if(player.y<=(bounds.y+bounds.height-30))
-            player.y=player.y+7;
+            player.y=player.y+5;
           if(this.game.input.keyboard.isDown(Phaser.KeyCode.A)) {
             player.animations.play('bottomLeft');
           } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.D)) {
@@ -146,7 +147,7 @@ Gang_lev.prototype = {
       if (this.game.input.keyboard.isDown(Phaser.KeyCode.A) || this.left)
       {
           if(player.x>=(bounds.x+30))
-            player.x=player.x-7;
+            player.x=player.x-5;
           if(this.game.input.keyboard.isDown(Phaser.KeyCode.W)) {
             player.animations.play('topLeft');
           } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.S)) {
@@ -158,7 +159,7 @@ Gang_lev.prototype = {
       if (this.game.input.keyboard.isDown(Phaser.KeyCode.D) || this.right)
       {
           if(player.x<=(bounds.x+bounds.width-30))
-            player.x=player.x+7;
+            player.x=player.x+5;
           if(this.game.input.keyboard.isDown(Phaser.KeyCode.W)) {
             player.animations.play('topRight');
           } else if(this.game.input.keyboard.isDown(Phaser.KeyCode.S)) {
@@ -167,15 +168,15 @@ Gang_lev.prototype = {
             player.animations.play('right');
           }
       }
-      eventHintImgCounter=eventHintImgCounter+1;
-      if(eventHintImgCounter >= 10) {
-          showEventHint(self, false);
-          eventHintImgCounter = 0;
+        debugcounter=debugcounter+1;
+        if(debugcounter==100)
+        {
+            console.log(player.x+"/"+player.y);
+            debugcounter=0;
         }
 
         this.askevent();
         this.game.Hud.updateHud();
-        UpdateDebug(this)
     },
 
     //Player-Rotation
@@ -213,6 +214,7 @@ Gang_lev.prototype = {
       //graphics.lineStyle(4,0xffd900,1);
       //graphics.drawRect(0,0,width,height);
       this.eventList.push(newevent);
+
     },
     askevent: function()
     {
@@ -223,7 +225,6 @@ Gang_lev.prototype = {
            player.y>=element.y &&
            player.y<=element.y+element.height)
         {
-            showEventHint(self, true);
             if(self.game.input.keyboard.isDown(Phaser.KeyCode.SPACEBAR) || self.interact)
             {
               if (this.flag_alreadydown == false) {
@@ -278,19 +279,21 @@ function btn_interact_up() {
 function btn_interact_down() {
   this.interact = true;
 }
-function showEventHint(self, toShow) {
-  if (toShow) {
-    //Event Image
-    if (!eventHintImg) {
-      eventHintImg = self.game.add.sprite(self.game.world.width-50,self.game.world.height-50,"eventHintImg",this);
-    }
-  }
-  else {
-    if (eventHintImg) {
-      eventHintImg.destroy();
-      eventHintImg = undefined;
-    }
-  }
+function changeRoomBackDoor(self,sender)
+{
+  self.game.spawnposition={x:1600,y:400};
+  self.game.state.start("TheGame");
+
+}
+function changeRaumVorrat(self,sender)
+{
+  self.game.spawnposition={x:1330,y:1490};
+  self.game.state.start("Vorrat_lev");
+}
+function changeRaumLebenserhaltung(self,sender)
+{
+  self.game.spawnposition={x:1775,y:1650};
+  self.game.state.start("Lebenserhaltung_lev");
 }
 function showBookKeinZutritt(self,sender)
 {

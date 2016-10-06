@@ -14,7 +14,12 @@ var Vorrat_lev = function(game){
     left = false;
     interact = false;
 };
+
+Vorrat_lev.id = "Vorrat_lev";
+Vorrat_lev.doors = ["DoorVorratBot"];
+
 var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
+var eventHintImg = undefined;
 
 Vorrat_lev.prototype = {
 
@@ -80,15 +85,15 @@ Vorrat_lev.prototype = {
         //Worldbounds
         player.body.collideWorldBounds = false;
         //this.eventList =  this.cache.getJSON('Vorrat_lev');
-        this.registerevent(changeRoomToGang2,1280,1430,1460-1280,1525-1430,"test");
+        this.registerevent(changeRoom,1280,1430,1460-1280,1525-1430,"DoorVorratBot");
         this.registerevent(essenTrigger,1280,425,1425-1280,615-425,"test");
         this.registerevent(todDurchFeuer,1000, 590, 1710-1355+600, 905-845+300, "tod");
-        //this.debugEvents();
 
         this.game.Hud.start();
         this.game.Hunger.start();
         this.game.Oxygen.usk(this.cache.getJSON('Vorrat_lev').sauerstoff);
         this.game.Leben.healing();
+        CreationDebug();
 
         if(this.game.device.desktop == true) {
           return;
@@ -170,15 +175,15 @@ Vorrat_lev.prototype = {
               player.animations.play('right');
             }
         }
-        debugcounter=debugcounter+1;
-        if(debugcounter==100)
-        {
-            console.log(player.x+"/"+player.y);
-            debugcounter=0;
+        eventHintImgCounter=eventHintImgCounter+1;
+        if(eventHintImgCounter >= 10) {
+          showEventHint(self, false);
+          eventHintImgCounter = 0;
         }
 
         this.askevent();
         this.game.Hud.updateHud();
+        UpdateDebug(this);
 
         //Bei Mouseclick/Touchklick das Player-Movement Dash mit Partikel Effekt
         /*if (this.game.input.activePointer.leftButton.isDown)
@@ -211,6 +216,7 @@ Vorrat_lev.prototype = {
            player.y>=element.y &&
            player.y<=element.y+element.height)
         {
+            showEventHint(self, true);
             if(self.game.input.keyboard.isDown(Phaser.KeyCode.SPACEBAR) ||self.interact)
             {
               if (this.flag_alreadydown == false) {
@@ -228,19 +234,7 @@ Vorrat_lev.prototype = {
             }
         }
       })
-    },
-
-    debugEvents: function()
-    {
-      var self=this;
-      var graphics=self.game.add.graphics(0,0);
-      graphics.lineStyle(4,0xffd900,1);
-      this.eventList.forEach(function(element){
-        graphics.drawRect(element.x,element.y,element.width,element.height);
-      });
-
-    },
-
+    }
 };
 function btn_up_down() {
   //alert("up down");
@@ -280,10 +274,19 @@ function btn_interact_up() {
 function btn_interact_down() {
   this.interact = true;
 }
-function changeRoomToGang2(self,sender)
-{
-  self.game.spawnposition={x:600,y:450};
-  self.game.state.start("Gang_lev");
+function showEventHint(self, toShow) {
+  if (toShow) {
+    //Event Image
+    if (!eventHintImg) {
+      eventHintImg = self.game.add.sprite(self.game.world.width-50,self.game.world.height-50,"eventHintImg",this);
+    }
+  }
+  else {
+    if (eventHintImg) {
+      eventHintImg.destroy();
+      eventHintImg = undefined;
+    }
+  }
 }
 function essenTrigger(self,sender)
 {
