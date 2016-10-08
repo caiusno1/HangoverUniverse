@@ -17,6 +17,8 @@ var Vorrat_lev = function(game){
 
 Vorrat_lev.id = "Vorrat_lev";
 Vorrat_lev.doors = ["DoorVorratBot"];
+Vorrat_lev.doors2pos={};
+Vorrat_lev.doors2pos["DoorVorratBot"]={x:1330,y:1490};
 
 var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black",strokeThickness: 3 };
 var eventHintImg = undefined;
@@ -93,7 +95,7 @@ Vorrat_lev.prototype = {
         this.game.Hunger.start();
         this.game.Oxygen.usk(this.cache.getJSON('Vorrat_lev').sauerstoff);
         this.game.Leben.healing();
-        CreationDebug();
+        CreationDebug(this);
 
         if(this.game.device.desktop == true) {
           return;

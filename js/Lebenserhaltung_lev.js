@@ -17,6 +17,8 @@ var Lebenserhaltung_lev = function(game){
 
 Lebenserhaltung_lev.id = "Lebenserhaltung_lev";
 Lebenserhaltung_lev.doors = ["DoorLifeSupportBot"];
+Lebenserhaltung_lev.doors2pos={};
+Lebenserhaltung_lev.doors2pos["DoorLifeSupportBot"]={x:1775,y:1650};
 
 var bookIsFrontLebenserhaltungsraum = false;
 var bookImgLebenserhaltungsraum = undefined;

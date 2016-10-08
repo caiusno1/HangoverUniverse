@@ -3,6 +3,7 @@
 <head lang="de">
     <meta charset="UTF-8">
     <title>HangoverUniverse</title>
+    <script src="js/settings.js"></script>
     <script src="js/phaser.min.js"></script>
     <script src="js/boot.js"></script>
     <script src="js/preload.js"></script>
@@ -14,13 +15,12 @@
       <script src="js/leben.js"></script>
       <script src="js/oxygen.js"></script>
     <script src="js/gameover.js"></script>
-    <script src="js/settings.js"></script>
     <script src="js/Gang_lev.js"></script>
     <script src="js/Gang_lev2.js"></script>
     <script src="js/Vorrat_lev.js"></script>
     <script src="js/Lebenserhaltung_lev.js"></script>
-    <script src="js/eventhandler_doors.js"></script>
     <script src="js/WordGenerator.js"></script>
+    <script src="js/eventhandler_doors.js"></script>
     <script src="js/helpers.js"></script>
 
     <script type="text/javascript">
@@ -62,11 +62,14 @@
             game.state.add("GameInit", gameinit);
             game.state.add("GameOver", gameover);
 
-            //Start BootScreen
+            //Generate World
             var Stages=[thegame,Gang_lev,Gang_lev2,Vorrat_lev,Lebenserhaltung_lev];
             var WorldGen=new WorldGenerator(thegame,Stages);
             World=WorldGen.createWorld(15);
 
+            var CurrentRoom={"roomname":"spawn","doors":["DoorSpawnRight"],"stage":World.Spawn};
+            game.room=CurrentRoom;
+            //Start BootScreen
             game.state.start("Boot");
         })();
     </script>

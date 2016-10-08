@@ -35,6 +35,37 @@ function changeRoom(self,sender)
 
   }
   else{
-    // Part for Worldgeneration
+    var connectedDoor=getConnectedDoor(self,sender);
+    if(connectedDoor)
+    {
+        self.game.room=connectedDoor.room;
+        self.game.spawnposition=connectedDoor.room.stage.doors2pos[connectedDoor.id];
+        self.game.state.start(connectedDoor.room.stage.id);
+    }
   }
+}
+
+function getConnectedDoor(self,sender){
+  if(self.game.room)
+  {
+    var currentDoor={"room":self.game.room,"id":sender};
+  }
+  else {
+    var CurrentRoom={"roomname":"spawn","doors":["DoorSpawnRight"],"stage":World.SpawnStage};
+    var currentDoor={"room":CurrentRoom,"id":sender};
+  }
+  var doorsDict=World.DoorMappings;
+  var returnVal=undefined;
+  doorsDict.forEach(function(element){
+      if(element.Item1.room.roomname===currentDoor.room.roomname && element.Item1.id===currentDoor.id)
+      {
+          returnVal=element.Item2;
+          return;
+      }
+      else if (element.Item2.room.roomname===currentDoor.room.roomname && element.Item2.id===currentDoor.id) {
+          returnVal=element.Item1;
+          return;
+      }
+  });
+  return returnVal;
 }

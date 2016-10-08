@@ -16,9 +16,10 @@ var thegame = function(game) {
     interact = false;
 };
 
-thegame.id = "thegame";
+thegame.id = "TheGame";
 thegame.doors =  ["DoorSpawnRight"];
-
+thegame.doors2pos={};
+thegame.doors2pos["DoorSpawnRight"]={x:1600,y:400};
 var style = { font: "20px Roboto", fill: "#FFFFFF", align: "center", stroke:"black", strokeThickness: 3 };
 var eventHintImg = undefined;
 

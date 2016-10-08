@@ -15,8 +15,13 @@ var Gang_lev2 = function(game){
     interact = false;
 };
 var bookImgKeinZutritt = undefined;
-Gang_lev2.id = "Gang2_lev";
+Gang_lev2.id = "Gang_lev2";
 Gang_lev2.doors = ["DoorHorizontal180GangLeft","DoorHorizontal180GangTopFirst","DoorHorizontal180GangTopSecond","DoorHorizontal180GangRight"];
+Gang_lev2.doors2pos={};
+Gang_lev2.doors2pos["DoorHorizontal180GangLeft"]={x:350,y:480};
+Gang_lev2.doors2pos["DoorHorizontal180GangTopFirst"]={x:600,y:650};
+Gang_lev2.doors2pos["DoorHorizontal180GangTopSecond"]={x:1100,y:650};
+Gang_lev2.doors2pos["DoorHorizontal180GangRight"]={x:1500,y:510};
 
 Gang_lev2.prototype = {
 
@@ -80,8 +85,7 @@ Gang_lev2.prototype = {
         //this.registerevent(changeRaumVorrat,600,650,200,100,"vorrat");
         //this.registerevent(changeRaumLebenserhaltung,1100,650,200,100,"Lebenserhaltung");
 
-
-        debugEvents(this);
+        CreationDebug(this);
 
         //Book KeinZutritt
         //this.registerevent(showBookKeinZutritt,1500,510,100,150,"test");
@@ -174,7 +178,7 @@ Gang_lev2.prototype = {
             console.log(player.x+"/"+player.y);
             debugcounter=0;
         }
-
+        UpdateDebug(this);
         this.askevent();
         this.game.Hud.updateHud();
     },

@@ -7,7 +7,7 @@ var WorldGenerator = function(Spawn,Stages){
 
 WorldGenerator.prototype = {
   createWorld: function(RoomsCount){
-    var CurrentRoom={"roomname":"spawn","doors":["DoorSpawnRight"],stage:this.SpawnStage};
+    var CurrentRoom={"roomname":"spawn","doors":["DoorSpawnRight"],"stage":this.SpawnStage};
     this.Rooms.push(CurrentRoom);
     var currentDoors=[];
     CurrentRoom.doors.forEach(function(element){
@@ -22,6 +22,7 @@ WorldGenerator.prototype = {
           {
               possibleStages=this.__GetAllElementsContainsWord(this.Stages,"Gang");
           }
+          //possibleStages=this.__shuffle(possibleStages);
           var currentDoor=currentDoors.shift();
           var connectStage=possibleStages[this.__getRandomInt(0,possibleStages.length-1)];
           if(currentDoor.id.includes("Right"))
@@ -38,7 +39,7 @@ WorldGenerator.prototype = {
                 currentDoors.push({"room":createdRoom,"id":element})
             });
             this.Rooms.push(createdRoom);
-            this.DoorMapping.push({"Item1":currentDoor,"Item2":{"id":connectedDoor,"room":"room"+counter}});
+            this.DoorMapping.push({"Item1":currentDoor,"Item2":{"id":connectedDoor,"room":createdRoom}});
           }
           else if (currentDoor.id.includes("Top")) {
             var connectedDoor=this.__GetElementContainsWord(connectStage.doors,"Bot")
@@ -53,7 +54,7 @@ WorldGenerator.prototype = {
                 currentDoors.push({"room":createdRoom,"id":element})
             });
             this.Rooms.push(createdRoom);
-            this.DoorMapping.push({"Item1":currentDoor,"Item2":{"id":connectedDoor,"room":"room"+counter}});
+            this.DoorMapping.push({"Item1":currentDoor,"Item2":{"id":connectedDoor,"room":createdRoom}});
           }
           else if (currentDoor.id.includes("Bot")) {
             var connectedDoor=this.__GetElementContainsWord(connectStage.doors,"Top")
@@ -68,7 +69,7 @@ WorldGenerator.prototype = {
                 currentDoors.push({"room":createdRoom,"id":element})
             });
             this.Rooms.push(createdRoom);
-            this.DoorMapping.push({"Item1":currentDoor,"Item2":{"id":connectedDoor,"room":"room"+counter}});
+            this.DoorMapping.push({"Item1":currentDoor,"Item2":{"id":connectedDoor,"room":createdRoom}});
           }
           counter++;
       }
@@ -113,5 +114,23 @@ WorldGenerator.prototype = {
       }
     }
     return retlist;
+  },
+  __shuffle: function(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
   }
+
+  return array;
+}
 }

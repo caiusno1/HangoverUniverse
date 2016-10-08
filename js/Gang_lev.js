@@ -16,6 +16,11 @@ var Gang_lev = function(game){
 };
 Gang_lev.id = "Gang_lev";
 Gang_lev.doors = ["DoorHorizontalGangLeft","DoorHorizontalGangTopFirst","DoorHorizontalGangTopSecond","DoorHorizontalGangRight"];
+Gang_lev.doors2pos={};
+Gang_lev.doors2pos["DoorHorizontalGangLeft"]={x:460,y:510};
+Gang_lev.doors2pos["DoorHorizontalGangTopFirst"]={x:600,y:450};
+Gang_lev.doors2pos["DoorHorizontalGangTopSecond"]={x:1100,y:450};
+Gang_lev.doors2pos["DoorHorizontalGangRight"]={x:1500,y:460};
 
 var bookImgKeinZutritt = undefined;
 var eventHintImg = undefined;
@@ -89,6 +94,7 @@ Gang_lev.prototype = {
         this.game.Hunger.start();
         this.game.Oxygen.usk(this.cache.getJSON('Gang_lev').sauerstoff);
         this.game.Leben.healing();
+        CreationDebug(this);
 
         if(this.game.device.desktop == true) {
           return;
@@ -112,7 +118,6 @@ Gang_lev.prototype = {
           btn_interact.onInputDown.add(btn_interact_down, this);
           btn_interact.onInputUp.add(btn_interact_up, this);
         }
-        CreationDebug(this);
     },
 
 

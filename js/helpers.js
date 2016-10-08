@@ -5,6 +5,7 @@ function CreationDebug(self)
   if(enabledebug)
   {
       debugEvents(self);
+      debugRoom(self);
   }
 }
 
@@ -34,4 +35,12 @@ function trackPlayerPosition(self)
         console.log(player.x+"/"+player.y);
         debugcounter=0;
     }
+}
+function debugRoom(self)
+{
+  if(self.game.room)
+    console.log("Room: "+self.game.room.roomname+ ",Stage: "+self.game.room.stage.id);
+  else {
+    console.log("Room not set yet");
+  }
 }
