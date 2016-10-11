@@ -97,6 +97,7 @@ preload.prototype = {
         this.game.load.audio('sound_buttonclick', ["assets/sounds//buttonsound.mp3","assets/sounds/buttonsound.ogg"]);
     },
     create: function(){
+
         if(unittest)
             this.game.state.start("GameInit");
         else

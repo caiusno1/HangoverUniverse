@@ -21,3 +21,5 @@ var enabledebug=false;
 var eventHintImgCounter = 0;
 
 var tutorial = true;
+
+var unittest=false;
