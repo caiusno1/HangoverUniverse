@@ -97,6 +97,9 @@ preload.prototype = {
         this.game.load.audio('sound_buttonclick', ["assets/sounds//buttonsound.mp3","assets/sounds/buttonsound.ogg"]);
     },
     create: function(){
-        this.game.state.start("GameTitle");
+        if(unittest)
+            this.game.state.start("GameInit");
+        else
+            this.game.state.start("GameTitle");
     }
 };

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Hangover Universe Test-Bench</title>
+  <link rel="stylesheet" href="tests/qunit.css">
+  <script src="js/settings.js"></script>
+  <script src="js/phaser.min.js"></script>
+  <script src="js/boot.js"></script>
+  <script src="js/preload.js"></script>
+  <script src="js/gametitle.js"></script>
+  <script src="tests/gameinit_utest.js"></script>
+  <script src="js/hud.js"></script>
+  <script src="js/hunger.js"></script>
+  <script src="js/leben.js"></script>
+  <script src="js/oxygen.js"></script>
+  <script src="js/gameover.js"></script>
+  <script src="js/WordGenerator.js"></script>
+  <script src="js/eventhandler_doors.js"></script>
+  <script src="js/helpers.js"></script>
+  <script src="test/teststage.js"></script>
+  <script src="tests/qunit.js"></script>
+  <script src="tests/testenv.js"></script>
+  <style>
+    canvas
+    {
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+  <script>
+      (function() {
+          //Game initialisieren
+          var game = new Phaser.Game(1929, 1080, Phaser.AUTO, "game");
+          game.test={};
+
+          //States hinzufügen
+          game.state.add("Boot",boot);
+          game.state.add("Preload",preload);
+          game.state.add("GameTitle",gametitle);
+          //game.state.add("TheGame",thegame);
+          //game.state.add("Gang_lev",Gang_lev);
+          //game.state.add("Gang_lev2",Gang_lev2);
+          //game.state.add("Vorrat_lev",Vorrat_lev);
+          //game.state.add("Lebenserhaltung_lev",Lebenserhaltung_lev);
+          game.state.add("testenv",testenv);
+          game.state.add("GameInit", gameinit);
+          game.state.add("GameOver", gameover);
+
+          //Generate World
+          //var Stages=[healing_test];
+        //  var WorldGen=new WorldGenerator(healing_test,Stages);
+          //World=WorldGen.createWorld(15);
+          World={};
+
+          var CurrentRoom={"roomname":"spawn","doors":["DoorSpawnRight"],"stage":World.Spawn};
+          game.room=CurrentRoom;
+          //Start BootScreen
+          unittest=true;
+          game.state.start("Boot");
+      })();
+  </script>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+</body>
+</html>
